@@ -12,6 +12,7 @@
 		CE7642B71E5D922900B0E47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B51E5D922900B0E47F /* Main.storyboard */; };
 		CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B81E5D922A00B0E47F /* Assets.xcassets */; };
 		CE7642BC1E5D922A00B0E47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642BA1E5D922A00B0E47F /* LaunchScreen.storyboard */; };
+		CE7642C41E5D935300B0E47F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7642C31E5D935300B0E47F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CE7642B81E5D922A00B0E47F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE7642BB1E5D922A00B0E47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7642BD1E5D922A00B0E47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7642C31E5D935300B0E47F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				CE7642B51E5D922900B0E47F /* Main.storyboard */,
 				CE7642B81E5D922A00B0E47F /* Assets.xcassets */,
 				CE7642BA1E5D922A00B0E47F /* LaunchScreen.storyboard */,
+				CE7642C31E5D935300B0E47F /* GoogleService-Info.plist */,
 				CE7642BD1E5D922A00B0E47F /* Info.plist */,
 			);
 			path = pizza2017;
@@ -124,6 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7642BC1E5D922A00B0E47F /* LaunchScreen.storyboard in Resources */,
+				CE7642C41E5D935300B0E47F /* GoogleService-Info.plist in Resources */,
 				CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */,
 				CE7642B71E5D922900B0E47F /* Main.storyboard in Resources */,
 			);
@@ -297,6 +301,7 @@
 				CE7642C21E5D922A00B0E47F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
