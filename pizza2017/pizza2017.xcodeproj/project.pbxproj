@@ -13,9 +13,12 @@
 		CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B81E5D922A00B0E47F /* Assets.xcassets */; };
 		CE7642BC1E5D922A00B0E47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642BA1E5D922A00B0E47F /* LaunchScreen.storyboard */; };
 		CE7642C41E5D935300B0E47F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7642C31E5D935300B0E47F /* GoogleService-Info.plist */; };
+		E9BF009F90AAD1D0AD445997 /* Pods_pizza2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig"; sourceTree = "<group>"; };
+		BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig"; sourceTree = "<group>"; };
 		CE7642AE1E5D922900B0E47F /* pizza2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pizza2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7642B11E5D922900B0E47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7642B31E5D922900B0E47F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		CE7642BB1E5D922A00B0E47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7642BD1E5D922A00B0E47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE7642C31E5D935300B0E47F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pizza2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9BF009F90AAD1D0AD445997 /* Pods_pizza2017.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81109DFD4AF07693B43250E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ABB63007085D97BF5DAA337D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */,
+				07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE7642A51E5D922900B0E47F = {
 			isa = PBXGroup;
 			children = (
 				CE7642B01E5D922900B0E47F /* pizza2017 */,
 				CE7642AF1E5D922900B0E47F /* Products */,
+				ABB63007085D97BF5DAA337D /* Pods */,
+				81109DFD4AF07693B43250E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE7642C01E5D922A00B0E47F /* Build configuration list for PBXNativeTarget "pizza2017" */;
 			buildPhases = (
+				696FA1783EB194F4DD14572F /* [CP] Check Pods Manifest.lock */,
 				CE7642AA1E5D922900B0E47F /* Sources */,
 				CE7642AB1E5D922900B0E47F /* Frameworks */,
 				CE7642AC1E5D922900B0E47F /* Resources */,
+				ADE592E696D65A570C74505B /* [CP] Embed Pods Frameworks */,
+				F8154F7E8C76D7DAC0E5673F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,6 +161,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		696FA1783EB194F4DD14572F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ADE592E696D65A570C74505B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8154F7E8C76D7DAC0E5673F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE7642AA1E5D922900B0E47F /* Sources */ = {
@@ -260,6 +335,7 @@
 		};
 		CE7642C11E5D922A00B0E47F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = pizza2017/Info.plist;
@@ -272,6 +348,7 @@
 		};
 		CE7642C21E5D922A00B0E47F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = pizza2017/Info.plist;

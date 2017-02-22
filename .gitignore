@@ -1,0 +1,80 @@
+pizza2017/Pods/Manifest.lock
+pizza2017/Pods/Firebase/.cocoapods.yml
+pizza2017/Pods/Firebase/CHANGELOG.md
+pizza2017/Pods/Firebase/NOTICES
+pizza2017/Pods/Firebase/README.md
+pizza2017/Pods/Firebase/Core/Sources/Firebase.h
+pizza2017/Pods/Firebase/Core/Sources/module.modulemap
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/FirebaseAnalytics
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics+AppDelegate.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIRAnalytics.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIRAnalyticsConfiguration.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIRApp.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIRConfiguration.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FirebaseAnalytics.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIREventNames.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIROptions.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIRParameterNames.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Headers/FIRUserPropertyNames.h
+pizza2017/Pods/FirebaseAnalytics/Frameworks/frameworks/FirebaseAnalytics.framework/Modules/module.modulemap
+pizza2017/Pods/FirebaseCore/Frameworks/frameworks/FirebaseCore.framework/FirebaseCore
+pizza2017/Pods/FirebaseCore/Frameworks/frameworks/FirebaseCore.framework/Headers/FIRAnalyticsConfiguration.h
+pizza2017/Pods/FirebaseCore/Frameworks/frameworks/FirebaseCore.framework/Headers/FIRApp.h
+pizza2017/Pods/FirebaseCore/Frameworks/frameworks/FirebaseCore.framework/Headers/FIRConfiguration.h
+pizza2017/Pods/FirebaseCore/Frameworks/frameworks/FirebaseCore.framework/Headers/FirebaseCore.h
+pizza2017/Pods/FirebaseCore/Frameworks/frameworks/FirebaseCore.framework/Headers/FIROptions.h
+pizza2017/Pods/FirebaseCore/Frameworks/frameworks/FirebaseCore.framework/Modules/module.modulemap
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/FirebaseDatabase
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Info.plist
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/NOTICE
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/_CodeSignature/CodeDirectory
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/_CodeSignature/CodeRequirements
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/_CodeSignature/CodeRequirements-1
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/_CodeSignature/CodeResources
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/_CodeSignature/CodeSignature
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabase.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabaseQuery.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDatabaseReference.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDataEventType.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRDataSnapshot.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FirebaseDatabase.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRMutableData.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRServerValue.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Headers/FIRTransactionResult.h
+pizza2017/Pods/FirebaseDatabase/Frameworks/FirebaseDatabase.framework/Modules/module.modulemap
+pizza2017/Pods/FirebaseInstanceID/Frameworks/frameworks/FirebaseInstanceID.framework/FirebaseInstanceID
+pizza2017/Pods/FirebaseInstanceID/Frameworks/frameworks/FirebaseInstanceID.framework/Headers/FirebaseInstanceID.h
+pizza2017/Pods/FirebaseInstanceID/Frameworks/frameworks/FirebaseInstanceID.framework/Headers/FIRInstanceID.h
+pizza2017/Pods/FirebaseInstanceID/Frameworks/frameworks/FirebaseInstanceID.framework/Modules/module.modulemap
+pizza2017/Pods/FirebaseInstanceID/Sources/FIRInstanceID.h
+pizza2017/Pods/GoogleInterchangeUtilities/Frameworks/frameworks/GoogleInterchangeUtilities.framework/GoogleInterchangeUtilities
+pizza2017/Pods/GoogleSymbolUtilities/Frameworks/frameworks/GoogleSymbolUtilities.framework/GoogleSymbolUtilities
+pizza2017/Pods/GoogleToolboxForMac/GTMDefines.h
+pizza2017/Pods/GoogleToolboxForMac/LICENSE
+pizza2017/Pods/GoogleToolboxForMac/README.md
+pizza2017/Pods/GoogleToolboxForMac/Foundation/GTMNSData+zlib.h
+pizza2017/Pods/GoogleToolboxForMac/Foundation/GTMNSData+zlib.m
+pizza2017/Pods/Headers/Private/Firebase/Firebase.h
+pizza2017/Pods/Headers/Private/FirebaseInstanceID/FIRInstanceID.h
+pizza2017/Pods/Headers/Public/Firebase/Firebase.h
+pizza2017/Pods/Headers/Public/FirebaseInstanceID/FIRInstanceID.h
+pizza2017/Pods/Pods.xcodeproj/project.pbxproj
+pizza2017/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/GoogleToolboxForMac.xcscheme
+pizza2017/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/Pods-pizza2017.xcscheme
+pizza2017/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/xcschememanagement.plist
+pizza2017/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-dummy.m
+pizza2017/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch
+pizza2017/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-umbrella.h
+pizza2017/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap
+pizza2017/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.xcconfig
+pizza2017/Pods/Target Support Files/GoogleToolboxForMac/Info.plist
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Info.plist
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-acknowledgements.markdown
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-acknowledgements.plist
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-dummy.m
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-frameworks.sh
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-resources.sh
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-umbrella.h
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.modulemap
+pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig

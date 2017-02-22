@@ -7,4 +7,8 @@ target 'pizza2017' do
 
   # Pods for pizza2017
 
+pod 'Firebase/Core'
+pod 'Firebase'
+pod 'Firebase/Database'
+
 end
