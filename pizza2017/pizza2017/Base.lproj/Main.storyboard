@@ -153,17 +153,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="KeM-Ad-E2r"/>
-                    <connections>
-                        <segue destination="urq-sl-PCI" kind="show" id="cR9-mW-us6">
-                            <nil key="action"/>
-                        </segue>
-                        <segue destination="d3b-iR-a0Q" kind="show" id="8RP-Na-MMU">
-                            <nil key="action"/>
-                        </segue>
-                        <segue destination="K4H-g1-r2c" kind="show" id="7ca-In-Nvh">
-                            <nil key="action"/>
-                        </segue>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dfq-Px-qn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +179,7 @@
         <!--О нас-->
         <scene sceneID="i3i-mb-Ndd">
             <objects>
-                <viewController title="О нас" id="K4H-g1-r2c" customClass="AboutViewController" customModule="pizza2017" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="О нас" id="K4H-g1-r2c" customClass="SettingsViewController" customModule="pizza2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rhk-X9-aJJ"/>
                         <viewControllerLayoutGuide type="bottom" id="kKI-Ej-LZz"/>
@@ -240,9 +229,4 @@
             <point key="canvasLocation" x="948" y="139"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="cR9-mW-us6"/>
-        <segue reference="7ca-In-Nvh"/>
-        <segue reference="pZn-Yk-w3Z"/>
-    </inferredMetricsTieBreakers>
 </document>

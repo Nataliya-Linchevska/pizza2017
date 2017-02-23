@@ -6,6 +6,7 @@
 //  Copyright © 2017 GeekHub. All rights reserved.
 //
 
+// Не видаляю поки, потім добавимо  в потрібну папку
 import Foundation
 class Dish {
     var name: String

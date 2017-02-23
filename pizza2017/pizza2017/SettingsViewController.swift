@@ -1,5 +1,5 @@
 //
-//  AboutViewController.swift
+//  SettingsViewController.swift
 //  pizza2017
 //
 //  Created by user on 22.02.17.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         HelperFirebase.getTasksFromFirebase(keyWord: "settings")
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

@@ -12,14 +12,14 @@
 		CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B81E5D922A00B0E47F /* Assets.xcassets */; };
 		CE7642BC1E5D922A00B0E47F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642BA1E5D922A00B0E47F /* LaunchScreen.storyboard */; };
 		CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119CC1E5DAF8E00674520 /* LoginViewController.swift */; };
-		CE9119CF1E5DAFB400674520 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119CE1E5DAFB400674520 /* AboutViewController.swift */; };
 		CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D01E5DAFDB00674520 /* MenuViewController.swift */; };
 		CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D21E5DAFF900674520 /* NewsViewController.swift */; };
 		CE9119D51E5DB01A00674520 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D41E5DB01A00674520 /* Dish.swift */; };
-		CE9119D71E5DB04D00674520 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D61E5DB04D00674520 /* Settings.swift */; };
-		CE9119D91E5DB07500674520 /* HelperFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D81E5DB07500674520 /* HelperFirebase.swift */; };
+		CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D81E5DB07500674520 /* SettingsFirebase.swift */; };
 		CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119DA1E5DB17A00674520 /* MainViewController.swift */; };
 		CEA6BB491E5DBDB900057BA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA6BB481E5DBDB900057BA4 /* GoogleService-Info.plist */; };
+		CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */; };
+		CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */; };
 		E9BF009F90AAD1D0AD445997 /* Pods_pizza2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,14 +33,14 @@
 		CE7642BB1E5D922A00B0E47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7642BD1E5D922A00B0E47F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE9119CC1E5DAF8E00674520 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		CE9119CE1E5DAFB400674520 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		CE9119D01E5DAFDB00674520 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CE9119D21E5DAFF900674520 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		CE9119D41E5DB01A00674520 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
-		CE9119D61E5DB04D00674520 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		CE9119D81E5DB07500674520 /* HelperFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFirebase.swift; sourceTree = "<group>"; };
+		CE9119D81E5DB07500674520 /* SettingsFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFirebase.swift; sourceTree = "<group>"; };
 		CE9119DA1E5DB17A00674520 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CEA6BB481E5DBDB900057BA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pizza2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -94,11 +94,14 @@
 		CE7642B01E5D922900B0E47F /* pizza2017 */ = {
 			isa = PBXGroup;
 			children = (
-				CE7642B11E5D922900B0E47F /* AppDelegate.swift */,
-				CE9119CA1E5DAF3100674520 /* Models */,
-				CE9119CB1E5DAF4300674520 /* ViewControllers */,
-				CE9119C91E5DAF1800674520 /* Helpers */,
+				CEA6BB501E5EC24B00057BA4 /* Login */,
+				CEA6BB511E5EC27A00057BA4 /* MainMenu */,
+				CEA6BB521E5EC2BF00057BA4 /* Settings */,
+				CEA6BB531E5EC37B00057BA4 /* MenuGroups */,
+				CEA6BB541E5EC39E00057BA4 /* News */,
 				CE7642B51E5D922900B0E47F /* Main.storyboard */,
+				CE7642B11E5D922900B0E47F /* AppDelegate.swift */,
+				CE9119D41E5DB01A00674520 /* Dish.swift */,
 				CE7642B81E5D922A00B0E47F /* Assets.xcassets */,
 				CE7642BA1E5D922A00B0E47F /* LaunchScreen.storyboard */,
 				CE7642BD1E5D922A00B0E47F /* Info.plist */,
@@ -107,33 +110,46 @@
 			path = pizza2017;
 			sourceTree = "<group>";
 		};
-		CE9119C91E5DAF1800674520 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				CE9119D81E5DB07500674520 /* HelperFirebase.swift */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
-		CE9119CA1E5DAF3100674520 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CE9119D41E5DB01A00674520 /* Dish.swift */,
-				CE9119D61E5DB04D00674520 /* Settings.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		CE9119CB1E5DAF4300674520 /* ViewControllers */ = {
+		CEA6BB501E5EC24B00057BA4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				CE9119CC1E5DAF8E00674520 /* LoginViewController.swift */,
-				CE9119D01E5DAFDB00674520 /* MenuViewController.swift */,
-				CE9119DA1E5DB17A00674520 /* MainViewController.swift */,
-				CE9119D21E5DAFF900674520 /* NewsViewController.swift */,
-				CE9119CE1E5DAFB400674520 /* AboutViewController.swift */,
 			);
-			name = ViewControllers;
+			name = Login;
+			sourceTree = "<group>";
+		};
+		CEA6BB511E5EC27A00057BA4 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CE9119DA1E5DB17A00674520 /* MainViewController.swift */,
+			);
+			name = MainMenu;
+			sourceTree = "<group>";
+		};
+		CEA6BB521E5EC2BF00057BA4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */,
+				CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */,
+				CE9119D81E5DB07500674520 /* SettingsFirebase.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		CEA6BB531E5EC37B00057BA4 /* MenuGroups */ = {
+			isa = PBXGroup;
+			children = (
+				CE9119D01E5DAFDB00674520 /* MenuViewController.swift */,
+			);
+			name = MenuGroups;
+			sourceTree = "<group>";
+		};
+		CEA6BB541E5EC39E00057BA4 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				CE9119D21E5DAFF900674520 /* NewsViewController.swift */,
+			);
+			name = News;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,12 +276,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9119D91E5DB07500674520 /* HelperFirebase.swift in Sources */,
-				CE9119CF1E5DAFB400674520 /* AboutViewController.swift in Sources */,
+				CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */,
+				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
 				CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */,
 				CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */,
 				CE9119D51E5DB01A00674520 /* Dish.swift in Sources */,
-				CE9119D71E5DB04D00674520 /* Settings.swift in Sources */,
+				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
 				CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */,
 				CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,

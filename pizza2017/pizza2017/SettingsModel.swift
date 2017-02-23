@@ -1,5 +1,5 @@
 //
-//  Settings.swift
+//  About.swift
 //  pizza2017
 //
 //  Created by user on 22.02.17.
@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Settings {
+class SettingsModel {
     var adress: String
     var email: String
     var latitude: Float
