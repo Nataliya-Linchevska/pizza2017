@@ -14,11 +14,13 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
     
-    var taskSettings = SettingsFirebase.taskSettings
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        SettingsFirebase.getTasksFromFirebase()
+        
+        SettingsFirebase.getTasksFromFirebase {
+            self.viewDidLoad()
+        }
+        var taskSettings = SettingsFirebase.taskSettings
         lblAddress.text = taskSettings?.address
         print(taskSettings?.address)
         lblEmail.text = taskSettings?.email
