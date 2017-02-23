@@ -15,18 +15,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lblPhone: UILabel!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         SettingsFirebase.getTasksFromFirebase {
-            self.viewDidLoad()
+            self.reloadView(taskSettings: SettingsFirebase.taskSettings!)
         }
-        var taskSettings = SettingsFirebase.taskSettings
-        lblAddress.text = taskSettings?.address
-        print(taskSettings?.address)
-        lblEmail.text = taskSettings?.email
-        print(taskSettings?.email)
-        lblPhone.text = taskSettings?.phone
-        print(taskSettings?.phone)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,5 +34,11 @@ class SettingsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func reloadView(taskSettings: SettingsModel) {
+        let taskSettings = taskSettings
+        lblAddress.text = taskSettings.address
+        lblEmail.text = "Email: " + taskSettings.email
+        lblPhone.text = "Телефон: " + taskSettings.phone
+    }
 }
