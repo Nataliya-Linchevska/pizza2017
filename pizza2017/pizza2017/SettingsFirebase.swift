@@ -10,21 +10,20 @@ import Foundation
 import Firebase
 
 class SettingsFirebase {
+    static var taskSettings: SettingsModel?
     static let ref = FIRDatabase.database().reference()
-    
-    static func getTasksFromFirebase(keyWord: String){
-        ref.child(keyWord).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                for snap in snapshots {
-                    print(snap)
-////                    child.value["meanAcc"] as! String
-                }
-            } else {
-                print("no results")
-            }
+    static func getTasksFromFirebase(){
+        ref.child("settings").observeSingleEvent(of: .value, with: { (snapshot) in
+            let tasksInFirebase = snapshot.value as! NSDictionary
+            let address = tasksInFirebase["address"] as! String
+            let email = tasksInFirebase["email"] as! String
+            let latitude = tasksInFirebase["latitude"] as! Float
+            let longitude = tasksInFirebase["longitude"] as! Float
+            let phone = tasksInFirebase["phone"] as! String
+            taskSettings = SettingsModel(address: address, email: email, latitude: latitude, longitude: longitude, phone: phone)
         }) { (error) in
             print(error.localizedDescription)
         }
-    
     }
 }
+

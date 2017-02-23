@@ -7,15 +7,16 @@
 //
 
 import Foundation
+
 class SettingsModel {
-    var adress: String
+    var address: String
     var email: String
     var latitude: Float
     var longitude: Float
     var phone: String
     
-    init(adress: String, email: String, latitude: Float, longitude: Float, phone: String) {
-        self.adress = adress
+    init(address: String, email: String, latitude: Float, longitude: Float, phone: String) {
+        self.address = address
         self.email = email
         self.latitude = latitude
         self.longitude = longitude
