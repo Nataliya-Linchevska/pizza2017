@@ -9,10 +9,22 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    
+    @IBOutlet weak var lblAddress: UILabel!
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblPhone: UILabel!
+    
+    var taskSettings = SettingsFirebase.taskSettings
 
     override func viewDidLoad() {
         super.viewDidLoad()
         SettingsFirebase.getTasksFromFirebase()
+        lblAddress.text = taskSettings?.address
+        print(taskSettings?.address)
+        lblEmail.text = taskSettings?.email
+        print(taskSettings?.email)
+        lblPhone.text = taskSettings?.phone
+        print(taskSettings?.phone)
     }
 
     override func didReceiveMemoryWarning() {
