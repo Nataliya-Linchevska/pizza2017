@@ -9,7 +9,6 @@
 import Foundation
 import Firebase
 
-
 class MenuGroupsFirebase {
     static var taskMenuGroups: MenuGroupsModel?
     static var arrayOfTaskMenuGroups = [MenuGroupsModel]()
@@ -17,21 +16,16 @@ class MenuGroupsFirebase {
     
     static func getTasksFromFirebase(){
         ref.child("menu_groups").observeSingleEvent(of: .value, with: { (snapshot) in
-            let tasksInFirebase = snapshot.value as! NSDictionary
-            print(tasksInFirebase)
-//            for groups in tasksInFirebase {
-//                let key = tasksInFirebase["key"] as! String
-//                print(key)
-//                let name = tasksInFirebase["name"] as! String
-//                print(name)
-//                let photoName = tasksInFirebase["photoName"] as! String
-//                print(photoName)
-//                let photoUrl = tasksInFirebase["photoUrl"] as! String
-//                print(photoUrl)
-//                taskMenuGroups = MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl)
-//                arrayOfTaskMenuGroups.append(taskMenuGroups!)
-//                print(arrayOfTaskMenuGroups)
-//            }
+            for items in snapshot.children {
+                let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
+                let key = tasksInFirebase["key"] as! String
+                let name = tasksInFirebase["name"] as! String
+                let photoName = tasksInFirebase["photoName"] as! String
+                let photoUrl = tasksInFirebase["photoUrl"] as! String
+                taskMenuGroups = MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl)
+                arrayOfTaskMenuGroups.append(taskMenuGroups!)
+                
+            }
         }) { (error) in
             print(error.localizedDescription)
         }
