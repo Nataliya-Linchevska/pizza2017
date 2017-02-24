@@ -21,6 +21,7 @@
 		CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */; };
 		CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */; };
 		CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */; };
+		CEB527D31E60643300A1586C /* MenuGroupsFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */; };
 		E9BF009F90AAD1D0AD445997 /* Pods_pizza2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsModel.swift; sourceTree = "<group>"; };
+		CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsFirebase.swift; sourceTree = "<group>"; };
 		EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pizza2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				CE9119D01E5DAFDB00674520 /* MenuViewController.swift */,
+				CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */,
 				CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */,
 			);
 			name = MenuGroups;
@@ -282,6 +285,7 @@
 				CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */,
 				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
 				CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */,
+				CEB527D31E60643300A1586C /* MenuGroupsFirebase.swift in Sources */,
 				CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */,
 				CE9119D51E5DB01A00674520 /* Dish.swift in Sources */,
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,

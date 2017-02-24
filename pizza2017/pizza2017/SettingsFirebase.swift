@@ -17,17 +17,11 @@ class SettingsFirebase {
         ref.child("settings").observeSingleEvent(of: .value, with: { (snapshot) in
             let tasksInFirebase = snapshot.value as! NSDictionary
             let address = tasksInFirebase["address"] as! String
-            print(address)
             let email = tasksInFirebase["email"] as! String
-            print(email)
             let latitude = tasksInFirebase["latitude"] as! Float
-            print(latitude)
             let longitude = tasksInFirebase["longitude"] as! Float
-            print(longitude)
             let phone = tasksInFirebase["phone"] as! String
-            print(phone)
             taskSettings = SettingsModel(address: address, email: email, latitude: latitude, longitude: longitude, phone: phone)
-            print(taskSettings)
             callback()
         }) { (error) in
             print(error.localizedDescription)
