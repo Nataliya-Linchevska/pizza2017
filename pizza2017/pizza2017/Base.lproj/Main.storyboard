@@ -220,6 +220,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lzn-oi-vtd">
+                                <rect key="frame" x="38" y="400" width="277" height="215"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -227,6 +231,7 @@
                         <outlet property="lblAddress" destination="UVu-qO-hFH" id="7hQ-W1-yRe"/>
                         <outlet property="lblEmail" destination="gH7-QP-Ipn" id="fuS-Ee-TSI"/>
                         <outlet property="lblPhone" destination="5a3-co-94S" id="Z9o-G0-oX6"/>
+                        <outlet property="map" destination="Lzn-oi-vtd" id="FmR-uu-m78"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsq-wJ-a2O" userLabel="First Responder" sceneMemberID="firstResponder"/>

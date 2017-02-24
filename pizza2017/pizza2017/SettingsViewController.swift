@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
+    @IBOutlet weak var map: MKMapView!
     
     override func viewDidLoad() {
         SettingsFirebase.getTasksFromFirebase {
@@ -24,21 +26,24 @@ class SettingsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+        // заповнення полів на екрані
     func reloadView(taskSettings: SettingsModel) {
         let taskSettings = taskSettings
         lblAddress.text = taskSettings.address
         lblEmail.text = "Email: " + taskSettings.email
         lblPhone.text = "Телефон: " + taskSettings.phone
+        
+        // карта
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.1, 0.1)
+        let location: CLLocationCoordinate2D = CLLocationCoordinate2DMake(CLLocationDegrees(taskSettings.latitude), CLLocationDegrees(taskSettings.longitude))
+        let region: MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        map.setRegion(region, animated: true)
+        
+        // надпис на карті
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = "BEST PIZZA"
+        annotation.subtitle = "самая вкусная пицца"
+        map.addAnnotation(annotation)
     }
 }
