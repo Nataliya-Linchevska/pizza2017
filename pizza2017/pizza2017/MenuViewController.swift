@@ -8,16 +8,46 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var CollectionView: UICollectionView!
+    
+    struct MenuObject {
+        var menuGroupTitle: String
+        var menuGroupImage: UIImage
+        init(menuGroupTitle: String, menuGroupImage: UIImage) {
+            self.menuGroupTitle = menuGroupTitle
+            self.menuGroupImage = menuGroupImage
+        }
+    }
+    var menuArray: [MenuObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         MenuGroupsFirebase.getTasksFromFirebase()
+        
+        menuArray.append(MenuObject(menuGroupTitle: "first title", menuGroupImage: UIImage(named: "logoPizza")!))
+        menuArray.append(MenuObject(menuGroupTitle: "second title", menuGroupImage: UIImage(named: "logoPizza")!))
+        menuArray.append(MenuObject(menuGroupTitle: "third title", menuGroupImage: UIImage(named: "logoPizza")!))
+        menuArray.append(MenuObject(menuGroupTitle: "fourth title", menuGroupImage: UIImage(named: "logoPizza")!))
+
+        CollectionView.delegate = self
+        CollectionView.dataSource = self
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return menuArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuGroupCell", for: indexPath) as! MenuGroupsCollectionViewCell
+        cell.lblTitle.text = menuArray[indexPath.item].menuGroupTitle
+        cell.ivImage.image = menuArray[indexPath.item].menuGroupImage
+        return cell
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 

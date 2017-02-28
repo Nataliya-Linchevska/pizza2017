@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */; };
 		CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7642B11E5D922900B0E47F /* AppDelegate.swift */; };
 		CE7642B71E5D922900B0E47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B51E5D922900B0E47F /* Main.storyboard */; };
 		CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B81E5D922A00B0E47F /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig"; sourceTree = "<group>"; };
 		BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig"; sourceTree = "<group>"; };
+		CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE7642AE1E5D922900B0E47F /* pizza2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pizza2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7642B11E5D922900B0E47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7642B61E5D922900B0E47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				CE9119D01E5DAFDB00674520 /* MenuViewController.swift */,
 				CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */,
 				CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */,
+				CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */,
 			);
 			name = MenuGroups;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */,
 				CEB527D31E60643300A1586C /* MenuGroupsFirebase.swift in Sources */,
 				CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */,
+				CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */,
 				CE9119D51E5DB01A00674520 /* Dish.swift in Sources */,
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
 				CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */,
