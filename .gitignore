@@ -78,3 +78,32 @@ pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017-umbrella.h
 pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig
 pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.modulemap
 pizza2017/Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/FirebaseStorage
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FirebaseStorage.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorage.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageConstants.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageDownloadTask.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageMetadata.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageObservableTask.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageReference.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageTask.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageTaskSnapshot.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Headers/FIRStorageUploadTask.h
+pizza2017/Pods/FirebaseStorage/Frameworks/frameworks/FirebaseStorage.framework/Modules/module.modulemap
+pizza2017/Pods/GTMSessionFetcher/LICENSE
+pizza2017/Pods/GTMSessionFetcher/README.md
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionFetcher.h
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionFetcher.m
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionFetcherLogging.h
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionFetcherLogging.m
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionFetcherService.h
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionFetcherService.m
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionUploadFetcher.h
+pizza2017/Pods/GTMSessionFetcher/Source/GTMSessionUploadFetcher.m
+pizza2017/Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/GTMSessionFetcher.xcscheme
+pizza2017/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-dummy.m
+pizza2017/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch
+pizza2017/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-umbrella.h
+pizza2017/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.modulemap
+pizza2017/Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.xcconfig
+pizza2017/Pods/Target Support Files/GTMSessionFetcher/Info.plist

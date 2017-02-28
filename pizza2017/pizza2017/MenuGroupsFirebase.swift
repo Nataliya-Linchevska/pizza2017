@@ -13,6 +13,8 @@ class MenuGroupsFirebase {
     static var taskMenuGroups: MenuGroupsModel?
     static var arrayOfTaskMenuGroups = [MenuGroupsModel]()
     static let ref = FIRDatabase.database().reference()
+    static let storage = FIRStorage.storage()
+    static let storageRef = storage.reference()
     
     static func getTasksFromFirebase() {
         ref.child("menu_groups").observeSingleEvent(of: .value, with: { (snapshot) in

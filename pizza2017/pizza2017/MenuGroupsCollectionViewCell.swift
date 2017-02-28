@@ -11,5 +11,4 @@ import UIKit
 class MenuGroupsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
-    
 }
