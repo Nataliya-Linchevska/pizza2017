@@ -14,7 +14,7 @@ class MenuGroupsFirebase {
     static var arrayOfTaskMenuGroups = [MenuGroupsModel]()
     static let ref = FIRDatabase.database().reference()
         
-    static func getTasksFromFirebase() {
+    static func getTasksFromFirebase(callback: @escaping ()->()) {
         ref.child("menu_groups").observeSingleEvent(of: .value, with: { (snapshot) in
             for items in snapshot.children {
                 let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
@@ -25,6 +25,7 @@ class MenuGroupsFirebase {
                 taskMenuGroups = MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl)
                 arrayOfTaskMenuGroups.append(taskMenuGroups!)
             }
+            callback()
         }) { (error) in
             print(error.localizedDescription)
         }

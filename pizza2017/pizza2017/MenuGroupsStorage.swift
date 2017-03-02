@@ -10,28 +10,24 @@ import Foundation
 import Firebase
 
 class MenuGroupsStorage {
-    //static var image: UIImage?
-    static func getImageFromStorage(callBack: @escaping (_ image: UIImage) -> ()){
-        var image: UIImage?
+    static func getImageFromStorage(nameOfImage: String, callBack: @escaping (_ image: UIImage) -> ()) {
         let storage = FIRStorage.storage().reference()
-        let tempImageRef = storage.child("БезалкогольныенапиткиTueFeb0715-56-50EET2017.jpg")
+        let tempImageRef = storage.child(nameOfImage)
         
         tempImageRef.data(withMaxSize: 1*500*300) { (data, error) in
             if error == nil {
-                print("________!!!GOOD!!!_______")
-                image = UIImage(data: data!)
                 callBack(UIImage(data: data!)!)
             } else {
-                print("________ERROR_______")
-                print(error?.localizedDescription)
+                print(error?.localizedDescription ?? "unhandled error")
             }
         }
     }
+}
     
     
     
     
-//    // Зробила зразу - потім пригодиться
+//    // Кидаю зразок - потім пригодиться
 //    static func pushImageToStorage() {
 //        let database = FIRDatabase.database().reference()
 //        let storage = FIRStorage.storage().reference()
@@ -50,4 +46,4 @@ class MenuGroupsStorage {
 //            }
 //        }
 //    }
-}
+
