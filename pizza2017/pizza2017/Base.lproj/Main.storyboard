@@ -300,10 +300,10 @@
             </objects>
             <point key="canvasLocation" x="2652" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Dishes Group View Controller-->
         <scene sceneID="OSl-YH-L9W">
             <objects>
-                <viewController storyboardIdentifier="DishesGroup" id="J94-1T-QSl" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DishesGroup" id="J94-1T-QSl" customClass="DishesGroupViewController" customModule="pizza2017" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rG1-Aq-OjD"/>
                         <viewControllerLayoutGuide type="bottom" id="zUg-bJ-HXT"/>

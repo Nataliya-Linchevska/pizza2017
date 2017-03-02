@@ -37,6 +37,14 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "DishesGroup") as! DishesGroupViewController
+        // Передаю ключ їжі який відображати в наступному контроллері
+        controller.keyForDish = MenuGroupsFirebase.arrayOfTaskMenuGroups[indexPath.item].key
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

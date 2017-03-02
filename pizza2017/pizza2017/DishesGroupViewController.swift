@@ -9,6 +9,8 @@
 import UIKit
 
 class DishesGroupViewController: UIViewController {
+    
+    var keyForDish: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
