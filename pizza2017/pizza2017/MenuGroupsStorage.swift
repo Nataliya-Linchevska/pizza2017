@@ -11,7 +11,7 @@ import Firebase
 
 class MenuGroupsStorage {
     //static var image: UIImage?
-    static func getImageFromStorage(callback: @escaping ()->()) -> UIImage {
+    static func getImageFromStorage(callBack: @escaping (_ image: UIImage) -> ()){
         var image: UIImage?
         let storage = FIRStorage.storage().reference()
         let tempImageRef = storage.child("БезалкогольныенапиткиTueFeb0715-56-50EET2017.jpg")
@@ -20,13 +20,12 @@ class MenuGroupsStorage {
             if error == nil {
                 print("________!!!GOOD!!!_______")
                 image = UIImage(data: data!)
-                callback()
+                callBack(UIImage(data: data!)!)
             } else {
                 print("________ERROR_______")
                 print(error?.localizedDescription)
             }
         }
-        return image!
     }
     
     
