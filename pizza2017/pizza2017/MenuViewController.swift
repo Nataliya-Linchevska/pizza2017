@@ -28,7 +28,11 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         MenuGroupsFirebase.getTasksFromFirebase()
         
-        self.willDeleteImageView.image = UIImage(data: MenuGroupsStorage.getImageFromStorage())
+        self.willDeleteImageView.image = MenuGroupsStorage.getImageFromStorage(callback: {
+            
+          // Я ХЗ ЯК ТУТ ПРАВИЛЬНО ВКАЗАТЬ
+        
+        })
 
         
         menuArray.append(MenuObject(menuGroupTitle: "first title", menuGroupImage: UIImage(named: "logoPizza")!))
