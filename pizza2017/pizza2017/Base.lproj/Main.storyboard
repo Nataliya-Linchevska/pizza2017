@@ -300,6 +300,24 @@
             </objects>
             <point key="canvasLocation" x="2652" y="138.98050974512745"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="OSl-YH-L9W">
+            <objects>
+                <viewController storyboardIdentifier="DishesGroup" id="J94-1T-QSl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rG1-Aq-OjD"/>
+                        <viewControllerLayoutGuide type="bottom" id="zUg-bJ-HXT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="whz-Lx-19d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gG2-IT-Uc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3501" y="137"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="A5O-sn-3hl">
             <objects>

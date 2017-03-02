@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */; };
 		CE256F3D1E65B9CB00E75E9D /* MenuGroupsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE256F3C1E65B9CB00E75E9D /* MenuGroupsStorage.swift */; };
+		CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */; };
+		CE2DB99E1E68B3AA009073BE /* DishesGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */; };
 		CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7642B11E5D922900B0E47F /* AppDelegate.swift */; };
 		CE7642B71E5D922900B0E47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B51E5D922900B0E47F /* Main.storyboard */; };
 		CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B81E5D922A00B0E47F /* Assets.xcassets */; };
@@ -16,7 +18,6 @@
 		CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119CC1E5DAF8E00674520 /* LoginViewController.swift */; };
 		CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D01E5DAFDB00674520 /* MenuViewController.swift */; };
 		CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D21E5DAFF900674520 /* NewsViewController.swift */; };
-		CE9119D51E5DB01A00674520 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D41E5DB01A00674520 /* Dish.swift */; };
 		CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119D81E5DB07500674520 /* SettingsFirebase.swift */; };
 		CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9119DA1E5DB17A00674520 /* MainViewController.swift */; };
 		CEA6BB491E5DBDB900057BA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA6BB481E5DBDB900057BA4 /* GoogleService-Info.plist */; };
@@ -32,6 +33,8 @@
 		BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig"; sourceTree = "<group>"; };
 		CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE256F3C1E65B9CB00E75E9D /* MenuGroupsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsStorage.swift; sourceTree = "<group>"; };
+		CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupViewController.swift; sourceTree = "<group>"; };
+		CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupModel.swift; sourceTree = "<group>"; };
 		CE7642AE1E5D922900B0E47F /* pizza2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pizza2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7642B11E5D922900B0E47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7642B61E5D922900B0E47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,7 +44,6 @@
 		CE9119CC1E5DAF8E00674520 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CE9119D01E5DAFDB00674520 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CE9119D21E5DAFF900674520 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		CE9119D41E5DB01A00674520 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		CE9119D81E5DB07500674520 /* SettingsFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFirebase.swift; sourceTree = "<group>"; };
 		CE9119DA1E5DB17A00674520 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CEA6BB481E5DBDB900057BA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -81,6 +83,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CE2DB99A1E68B297009073BE /* DishesGroup */ = {
+			isa = PBXGroup;
+			children = (
+				CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */,
+				CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */,
+			);
+			name = DishesGroup;
+			sourceTree = "<group>";
+		};
 		CE7642A51E5D922900B0E47F = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +117,10 @@
 				CEA6BB511E5EC27A00057BA4 /* MainMenu */,
 				CEA6BB521E5EC2BF00057BA4 /* Settings */,
 				CEA6BB531E5EC37B00057BA4 /* MenuGroups */,
+				CE2DB99A1E68B297009073BE /* DishesGroup */,
 				CEA6BB541E5EC39E00057BA4 /* News */,
 				CE7642B51E5D922900B0E47F /* Main.storyboard */,
 				CE7642B11E5D922900B0E47F /* AppDelegate.swift */,
-				CE9119D41E5DB01A00674520 /* Dish.swift */,
 				CE7642B81E5D922A00B0E47F /* Assets.xcassets */,
 				CE7642BA1E5D922A00B0E47F /* LaunchScreen.storyboard */,
 				CE7642BD1E5D922A00B0E47F /* Info.plist */,
@@ -295,12 +306,13 @@
 				CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */,
 				CE256F3D1E65B9CB00E75E9D /* MenuGroupsStorage.swift in Sources */,
 				CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */,
-				CE9119D51E5DB01A00674520 /* Dish.swift in Sources */,
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
 				CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */,
+				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,
 				CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */,
 				CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,
+				CE2DB99E1E68B3AA009073BE /* DishesGroupModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

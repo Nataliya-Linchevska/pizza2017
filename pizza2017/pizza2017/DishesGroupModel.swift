@@ -1,14 +1,13 @@
 //
-//  Dish.swift
+//  DishesGroupModel.swift
 //  pizza2017
 //
-//  Created by user on 22.02.17.
+//  Created by user on 02.03.17.
 //  Copyright © 2017 GeekHub. All rights reserved.
 //
 
-// Не видаляю поки, потім добавимо  в потрібну папку
 import Foundation
-class Dish {
+class DishesGroupModel {
     var name: String
     var description: String
     var price: Float
