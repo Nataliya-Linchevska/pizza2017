@@ -28,20 +28,8 @@ class MenuViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         MenuGroupsFirebase.getTasksFromFirebase()
         
-        let database = FIRDatabase.database().reference()
-        let storage = FIRStorage.storage().reference()
-        let tempImageRef = storage.child("БезалкогольныенапиткиTueFeb0715-56-50EET2017.jpg")
-        
-        tempImageRef.data(withMaxSize: 1*500*300) { (data, error) in
-            if error == nil {
-                print("________!!!GOOD!!!_______")
-                print(data)
-                self.willDeleteImageView.image = UIImage(data: data!)
-            } else {
-                print("________ERROR_______")
-                print(error?.localizedDescription)
-            }
-        }
+        self.willDeleteImageView.image = UIImage(data: MenuGroupsStorage.getImageFromStorage())
+
         
         menuArray.append(MenuObject(menuGroupTitle: "first title", menuGroupImage: UIImage(named: "logoPizza")!))
         menuArray.append(MenuObject(menuGroupTitle: "second title", menuGroupImage: UIImage(named: "logoPizza")!))

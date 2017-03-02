@@ -11,20 +11,21 @@ import Firebase
 
 class MenuGroupsStorage {
     //static var image: UIImage?
-    static func getImageFromStorage() {
-        let database = FIRDatabase.database().reference()
+    static func getImageFromStorage() -> Data {
+        var returnData: Data?
         let storage = FIRStorage.storage().reference()
         let tempImageRef = storage.child("БезалкогольныенапиткиTueFeb0715-56-50EET2017.jpg")
         
         tempImageRef.data(withMaxSize: 1*500*300) { (data, error) in
             if error == nil {
-                print(data)
+                print("________!!!GOOD!!!_______")
+                returnData = data
             } else {
-                error?.localizedDescription
+                print("________ERROR_______")
+                print(error?.localizedDescription)
             }
         }
-        
-
+        return returnData!
     }
     
     
