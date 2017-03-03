@@ -13,12 +13,11 @@ class DishesGroupFirebase {
     static var taskDishesGroups: DishesGroupModel?
     static var arrayOfDishesGroups = [DishesGroupModel]()
     static var keyForDish: String = ""
-    static var arrayOfDishesGroupsWithKey = [DishesGroupModel]()
-
     
     static let ref = FIRDatabase.database().reference()
     
     static func getTasksFromFirebase(callback: @escaping ()->()) {
+        arrayOfDishesGroups.removeAll()
         ref.child("dishes").observeSingleEvent(of: .value, with: { (snapshot) in
             for items in snapshot.children {
                 let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
@@ -30,12 +29,11 @@ class DishesGroupFirebase {
                 let keyGroup = tasksInFirebase["keyGroup"] as! String
                 let key = tasksInFirebase["key"] as! String
                 taskDishesGroups = DishesGroupModel(name: name, description: description, price: price, photoUrl: photoUrl, photoName: photoName, keyGroup: keyGroup, key: key)
-                arrayOfDishesGroups.append(taskDishesGroups!)
                 
                 if keyForDish == keyGroup {
-                    arrayOfDishesGroupsWithKey.append(taskDishesGroups!)
+                    arrayOfDishesGroups.append(taskDishesGroups!)
                     print("MY KEY IS \(keyGroup)")
-                    print(arrayOfDishesGroupsWithKey)
+                    print(arrayOfDishesGroups)
                 }
             }
             callback()
