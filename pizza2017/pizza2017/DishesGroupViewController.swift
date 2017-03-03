@@ -10,6 +10,7 @@ import UIKit
 
 class DishesGroupViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     var keyForDish: String = ""
 
     override func viewDidLoad() {
