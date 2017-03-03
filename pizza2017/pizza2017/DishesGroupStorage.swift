@@ -7,3 +7,19 @@
 //
 
 import Foundation
+import Firebase
+
+class DishesGroupStorage {
+    static func getImageFromStorage(nameOfImage: String, callBack: @escaping (_ image: UIImage) -> ()) {
+        let storage = FIRStorage.storage().reference()
+        let tempImageRef = storage.child(nameOfImage)
+        
+        tempImageRef.data(withMaxSize: 1*500*300) { (data, error) in
+            if error == nil {
+                callBack(UIImage(data: data!)!)
+            } else {
+                print(error?.localizedDescription ?? "unhandled error")
+            }
+        }
+    }
+}

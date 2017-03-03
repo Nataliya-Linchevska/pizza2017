@@ -15,6 +15,12 @@ class DishesGroupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        DishesGroupFirebase.keyForDish = keyForDish
+        
+        DishesGroupFirebase.getTasksFromFirebase {
+            self.collectionView.reloadData()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
