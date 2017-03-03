@@ -370,6 +370,25 @@
             </objects>
             <point key="canvasLocation" x="3500" y="136.28185907046478"/>
         </scene>
+        <!--Dish View Controller-->
+        <scene sceneID="5hs-V8-naE">
+            <objects>
+                <viewController storyboardIdentifier="Dish" id="IXG-uW-Ues" customClass="DishViewController" customModule="pizza2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hN3-jm-qxo"/>
+                        <viewControllerLayoutGuide type="bottom" id="9bF-Ov-Izt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tsp-PA-vmt">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lnT-n9-do2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4340" y="136"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="A5O-sn-3hl">
             <objects>

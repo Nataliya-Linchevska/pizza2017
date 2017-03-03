@@ -15,6 +15,8 @@
 		CE2DB9A21E6966E0009073BE /* DishesGroupFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A11E6966E0009073BE /* DishesGroupFirebase.swift */; };
 		CE2DB9A41E6966F8009073BE /* DishesGroupStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A31E6966F8009073BE /* DishesGroupStorage.swift */; };
 		CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A61E697D05009073BE /* DishModel.swift */; };
+		CE2DB9A91E697DCA009073BE /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A81E697DCA009073BE /* DishViewController.swift */; };
+		CE2DB9AB1E697E14009073BE /* DishFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9AA1E697E14009073BE /* DishFirebase.swift */; };
 		CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7642B11E5D922900B0E47F /* AppDelegate.swift */; };
 		CE7642B71E5D922900B0E47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B51E5D922900B0E47F /* Main.storyboard */; };
 		CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B81E5D922A00B0E47F /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		CE2DB9A11E6966E0009073BE /* DishesGroupFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupFirebase.swift; sourceTree = "<group>"; };
 		CE2DB9A31E6966F8009073BE /* DishesGroupStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupStorage.swift; sourceTree = "<group>"; };
 		CE2DB9A61E697D05009073BE /* DishModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
+		CE2DB9A81E697DCA009073BE /* DishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
+		CE2DB9AA1E697E14009073BE /* DishFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishFirebase.swift; sourceTree = "<group>"; };
 		CE7642AE1E5D922900B0E47F /* pizza2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pizza2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7642B11E5D922900B0E47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7642B61E5D922900B0E47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				CE2DB9A61E697D05009073BE /* DishModel.swift */,
+				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
+				CE2DB9AA1E697E14009073BE /* DishFirebase.swift */,
 			);
 			name = Dish;
 			sourceTree = "<group>";
@@ -132,12 +138,12 @@
 		CE7642B01E5D922900B0E47F /* pizza2017 */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DB9A51E697CDE009073BE /* Dish */,
 				CEA6BB501E5EC24B00057BA4 /* Login */,
 				CEA6BB511E5EC27A00057BA4 /* MainMenu */,
 				CEA6BB521E5EC2BF00057BA4 /* Settings */,
 				CEA6BB531E5EC37B00057BA4 /* MenuGroups */,
 				CE2DB99A1E68B297009073BE /* DishesGroup */,
+				CE2DB9A51E697CDE009073BE /* Dish */,
 				CEA6BB541E5EC39E00057BA4 /* News */,
 				CE7642B51E5D922900B0E47F /* Main.storyboard */,
 				CE7642B11E5D922900B0E47F /* AppDelegate.swift */,
@@ -331,7 +337,9 @@
 				CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */,
 				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,
 				CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */,
+				CE2DB9A91E697DCA009073BE /* DishViewController.swift in Sources */,
 				CE2DB9A01E696426009073BE /* DishesGroupCollectionViewCell.swift in Sources */,
+				CE2DB9AB1E697E14009073BE /* DishFirebase.swift in Sources */,
 				CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */,
 				CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,

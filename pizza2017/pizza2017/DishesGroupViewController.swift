@@ -42,6 +42,13 @@ class DishesGroupViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "Dish") as! DishViewController
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
