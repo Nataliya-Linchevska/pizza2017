@@ -8,11 +8,11 @@
 
 import Foundation
 
-class LoginHelper {
+class UserHelper {
     
     //MARK: Init singleton
     
-    static let instance = LoginHelper()
+    static let instance = UserHelper()
     private init() {}
     
     //MARK: Properties
