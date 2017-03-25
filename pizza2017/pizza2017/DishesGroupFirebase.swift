@@ -9,34 +9,56 @@
 import Foundation
 import Firebase
 
-class DishesGroupFirebase {
-    static var taskDishesGroups: DishesGroupModel?
-    static var arrayOfDishesGroups = [DishesGroupModel]()
-    static var keyForDish: String = ""
+class DishesGroupFirebase: FirebaseHelper {
     
-    static let ref = FIRDatabase.database().reference()
+    //MARK: Init singleton
     
-    static func getTasksFromFirebase(callback: @escaping ()->()) {
-        arrayOfDishesGroups.removeAll()
-        ref.child("dishes").observeSingleEvent(of: .value, with: { (snapshot) in
+    static var instance = DishesGroupFirebase()
+    
+    private override init(){}
+    
+    //MARK: Properties
+    
+    private var dishesGroups = [DishesGroupModel]()
+    
+    //MARK: Functions
+    
+    func reloadDishesGroup(dishKey: String, callback: @escaping ()->()) {
+        
+        dishesGroups.removeAll()
+        
+        reloadFirebaseData(childName: "dishes") { (snapshot) -> () in
             for items in snapshot.children {
+                
                 let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
+                let keyGroup = tasksInFirebase["keyGroup"] as! String
+                if keyGroup != dishKey {
+                    continue
+                }
+                
                 let name = tasksInFirebase["name"] as! String
                 let description = tasksInFirebase["description"] as! String
                 let price = tasksInFirebase["price"] as! Float
                 let photoUrl = tasksInFirebase["photoUrl"] as! String
                 let photoName = tasksInFirebase["photoName"] as! String
-                let keyGroup = tasksInFirebase["keyGroup"] as! String
                 let key = tasksInFirebase["key"] as! String
-                taskDishesGroups = DishesGroupModel(name: name, description: description, price: price, photoUrl: photoUrl, photoName: photoName, keyGroup: keyGroup, key: key)
                 
-                if keyForDish == keyGroup {
-                    arrayOfDishesGroups.append(taskDishesGroups!)
-                }
+                self.dishesGroups.append(DishesGroupModel(name: name, description: description, price: price, photoUrl: photoUrl, photoName: photoName, keyGroup: keyGroup, key: key))
             }
             callback()
-        }) { (error) in
-            print(error.localizedDescription)
         }
+        
+    }
+    
+    func getDishesGroups() -> [DishesGroupModel] {
+        
+        return dishesGroups
+        
+    }
+    
+    func getDishesGroup(_ index: Int) -> DishesGroupModel {
+        
+        return dishesGroups[index]
+        
     }
 }

@@ -11,23 +11,26 @@ import MapKit
 
 class SettingsViewController: UIViewController {
     
+    //MARK: Properties
+    
     @IBOutlet weak var lblAddress: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var map: MKMapView!
     
+    //MARK: Virtual functions
+    
     override func viewDidLoad() {
-        SettingsFirebase.getTasksFromFirebase {
-            self.reloadView(taskSettings: SettingsFirebase.taskSettings!)
+        
+       SettingsFirebase.instance.reloadSettings { (settings) in
+            self.reloadView(taskSettings: settings)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-        // заповнення полів на екрані
-    func reloadView(taskSettings: SettingsModel) {
+    //MARK: General functions
+    
+    // заповнення полів на екрані
+    private func reloadView(taskSettings: SettingsModel) {
         let taskSettings = taskSettings
         lblAddress.text = taskSettings.address
         lblEmail.text = "Email: " + taskSettings.email

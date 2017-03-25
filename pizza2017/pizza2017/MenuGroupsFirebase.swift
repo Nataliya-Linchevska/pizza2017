@@ -9,25 +9,48 @@
 import Foundation
 import Firebase
 
-class MenuGroupsFirebase {
-    static var taskMenuGroups: MenuGroupsModel?
-    static var arrayOfTaskMenuGroups = [MenuGroupsModel]()
-    static let ref = FIRDatabase.database().reference()
+class MenuGroupsFirebase: FirebaseHelper {
+    
+    //MARK: Init singleton
+    
+    static var instance = MenuGroupsFirebase()
+    
+    private override init(){}
+    
+    
+    //MARK: Properties
+    
+    private var menuGroups = [MenuGroupsModel]()
+    
+    //MARK: Functions
         
-    static func getTasksFromFirebase(callback: @escaping ()->()) {
-        ref.child("menu_groups").observeSingleEvent(of: .value, with: { (snapshot) in
+    func reloadMenuGroups(callback: @escaping ()->()) {
+        
+        menuGroups.removeAll()
+        
+        reloadFirebaseData(childName: "menu_groups") { (snapshot) -> () in
             for items in snapshot.children {
                 let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
                 let key = tasksInFirebase["key"] as! String
                 let name = tasksInFirebase["name"] as! String
                 let photoName = tasksInFirebase["photoName"] as! String
                 let photoUrl = tasksInFirebase["photoUrl"] as! String
-                taskMenuGroups = MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl)
-                arrayOfTaskMenuGroups.append(taskMenuGroups!)
+                self.menuGroups.append(MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl))
             }
             callback()
-        }) { (error) in
-            print(error.localizedDescription)
         }
+        
+    }
+    
+    func getMenuGroups() -> [MenuGroupsModel] {
+        
+        return menuGroups
+        
+    }
+    
+    func getMenuGroup(_ index: Int) -> MenuGroupsModel {
+        
+        return menuGroups[index]
+        
     }
 }

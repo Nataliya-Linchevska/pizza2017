@@ -8,45 +8,60 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MenuViewController: UIViewController {
+    
+    //MARK: Properties
     
     @IBOutlet weak var CollectionView: UICollectionView!
     
+    @IBOutlet weak var buttonAddMenuGroup: UIBarButtonItem!
+    
+    //MARK: Virtual functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        MenuGroupsFirebase.getTasksFromFirebase { 
+        MenuGroupsFirebase.instance.reloadMenuGroups {
             self.CollectionView.reloadData()
         }
     
         CollectionView.delegate = self
         CollectionView.dataSource = self
+        buttonAddMenuGroup.isEnabled = UserHelper.instance.isAdminLogged
     }
+
+}
+
+extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    //MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MenuGroupsFirebase.arrayOfTaskMenuGroups.count
+        return MenuGroupsFirebase.instance.getMenuGroups().count
     }
-    
+ 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuGroupCell", for: indexPath) as! MenuGroupsCollectionViewCell
         
-        cell.lblTitle.text = MenuGroupsFirebase.arrayOfTaskMenuGroups[indexPath.item].name
+        let menuGroup = MenuGroupsFirebase.instance.getMenuGroup(indexPath.item)
+        cell.lblTitle.text = menuGroup.name
         
-        MenuGroupsStorage.getImageFromStorage(nameOfImage: String(MenuGroupsFirebase.arrayOfTaskMenuGroups[indexPath.item].photoName) , callBack: { image in
+        MenuGroupsFirebase.instance.getImageFromStorage(nameOfImage:
+            String(menuGroup.photoName), callBack: { image in
             cell.ivImage.image = image
         })
         
         return cell
     }
     
+    //MARK: UICollectionViewDelegate
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "DishesGroup") as! DishesGroupViewController
         // Передаю ключ їжі який відображати в наступному контроллері
-        controller.keyForDish = MenuGroupsFirebase.arrayOfTaskMenuGroups[indexPath.item].key
+        controller.keyForDish = MenuGroupsFirebase.instance.getMenuGroup(indexPath.item).key
         
         navigationController?.pushViewController(controller, animated: true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+    
 }
