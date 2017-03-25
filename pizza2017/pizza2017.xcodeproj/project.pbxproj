@@ -17,6 +17,7 @@
 		CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A61E697D05009073BE /* DishModel.swift */; };
 		CE2DB9A91E697DCA009073BE /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A81E697DCA009073BE /* DishViewController.swift */; };
 		CE2DB9AB1E697E14009073BE /* DishFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9AA1E697E14009073BE /* DishFirebase.swift */; };
+		CE2DB9AD1E699075009073BE /* DishesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9AC1E699075009073BE /* DishesStorage.swift */; };
 		CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7642B11E5D922900B0E47F /* AppDelegate.swift */; };
 		CE7642B71E5D922900B0E47F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B51E5D922900B0E47F /* Main.storyboard */; };
 		CE7642B91E5D922A00B0E47F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7642B81E5D922A00B0E47F /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		CE2DB9A61E697D05009073BE /* DishModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
 		CE2DB9A81E697DCA009073BE /* DishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		CE2DB9AA1E697E14009073BE /* DishFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishFirebase.swift; sourceTree = "<group>"; };
+		CE2DB9AC1E699075009073BE /* DishesStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesStorage.swift; sourceTree = "<group>"; };
 		CE7642AE1E5D922900B0E47F /* pizza2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pizza2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7642B11E5D922900B0E47F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE7642B61E5D922900B0E47F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,9 +112,10 @@
 		CE2DB9A51E697CDE009073BE /* Dish */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DB9A61E697D05009073BE /* DishModel.swift */,
 				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
+				CE2DB9A61E697D05009073BE /* DishModel.swift */,
 				CE2DB9AA1E697E14009073BE /* DishFirebase.swift */,
+				CE2DB9AC1E699075009073BE /* DishesStorage.swift */,
 			);
 			name = Dish;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2DB9AD1E699075009073BE /* DishesStorage.swift in Sources */,
 				CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */,
 				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
 				CE2DB9A21E6966E0009073BE /* DishesGroupFirebase.swift in Sources */,

@@ -32,8 +32,6 @@ class DishesGroupFirebase {
                 
                 if keyForDish == keyGroup {
                     arrayOfDishesGroups.append(taskDishesGroups!)
-                    print("MY KEY IS \(keyGroup)")
-                    print(arrayOfDishesGroups)
                 }
             }
             callback()

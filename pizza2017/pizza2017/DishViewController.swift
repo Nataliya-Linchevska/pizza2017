@@ -9,6 +9,10 @@
 import UIKit
 
 class DishViewController: UIViewController {
+    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var ivImage: UIImageView!
+    @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet weak var tvDescription: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,4 +21,12 @@ class DishViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func btnNext(_ sender: UIButton) {
+    }
+    @IBAction func btnPrevious(_ sender: UIButton) {
+    }
+    @IBAction func btnAddDishToList(_ sender: UIButton) {
+    }
+    
 }
