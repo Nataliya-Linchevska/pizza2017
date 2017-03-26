@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
+		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
 		B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D567F1E815DDC00263CE5 /* UserHelper.swift */; };
 		CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */; };
 		CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig"; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
+		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
 		B57D567F1E815DDC00263CE5 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig"; sourceTree = "<group>"; };
 		CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */,
 				CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */,
 				CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */,
+				B5673E371E879FA100CC1999 /* MenuEditViewController.swift */,
 			);
 			name = MenuGroups;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */,
 				CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */,
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
+				B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */,
 				CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */,
 				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,
 				B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */,

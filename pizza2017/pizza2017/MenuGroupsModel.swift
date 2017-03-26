@@ -9,10 +9,17 @@
 import Foundation
 
 class MenuGroupsModel {
-    var key: String
-    var name: String
-    var photoName: String
-    var photoUrl: String
+        
+    //MARK: Properties
+    
+    var key: String = ""
+    var name: String = ""
+    var photoName: String = ""
+    var photoUrl: String = ""
+    
+    //MERK: Init
+    
+    init() {}
     
     init(key: String, name: String, photoName: String, photoUrl: String) {
         self.key = key

@@ -22,19 +22,30 @@ class MenuGroupsFirebase: FirebaseHelper {
     
     private var menuGroups = [MenuGroupsModel]()
     
+    //MARK: Firebase field names
+    
+    struct FirebaseFields {
+        
+        static let Key = "key"
+        static let Name = "name"
+        static let PhotoName = "photoName"
+        static let PhotoUrl = "photoUrl"
+        
+    }
+    
     //MARK: Functions
         
     func reloadMenuGroups(callback: @escaping ()->()) {
         
         menuGroups.removeAll()
         
-        reloadFirebaseData(childName: "menu_groups") { (snapshot) -> () in
+        reloadFirebaseData(childName: FirebaseHelper.FirebaseChild.MenuGroups) { (snapshot) -> () in
             for items in snapshot.children {
                 let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
-                let key = tasksInFirebase["key"] as! String
-                let name = tasksInFirebase["name"] as! String
-                let photoName = tasksInFirebase["photoName"] as! String
-                let photoUrl = tasksInFirebase["photoUrl"] as! String
+                let key = tasksInFirebase[FirebaseFields.Key] as! String
+                let name = tasksInFirebase[FirebaseFields.Name] as! String
+                let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
+                let photoUrl = tasksInFirebase[FirebaseFields.PhotoUrl] as! String
                 self.menuGroups.append(MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl))
             }
             callback()

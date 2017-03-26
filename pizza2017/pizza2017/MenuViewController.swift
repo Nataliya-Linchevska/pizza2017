@@ -12,9 +12,9 @@ class MenuViewController: UIViewController {
     
     //MARK: Properties
     
+    @IBOutlet weak var topNavigationItem: UINavigationItem!
     @IBOutlet weak var CollectionView: UICollectionView!
-    
-    @IBOutlet weak var buttonAddMenuGroup: UIBarButtonItem!
+        
     
     //MARK: Virtual functions
     
@@ -26,8 +26,21 @@ class MenuViewController: UIViewController {
     
         CollectionView.delegate = self
         CollectionView.dataSource = self
-        buttonAddMenuGroup.isEnabled = UserHelper.instance.isAdminLogged
+        
+        if !UserHelper.instance.isAdminLogged {
+            topNavigationItem.rightBarButtonItem = nil
+        }
     }
+    
+    //MARK: Actions
+  
+    @IBAction func addMenuGroupClick(_ sender: UIBarButtonItem) {
+        
+        let controller = storyboard?.instantiateViewController(withIdentifier: "MenuEditViewController") as! MenuEditViewController
+        self.present(controller, animated: true)
+        
+    }
+    
 
 }
 

@@ -9,9 +9,23 @@
 import Foundation
 import Firebase
 
-class FirebaseHelper {    
+class FirebaseHelper {
+    
+    //MARK: Child tables
+    
+    struct FirebaseChild {
+        
+        static let Settings = "settings"
+        static let MenuGroups = "menu_groups"
+        static let Dishes = "dishes"
+        
+    }
+    
+    //MARK: Firebase reference
     
     let ref = FIRDatabase.database().reference()
+    
+    //MARK: Functions
     
     internal func reloadFirebaseData(childName: String, callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         

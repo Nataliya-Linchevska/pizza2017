@@ -9,11 +9,16 @@
 import Foundation
 
 class SettingsModel {
+       
+    //MARK: Properties
+    
     var address: String
     var email: String
     var latitude: Float
     var longitude: Float
     var phone: String
+    
+    //MARK: Init
     
     init(address: String, email: String, latitude: Float, longitude: Float, phone: String) {
         self.address = address

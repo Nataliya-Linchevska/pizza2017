@@ -21,27 +21,41 @@ class DishesGroupFirebase: FirebaseHelper {
     
     private var dishesGroups = [DishesGroupModel]()
     
+    //MARK: Firebase fields
+    
+    struct FirebaseFields {
+        
+        static let KeyGroup = "keyGroup"
+        static let Name = "name"
+        static let Description = "description"
+        static let Price = "price"
+        static let PhotoUrl = "photoUrl"
+        static let PhotoName = "photoName"
+        static let Key = "key"
+        
+    }
+    
     //MARK: Functions
     
     func reloadDishesGroup(dishKey: String, callback: @escaping ()->()) {
         
         dishesGroups.removeAll()
         
-        reloadFirebaseData(childName: "dishes") { (snapshot) -> () in
+        reloadFirebaseData(childName: FirebaseHelper.FirebaseChild.Dishes) { (snapshot) -> () in
             for items in snapshot.children {
                 
                 let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
-                let keyGroup = tasksInFirebase["keyGroup"] as! String
+                let keyGroup = tasksInFirebase[FirebaseFields.KeyGroup] as! String
                 if keyGroup != dishKey {
                     continue
                 }
                 
-                let name = tasksInFirebase["name"] as! String
-                let description = tasksInFirebase["description"] as! String
-                let price = tasksInFirebase["price"] as! Float
-                let photoUrl = tasksInFirebase["photoUrl"] as! String
-                let photoName = tasksInFirebase["photoName"] as! String
-                let key = tasksInFirebase["key"] as! String
+                let name = tasksInFirebase[FirebaseFields.Name] as! String
+                let description = tasksInFirebase[FirebaseFields.Description] as! String
+                let price = tasksInFirebase[FirebaseFields.Price] as! Float
+                let photoUrl = tasksInFirebase[FirebaseFields.PhotoUrl] as! String
+                let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
+                let key = tasksInFirebase[FirebaseFields.Key] as! String
                 
                 self.dishesGroups.append(DishesGroupModel(name: name, description: description, price: price, photoUrl: photoUrl, photoName: photoName, keyGroup: keyGroup, key: key))
             }
