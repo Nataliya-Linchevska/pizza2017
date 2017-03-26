@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MenuViewController: UIViewController {
     
@@ -14,16 +15,19 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var topNavigationItem: UINavigationItem!
     @IBOutlet weak var CollectionView: UICollectionView!
+    
+    var firebaseHelper = MenuGroupsFirebase()
         
     
     //MARK: Virtual functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MenuGroupsFirebase.instance.reloadMenuGroups {
+        
+        firebaseHelper.initFirebaseObserve {
             self.CollectionView.reloadData()
         }
-    
+        
         CollectionView.delegate = self
         CollectionView.dataSource = self
         
@@ -41,6 +45,12 @@ class MenuViewController: UIViewController {
         
     }
     
+    deinit {
+        
+        firebaseHelper.deinitFirebaseObserve()
+        
+    }
+    
 
 }
 
@@ -49,16 +59,16 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
     //MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return MenuGroupsFirebase.instance.getMenuGroups().count
+        return firebaseHelper.getMenuGroups().count
     }
  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuGroupCell", for: indexPath) as! MenuGroupsCollectionViewCell
         
-        let menuGroup = MenuGroupsFirebase.instance.getMenuGroup(indexPath.item)
+        let menuGroup = firebaseHelper.getMenuGroup(indexPath.item)
         cell.lblTitle.text = menuGroup.name
         
-        MenuGroupsFirebase.instance.getImageFromStorage(nameOfImage:
+        firebaseHelper.getImageFromStorage(nameOfImage:
             String(menuGroup.photoName), callBack: { image in
             cell.ivImage.image = image
         })
@@ -71,7 +81,7 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "DishesGroup") as! DishesGroupViewController
         // Передаю ключ їжі який відображати в наступному контроллері
-        controller.keyForDish = MenuGroupsFirebase.instance.getMenuGroup(indexPath.item).key
+        controller.keyForDish = firebaseHelper.getMenuGroup(indexPath.item).key
         
         navigationController?.pushViewController(controller, animated: true)
     }

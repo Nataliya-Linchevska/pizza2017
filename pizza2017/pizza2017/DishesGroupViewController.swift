@@ -13,19 +13,28 @@ class DishesGroupViewController: UIViewController {
     //MARK: Properties
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var keyForDish: String = ""
+    
+    var firebaseHelper = DishesGroupFirebase()
 
     //MARK: Virtual Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DishesGroupFirebase.instance.reloadDishesGroup(dishKey: keyForDish, callback: { 
+        firebaseHelper.initFirebaseObserve(dishKey: keyForDish) { 
             self.collectionView.reloadData()
-        })
+        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    deinit {
+        
+        firebaseHelper.deinitFirebaseObserve()
+        
     }
 }
 
@@ -34,17 +43,17 @@ extension DishesGroupViewController: UICollectionViewDelegate, UICollectionViewD
     //MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return DishesGroupFirebase.instance.getDishesGroups().count
+        return firebaseHelper.getDishesGroups().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dishGroupCell", for: indexPath) as! DishesGroupCollectionViewCell
         
-        let dishesGroup = DishesGroupFirebase.instance.getDishesGroup(indexPath.item)
+        let dishesGroup = firebaseHelper.getDishesGroup(indexPath.item)
         cell.lblTitle.text = dishesGroup.name
         cell.lblPrice.text = dishesGroup.price.description
         
-        DishesGroupFirebase.instance.getImageFromStorage(nameOfImage: String(dishesGroup.photoName), callBack: { image in
+        firebaseHelper.getImageFromStorage(nameOfImage: String(dishesGroup.photoName), callBack: { image in
             cell.ivImage.image = image
         })
         

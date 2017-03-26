@@ -25,11 +25,21 @@ class FirebaseHelper {
     
     let ref = FIRDatabase.database().reference()
     
+    //MARK: Properties
+    
+    private var databaseHandle: FIRDatabaseHandle?
+    
     //MARK: Functions
     
-    internal func reloadFirebaseData(childName: String, callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+    func getChildName() -> String {
         
-        ref.child(childName).observeSingleEvent(of: .value, with: { (snapshot) in
+        return ""
+        
+    }
+    
+    internal func reloadFirebaseData(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+        
+        ref.child(getChildName()).observeSingleEvent(of: .value, with: { (snapshot) in
             callback(snapshot)
         }) { (error) in
             print(error.localizedDescription)
@@ -48,6 +58,27 @@ class FirebaseHelper {
                 print(error?.localizedDescription ?? "unhandled error")
             }
         }
+        
+    }
+    
+    internal func initFirebaseObserve(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+        
+        databaseHandle = ref.child(getChildName()).observe(FIRDataEventType.value, with: { (snapshot) in
+            callback(snapshot)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+    internal func deinitFirebaseObserve() {
+        
+        if let validHandle = databaseHandle {
+            ref.child(getChildName()).removeObserver(withHandle: validHandle)
+        } else {
+            ref.child(getChildName()).removeAllObservers()
+        }
+        
         
     }
     

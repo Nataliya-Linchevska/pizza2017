@@ -11,12 +11,6 @@ import Firebase
 
 class SettingsFirebase: FirebaseHelper {
     
-    //MARK: Init singleton
-    
-    static var instance = SettingsFirebase()
-    
-    private override init(){}
-    
     //MARK: Firebase fields
     
     struct FirebaseFields {
@@ -32,17 +26,37 @@ class SettingsFirebase: FirebaseHelper {
     
     //MARK: Functions
     
+    override func getChildName() -> String {
+        
+        return FirebaseHelper.FirebaseChild.Settings
+        
+    }
+    
     func reloadSettings(callback: @escaping (_ settings: SettingsModel)->()){
         
-        reloadFirebaseData(childName: FirebaseHelper.FirebaseChild.Settings) { (snapshot) in
-            let tasksInFirebase = snapshot.value as! NSDictionary
-            let address = tasksInFirebase[FirebaseFields.Adress] as! String
-            let email = tasksInFirebase[FirebaseFields.Email] as! String
-            let latitude = tasksInFirebase[FirebaseFields.Latitude] as! Float
-            let longitude = tasksInFirebase[FirebaseFields.Longitude] as! Float
-            let phone = tasksInFirebase[FirebaseFields.Phone] as! String
-            callback(SettingsModel(address: address, email: email, latitude: latitude, longitude: longitude, phone: phone))
+        reloadFirebaseData{ (snapshot) in
+            callback(self.getSettings(snapshot))
         }
+    }
+    
+    func initFirebaseObserve(callback: @escaping (_ settings: SettingsModel)->()){
+        
+        super.initFirebaseObserve { (snapshot) in           
+            callback(self.getSettings(snapshot))
+        }
+    }
+    
+    private func getSettings(_ snapshot: FIRDataSnapshot) -> SettingsModel {
+        
+        let tasksInFirebase = snapshot.value as! NSDictionary
+        let address = tasksInFirebase[FirebaseFields.Adress] as! String
+        let email = tasksInFirebase[FirebaseFields.Email] as! String
+        let latitude = tasksInFirebase[FirebaseFields.Latitude] as! Float
+        let longitude = tasksInFirebase[FirebaseFields.Longitude] as! Float
+        let phone = tasksInFirebase[FirebaseFields.Phone] as! String
+        
+        return SettingsModel(address: address, email: email,
+                             latitude: latitude, longitude: longitude, phone: phone)
     }
 }
 

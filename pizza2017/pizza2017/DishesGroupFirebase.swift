@@ -11,12 +11,6 @@ import Firebase
 
 class DishesGroupFirebase: FirebaseHelper {
     
-    //MARK: Init singleton
-    
-    static var instance = DishesGroupFirebase()
-    
-    private override init(){}
-    
     //MARK: Properties
     
     private var dishesGroups = [DishesGroupModel]()
@@ -37,28 +31,29 @@ class DishesGroupFirebase: FirebaseHelper {
     
     //MARK: Functions
     
+    override func getChildName() -> String {
+        
+        return FirebaseHelper.FirebaseChild.Dishes
+        
+    }
+    
     func reloadDishesGroup(dishKey: String, callback: @escaping ()->()) {
         
         dishesGroups.removeAll()
         
-        reloadFirebaseData(childName: FirebaseHelper.FirebaseChild.Dishes) { (snapshot) -> () in
-            for items in snapshot.children {
-                
-                let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
-                let keyGroup = tasksInFirebase[FirebaseFields.KeyGroup] as! String
-                if keyGroup != dishKey {
-                    continue
-                }
-                
-                let name = tasksInFirebase[FirebaseFields.Name] as! String
-                let description = tasksInFirebase[FirebaseFields.Description] as! String
-                let price = tasksInFirebase[FirebaseFields.Price] as! Float
-                let photoUrl = tasksInFirebase[FirebaseFields.PhotoUrl] as! String
-                let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
-                let key = tasksInFirebase[FirebaseFields.Key] as! String
-                
-                self.dishesGroups.append(DishesGroupModel(name: name, description: description, price: price, photoUrl: photoUrl, photoName: photoName, keyGroup: keyGroup, key: key))
-            }
+        reloadFirebaseData { (snapshot) -> () in
+            self.dishesGroups.append(contentsOf: self.getDishesGroups(snapshot, dishKey))
+            callback()            
+        }
+        
+    }
+    
+    func initFirebaseObserve(dishKey: String, callback: @escaping ()->()) {
+        
+        dishesGroups.removeAll()
+        
+        super.initFirebaseObserve { (snapshot) -> () in
+            self.dishesGroups.append(contentsOf: self.getDishesGroups(snapshot, dishKey))
             callback()
         }
         
@@ -73,6 +68,34 @@ class DishesGroupFirebase: FirebaseHelper {
     func getDishesGroup(_ index: Int) -> DishesGroupModel {
         
         return dishesGroups[index]
+        
+    }
+    
+    private func getDishesGroups(_ snapshot: FIRDataSnapshot, _ dishKey: String) -> [DishesGroupModel] {
+        
+        var result = [DishesGroupModel]()
+        
+        for items in snapshot.children {
+            
+            let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
+            let keyGroup = tasksInFirebase[FirebaseFields.KeyGroup] as! String
+            if keyGroup != dishKey {
+                continue
+            }
+            
+            let name = tasksInFirebase[FirebaseFields.Name] as! String
+            let description = tasksInFirebase[FirebaseFields.Description] as! String
+            let price = tasksInFirebase[FirebaseFields.Price] as! Float
+            let photoUrl = tasksInFirebase[FirebaseFields.PhotoUrl] as! String
+            let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
+            let key = tasksInFirebase[FirebaseFields.Key] as! String
+            
+            result.append(DishesGroupModel(name: name, description: description,
+                                           price: price, photoUrl: photoUrl,
+                                           photoName: photoName, keyGroup: keyGroup, key: key))
+        }
+        
+        return result
         
     }
 }

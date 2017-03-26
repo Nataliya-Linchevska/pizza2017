@@ -18,11 +18,13 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var map: MKMapView!
     
+    private var firebaseHelper = SettingsFirebase()
+    
     //MARK: Virtual functions
     
     override func viewDidLoad() {
         
-       SettingsFirebase.instance.reloadSettings { (settings) in
+       firebaseHelper.initFirebaseObserve { (settings) in
             self.reloadView(taskSettings: settings)
         }
     }
