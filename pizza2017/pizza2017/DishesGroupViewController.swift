@@ -31,11 +31,12 @@ class DishesGroupViewController: UIViewController {
         collectionView.dataSource = self
     }
     
-    deinit {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
         firebaseHelper.deinitFirebaseObserve()
-        
     }
+    
 }
 
 extension DishesGroupViewController: UICollectionViewDelegate, UICollectionViewDataSource {

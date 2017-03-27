@@ -51,7 +51,7 @@ class FirebaseHelper {
         let storage = FIRStorage.storage().reference()
         let tempImageRef = storage.child(nameOfImage)
         
-        tempImageRef.data(withMaxSize: 1*500*300) { (data, error) in
+        tempImageRef.data(withMaxSize: 1*500*500) { (data, error) in
             if error == nil {
                 callBack(UIImage(data: data!)!)
             } else {

@@ -42,7 +42,7 @@ class DishesGroupFirebase: FirebaseHelper {
         dishesGroups.removeAll()
         
         reloadFirebaseData { (snapshot) -> () in
-            self.dishesGroups.append(contentsOf: self.getDishesGroups(snapshot, dishKey))
+            self.updateDishesGroups(snapshot, dishKey)
             callback()            
         }
         
@@ -53,7 +53,7 @@ class DishesGroupFirebase: FirebaseHelper {
         dishesGroups.removeAll()
         
         super.initFirebaseObserve { (snapshot) -> () in
-            self.dishesGroups.append(contentsOf: self.getDishesGroups(snapshot, dishKey))
+            self.updateDishesGroups(snapshot, dishKey)
             callback()
         }
         
@@ -71,9 +71,9 @@ class DishesGroupFirebase: FirebaseHelper {
         
     }
     
-    private func getDishesGroups(_ snapshot: FIRDataSnapshot, _ dishKey: String) -> [DishesGroupModel] {
+    private func updateDishesGroups(_ snapshot: FIRDataSnapshot, _ dishKey: String) {
         
-        var result = [DishesGroupModel]()
+        dishesGroups.removeAll()
         
         for items in snapshot.children {
             
@@ -90,12 +90,10 @@ class DishesGroupFirebase: FirebaseHelper {
             let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
             let key = tasksInFirebase[FirebaseFields.Key] as! String
             
-            result.append(DishesGroupModel(name: name, description: description,
+            dishesGroups.append(DishesGroupModel(name: name, description: description,
                                            price: price, photoUrl: photoUrl,
                                            photoName: photoName, keyGroup: keyGroup, key: key))
         }
-        
-        return result
         
     }
 }

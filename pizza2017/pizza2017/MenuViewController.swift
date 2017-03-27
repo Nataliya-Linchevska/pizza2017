@@ -36,18 +36,18 @@ class MenuViewController: UIViewController {
         }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        firebaseHelper.deinitFirebaseObserve()
+    }
+    
     //MARK: Actions
   
     @IBAction func addMenuGroupClick(_ sender: UIBarButtonItem) {
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "MenuEditViewController") as! MenuEditViewController
         self.present(controller, animated: true)
-        
-    }
-    
-    deinit {
-        
-        firebaseHelper.deinitFirebaseObserve()
         
     }
     
