@@ -32,6 +32,7 @@ class MenuEditViewController: UIViewController {
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
+                
         buttonOK.isEnabled = false
         
         fillUp()

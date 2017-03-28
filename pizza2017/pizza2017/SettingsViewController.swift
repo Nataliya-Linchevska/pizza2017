@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        firebaseHelper.deinitFirebaseObserve()
+        firebaseHelper.deinitObserve()
     }
     
     //MARK: General functions

@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class MenuGroupsFirebase: FirebaseHelper {    
+class MenuGroupsFirebase: FirebaseHelper {
     
     //MARK: Properties
     
@@ -33,12 +33,18 @@ class MenuGroupsFirebase: FirebaseHelper {
         return FirebaseHelper.FirebaseChild.MenuGroups
         
     }
+    
+    override func getImageFolderName() -> String {
+        
+        return FirebaseHelper.FirebaseImageFolder.MenuGroups
+        
+    }
         
     func reloadMenuGroups(callback: @escaping ()->()) {
         
         menuGroups.removeAll()
         
-        reloadFirebaseData{ (snapshot) -> () in
+        reloadData{ (snapshot) -> () in
             self.updateMenuGroups(snapshot)
             callback()
         }
@@ -49,7 +55,7 @@ class MenuGroupsFirebase: FirebaseHelper {
         
         menuGroups.removeAll()
         
-        super.initFirebaseObserve { (snapshot) -> () in
+        super.initObserve { (snapshot) -> () in
             self.updateMenuGroups(snapshot)
             callback()
         }

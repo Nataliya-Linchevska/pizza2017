@@ -34,12 +34,13 @@ class MenuViewController: UIViewController {
         if !UserHelper.instance.isAdminLogged {
             topNavigationItem.rightBarButtonItem = nil
         }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        firebaseHelper.deinitFirebaseObserve()
+        firebaseHelper.deinitObserve()
     }
     
     //MARK: Actions

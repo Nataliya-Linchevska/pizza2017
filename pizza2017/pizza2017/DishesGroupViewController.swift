@@ -34,7 +34,7 @@ class DishesGroupViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        firebaseHelper.deinitFirebaseObserve()
+        firebaseHelper.deinitObserve()
     }
     
 }

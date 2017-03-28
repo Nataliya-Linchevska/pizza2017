@@ -37,11 +37,18 @@ class DishesGroupFirebase: FirebaseHelper {
         
     }
     
+    override func getImageFolderName() -> String {
+        
+        return FirebaseHelper.FirebaseImageFolder.Dishes
+        
+    }
+
+    
     func reloadDishesGroup(dishKey: String, callback: @escaping ()->()) {
         
         dishesGroups.removeAll()
         
-        reloadFirebaseData { (snapshot) -> () in
+        reloadData { (snapshot) -> () in
             self.updateDishesGroups(snapshot, dishKey)
             callback()            
         }
@@ -52,7 +59,7 @@ class DishesGroupFirebase: FirebaseHelper {
         
         dishesGroups.removeAll()
         
-        super.initFirebaseObserve { (snapshot) -> () in
+        super.initObserve { (snapshot) -> () in
             self.updateDishesGroups(snapshot, dishKey)
             callback()
         }
