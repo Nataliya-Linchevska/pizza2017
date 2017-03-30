@@ -11,24 +11,11 @@ import Firebase
 
 class SettingsFirebase: FirebaseHelper {
     
-    //MARK: Firebase fields
-    
-    struct FirebaseFields {
-        
-        static let Adress = "address"
-        static let Email = "email"
-        static let Latitude = "latitude"
-        static let Longitude = "longitude"
-        static let Phone = "phone"
-        
-    }
-
-    
     //MARK: Functions
     
-    override func getChildName() -> String {
+    override func getTableName() -> String {
         
-        return FirebaseHelper.FirebaseChild.Settings
+        return FirebaseTables.Settings.TableName
         
     }
     
@@ -49,11 +36,11 @@ class SettingsFirebase: FirebaseHelper {
     private func getSettings(_ snapshot: FIRDataSnapshot) -> SettingsModel {
         
         let tasksInFirebase = snapshot.value as! NSDictionary
-        let address = tasksInFirebase[FirebaseFields.Adress] as! String
-        let email = tasksInFirebase[FirebaseFields.Email] as! String
-        let latitude = tasksInFirebase[FirebaseFields.Latitude] as! Float
-        let longitude = tasksInFirebase[FirebaseFields.Longitude] as! Float
-        let phone = tasksInFirebase[FirebaseFields.Phone] as! String
+        let address = tasksInFirebase[FirebaseTables.Settings.Child.Adress] as! String
+        let email = tasksInFirebase[FirebaseTables.Settings.Child.Email] as! String
+        let latitude = tasksInFirebase[FirebaseTables.Settings.Child.Latitude] as! Float
+        let longitude = tasksInFirebase[FirebaseTables.Settings.Child.Longitude] as! Float
+        let phone = tasksInFirebase[FirebaseTables.Settings.Child.Phone] as! String
         
         return SettingsModel(address: address, email: email,
                              latitude: latitude, longitude: longitude, phone: phone)

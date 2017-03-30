@@ -13,6 +13,7 @@
 		B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D567F1E815DDC00263CE5 /* UserHelper.swift */; };
 		B57DC4FC1E8AE6B600CC429D /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57DC4FB1E8AE6B600CC429D /* ExtensionString.swift */; };
 		B57DC4FE1E8AFD2300CC429D /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57DC4FD1E8AFD2300CC429D /* ExtensionDate.swift */; };
+		B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591F9171E8D84530019EF7A /* FirebaseTables.swift */; };
 		CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */; };
 		CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */; };
 		CE2DB99E1E68B3AA009073BE /* DishesGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */; };
@@ -45,6 +46,7 @@
 		B57D567F1E815DDC00263CE5 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		B57DC4FB1E8AE6B600CC429D /* ExtensionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		B57DC4FD1E8AFD2300CC429D /* ExtensionDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
+		B591F9171E8D84530019EF7A /* FirebaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTables.swift; sourceTree = "<group>"; };
 		BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig"; sourceTree = "<group>"; };
 		CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				B57D567F1E815DDC00263CE5 /* UserHelper.swift */,
 				B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */,
 				B529814A1E8B115D00673275 /* Loger.swift */,
+				B591F9171E8D84530019EF7A /* FirebaseTables.swift */,
 			);
 			name = Heplers;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */,
 				B529814B1E8B115E00673275 /* Loger.swift in Sources */,
 				B57DC4FE1E8AFD2300CC429D /* ExtensionDate.swift in Sources */,
+				B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */,
 				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
 				CE2DB9A21E6966E0009073BE /* DishesGroupFirebase.swift in Sources */,
 				CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */,

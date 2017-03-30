@@ -15,28 +15,17 @@ class MenuGroupsFirebase: FirebaseHelper {
     
     private var menuGroups = [MenuGroupsModel]()
     
-    //MARK: Firebase field names
-    
-    struct FirebaseFields {
-        
-        static let Key = "key"
-        static let Name = "name"
-        static let PhotoName = "photoName"
-        static let PhotoUrl = "photoUrl"
-        
-    }
-    
     //MARK: Functions
     
-    override func getChildName() -> String {
+    override func getTableName() -> String {
         
-        return FirebaseHelper.FirebaseChild.MenuGroups
+        return FirebaseTables.MenuGroups.TableName
         
     }
     
     override func getImageFolderName() -> String {
         
-        return FirebaseHelper.FirebaseImageFolder.MenuGroups
+        return FirebaseTables.MenuGroups.ImageFolder
         
     }
         
@@ -80,10 +69,10 @@ class MenuGroupsFirebase: FirebaseHelper {
         
         for items in snapshot.children {
             let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
-            let key = tasksInFirebase[FirebaseFields.Key] as! String
-            let name = tasksInFirebase[FirebaseFields.Name] as! String
-            let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
-            let photoUrl = tasksInFirebase[FirebaseFields.PhotoUrl] as! String
+            let key = tasksInFirebase[FirebaseTables.MenuGroups.Child.Key] as! String
+            let name = tasksInFirebase[FirebaseTables.MenuGroups.Child.Name] as! String
+            let photoName = tasksInFirebase[FirebaseTables.MenuGroups.Child.PhotoName] as! String
+            let photoUrl = tasksInFirebase[FirebaseTables.MenuGroups.Child.PhotoUrl] as! String
             menuGroups.append(MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl))
         }
         

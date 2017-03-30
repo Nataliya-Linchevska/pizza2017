@@ -24,7 +24,7 @@ class FirebaseHelper {
     
     //MARK: Functions
     
-    func getChildName() -> String {
+    func getTableName() -> String {
         return ""
     }
     
@@ -32,13 +32,24 @@ class FirebaseHelper {
         return ""
     }
     
-    internal func reloadData(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+    func reloadData(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         
-        databaseRef.child(getChildName()).observeSingleEvent(of: .value, with: { (snapshot) in
+        databaseRef.child(getTableName()).observeSingleEvent(of: .value, with: { (snapshot) in
             callback(snapshot)
         }) { (error) in
             Loger.instance.writeToLog(error.localizedDescription)
         }
+    }
+    
+    func getNewRecordKey() -> String {
+        
+        return databaseRef.child(getTableName()).childByAutoId().key
+        
+    }
+    
+    func saveObject(key: String, value: Any?) {
+        
+        databaseRef.child(getTableName()).child(key).setValue(value)
     }
     
 }
@@ -51,7 +62,7 @@ extension FirebaseHelper {
     
     internal func initObserve(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         
-        databaseHandle = databaseRef.child(getChildName()).observe(FIRDataEventType.value, with: { (snapshot) in
+        databaseHandle = databaseRef.child(getTableName()).observe(FIRDataEventType.value, with: { (snapshot) in
             callback(snapshot)
         }) { (error) in
             Loger.instance.writeToLog(error.localizedDescription)
@@ -62,9 +73,9 @@ extension FirebaseHelper {
     internal func deinitObserve() {
         
         if let validHandle = databaseHandle {
-            databaseRef.child(getChildName()).removeObserver(withHandle: validHandle)
+            databaseRef.child(getTableName()).removeObserver(withHandle: validHandle)
         } else {
-            databaseRef.child(getChildName()).removeAllObservers()
+            databaseRef.child(getTableName()).removeAllObservers()
         }
         
     }
@@ -112,35 +123,6 @@ extension FirebaseHelper {
                 Loger.instance.writeToLog((error?.localizedDescription) ?? "Error while deleting file \(imageName)")
             }
         }
-        
-    }
-    
-}
-
-//MARK: Extension - Child tables
-
-extension FirebaseHelper {
-    
-    struct FirebaseChild {
-        
-        static let Courier = "courier"
-        static let Deliveries = "deliveries"
-        static let Dishes = "dishes"
-        static let MenuGroups = "menu_groups"
-        static let News = "news"
-        static let ReservedTables = "reserved_tables"
-        static let Settings = "settings"
-        static let Tables = "tables"
-        static let Topics = "topics"
-        static let Users = "users"
-        
-    }
-    
-    struct FirebaseImageFolder {
-        
-        static let MenuGroups = "menu_group_images"
-        static let Dishes = "dishes_images"
-        static let News = "news_images"
         
     }
     

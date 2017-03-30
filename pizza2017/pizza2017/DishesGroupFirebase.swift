@@ -15,31 +15,17 @@ class DishesGroupFirebase: FirebaseHelper {
     
     private var dishesGroups = [DishesGroupModel]()
     
-    //MARK: Firebase fields
-    
-    struct FirebaseFields {
-        
-        static let KeyGroup = "keyGroup"
-        static let Name = "name"
-        static let Description = "description"
-        static let Price = "price"
-        static let PhotoUrl = "photoUrl"
-        static let PhotoName = "photoName"
-        static let Key = "key"
-        
-    }
-    
     //MARK: Functions
     
-    override func getChildName() -> String {
+    override func getTableName() -> String {
         
-        return FirebaseHelper.FirebaseChild.Dishes
+        return FirebaseTables.Dishes.TableName
         
     }
     
     override func getImageFolderName() -> String {
         
-        return FirebaseHelper.FirebaseImageFolder.Dishes
+        return FirebaseTables.Dishes.ImageFolder
         
     }
 
@@ -85,17 +71,17 @@ class DishesGroupFirebase: FirebaseHelper {
         for items in snapshot.children {
             
             let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
-            let keyGroup = tasksInFirebase[FirebaseFields.KeyGroup] as! String
+            let keyGroup = tasksInFirebase[FirebaseTables.Dishes.Child.KeyGroup] as! String
             if keyGroup != dishKey {
                 continue
             }
             
-            let name = tasksInFirebase[FirebaseFields.Name] as! String
-            let description = tasksInFirebase[FirebaseFields.Description] as! String
-            let price = tasksInFirebase[FirebaseFields.Price] as! Float
-            let photoUrl = tasksInFirebase[FirebaseFields.PhotoUrl] as! String
-            let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
-            let key = tasksInFirebase[FirebaseFields.Key] as! String
+            let name = tasksInFirebase[FirebaseTables.Dishes.Child.Name] as! String
+            let description = tasksInFirebase[FirebaseTables.Dishes.Child.Description] as! String
+            let price = tasksInFirebase[FirebaseTables.Dishes.Child.Price] as! Float
+            let photoUrl = tasksInFirebase[FirebaseTables.Dishes.Child.PhotoUrl] as! String
+            let photoName = tasksInFirebase[FirebaseTables.Dishes.Child.PhotoName] as! String
+            let key = tasksInFirebase[FirebaseTables.Dishes.Child.Key] as! String
             
             dishesGroups.append(DishesGroupModel(name: name, description: description,
                                            price: price, photoUrl: photoUrl,

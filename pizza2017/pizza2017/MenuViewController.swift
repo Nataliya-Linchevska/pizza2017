@@ -69,8 +69,7 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let menuGroup = firebaseHelper.getMenuGroup(indexPath.item)
         cell.lblTitle.text = menuGroup.name
         
-        firebaseHelper.getImageFromStorage(nameOfImage:
-            String(menuGroup.photoName), callBack: { image in
+        firebaseHelper.getImageFromStorage(nameOfImage: menuGroup.photoName, callBack: { image in
             cell.ivImage.image = image
         })
         
