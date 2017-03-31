@@ -100,18 +100,18 @@ extension FirebaseHelper {
         
     }
     
-    internal func saveImageToStorage(imageName: String, localPath: String,
-                                     callBack: @escaping (_ success: Bool, _ photoURL: URL?) -> ()) {
+    internal func saveImageToFirebase(imageName: String, image: UIImage, callBack: @escaping (_ success: Bool, _ photoURL: URL?) -> ()) {
         
-        let localFile = URL(string: localPath)!
-        let childRef = storageRef.child(getImageFolderName()).child(imageName)
-        let uploadTask = childRef.putFile(localFile, metadata: nil) { metadata, error in
-            if let error = error {
-                Loger.instance.writeToLog("Error while uploading file: \(localPath)")
-                callBack(false, nil)
-            } else {
-                callBack(true, metadata!.downloadURL())
-            }
+        let imageRef = storageRef.child(getImageFolderName()).child(imageName)
+        if let userImage = UIImagePNGRepresentation(image) {
+            imageRef.put(userImage, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    Loger.instance.writeToLog("Error while uploading file: \(imageName)")
+                    callBack(false, nil)
+                    return
+                }
+                callBack(true, metadata?.downloadURL())
+            })
         }
         
     }

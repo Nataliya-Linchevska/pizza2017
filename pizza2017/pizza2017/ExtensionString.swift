@@ -14,7 +14,7 @@ extension String {
         
         return "\(self.replacingOccurrences(of: " ", with: ""))" +
                "\(Date().dateStringWithFormat(format: "EEEMMMddhh-mm-ssyyyy"))" +
-               ".jpg"
+               ".PNG"
     }
     
     public func toDateTime() -> Date

@@ -17,7 +17,8 @@ class MenuEditViewController: UIViewController {
     private var menuGroup: MenuGroupsModel?
     private var isNewModel = true
     private var firebaseHelper = MenuGroupsFirebase()
-    internal var imageURL: NSURL?
+    
+    var isDefaultImage = true
     
     //MARK: Outlets
     
@@ -32,13 +33,18 @@ class MenuEditViewController: UIViewController {
         super.viewDidLoad()
         
         tfGroupName.delegate = self
+        
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
         
+        ivGroupImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleIvGroupImageTapRecognizer)))
+        ivGroupImage.isUserInteractionEnabled = true
+        
         fillUp()
         
     }
+    
     
     //MARK: General function
     
@@ -57,10 +63,10 @@ class MenuEditViewController: UIViewController {
         if isNewModel { return }
 
         firebaseHelper.getImageFromStorage(nameOfImage: menuGroup!.photoName, callBack: { image in
-                self.ivGroupImage.image = image
+            self.ivGroupImage.image = image
+            self.isDefaultImage = false
         })
         
-        imageURL = NSURL(fileURLWithPath: menuGroup!.photoUrl)
         tfGroupName.text = menuGroup!.name
         
     }
@@ -68,7 +74,7 @@ class MenuEditViewController: UIViewController {
     func updateOkAndPhotoName() {
         
         lbGroupName.text = tfGroupName.text
-        buttonOK.isEnabled = !(tfGroupName.text?.isEmpty)! && imageURL != nil
+        buttonOK.isEnabled = !(tfGroupName.text?.isEmpty)! && !isDefaultImage
         
     }
     
@@ -83,7 +89,7 @@ class MenuEditViewController: UIViewController {
     
     //MARK: Actions
     
-    @IBAction func buttonImageClick() {
+    func handleIvGroupImageTapRecognizer() {
         
         present(imagePicker, animated: true, completion: nil)
         
@@ -95,30 +101,25 @@ class MenuEditViewController: UIViewController {
             menuGroup = MenuGroupsModel()
         }
         
-        if imageURL == nil {
-            return
-        }
-        
-        let fileName = imageURL!.lastPathComponent!.getPhotoName()
-        let imagePath =  imageURL!.path!
-        //let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(imagePath)
-        firebaseHelper.saveImageToStorage(imageName: fileName, localPath: imagePath) { (isError, URL) in
-            if isError {
-                self.showAllertMessage(message: "Loading image to server: ERROR")
-            } else {
+        let groupName = tfGroupName.text!
+        let photoName = groupName.getPhotoName()
+        firebaseHelper.saveImageToFirebase(imageName: photoName,
+                                           image: self.ivGroupImage.image!) { (success, URL) in
+            if success {
                 if self.isNewModel {
                     self.menuGroup!.key = self.firebaseHelper.getNewRecordKey()
                 } else {
                     //delete old image if exist
                 }
-                self.menuGroup!.name = self.tfGroupName.text!
-                self.menuGroup!.photoName = fileName
+                self.menuGroup!.name = groupName
+                self.menuGroup!.photoName = photoName
                 self.menuGroup!.photoUrl = (URL?.absoluteString)!
                 self.firebaseHelper.saveObject(key: self.menuGroup!.key, value: self.menuGroup!)
-                
+                self.dismiss(animated: true, completion: nil)
+                return
             }
-        }
-        dismiss(animated: true, completion: nil)
+            self.showAllertMessage(message: "Loading image to server: ERROR")
+        }        
         
     }
     
@@ -139,25 +140,19 @@ extension MenuEditViewController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        if let referenceUrl = info[UIImagePickerControllerReferenceURL] as? NSURL {
-            imageURL = referenceUrl
-        } else {
-            imageURL = nil
-        }
-        
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.ivGroupImage.image = pickedImage
+            self.isDefaultImage = false
         }
         
         updateOkAndPhotoName()
         
-        dismiss(animated: true, completion: nil)
-        
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
-        dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: nil)
         
     }
     
