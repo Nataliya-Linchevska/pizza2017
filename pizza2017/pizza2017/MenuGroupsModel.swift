@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MenuGroupsModel {
+class MenuGroupsModel: FirebaseDataProtocol {
         
     //MARK: Properties
     
@@ -17,7 +17,7 @@ class MenuGroupsModel {
     var photoName: String = ""
     var photoUrl: String = ""
     
-    //MERK: Init
+    //MARK: Init
     
     init() {}
     
@@ -25,6 +25,22 @@ class MenuGroupsModel {
         self.key = key
         self.name = name
         self.photoName = photoName
-        self.photoUrl = photoUrl
+        self.photoUrl = photoName
     }
+    
+    //MARK: Functions
+    
+    func getPostData() -> [String : Any] {
+        
+        return [
+            
+            FirebaseTables.MenuGroups.Child.Key : key,
+            FirebaseTables.MenuGroups.Child.Name : name,
+            FirebaseTables.MenuGroups.Child.PhotoName : photoName,
+            FirebaseTables.MenuGroups.Child.PhotoUrl : photoName,
+        
+        ]
+        
+    }
+    
 }

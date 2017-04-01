@@ -106,19 +106,24 @@ class MenuEditViewController: UIViewController {
         firebaseHelper.saveImageToFirebase(imageName: photoName,
                                            image: self.ivGroupImage.image!) { (success, URL) in
             if success {
-                if self.isNewModel {
-                    self.menuGroup!.key = self.firebaseHelper.getNewRecordKey()
-                } else {
-                    //delete old image if exist
-                }
+                
+                //if image changed
+                //delete old image if exist
+               
                 self.menuGroup!.name = groupName
                 self.menuGroup!.photoName = photoName
-                self.menuGroup!.photoUrl = (URL?.absoluteString)!
-                self.firebaseHelper.saveObject(key: self.menuGroup!.key, value: self.menuGroup!)
-                self.dismiss(animated: true, completion: nil)
+                self.menuGroup!.photoUrl = (URL?.path)!
+                self.firebaseHelper.saveObject(postObject: self.menuGroup as? FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
+                    
+                    guard error == nil else {
+                        self.showAllertMessage(message: "Loading image to server: ERROR")
+                        return
+                    }
+                    self.dismiss(animated: true, completion: nil)
+                })
                 return
             }
-            self.showAllertMessage(message: "Loading image to server: ERROR")
+            
         }        
         
     }

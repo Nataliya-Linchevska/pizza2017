@@ -41,18 +41,55 @@ class FirebaseHelper {
         }
     }
     
-    func getNewRecordKey() -> String {
+}
+
+//MARK: Extension - Saving/Updating the data
+
+extension FirebaseHelper {
+
+    func saveObject(postObject: FirebaseDataProtocol?,
+         callBack: @escaping (Error?, FIRDatabaseReference, FirebaseDataProtocol?) -> ()) {
         
-        return databaseRef.child(getTableName()).childByAutoId().key
+        if postObject!.key.isEmpty {
+            saveNewObject(postObject: postObject, callBack: callBack)
+        } else {
+            updateObject(postObject: postObject, callBack: callBack)
+        }
         
     }
     
-    func saveObject(key: String, value: Any?) {
+    private func saveNewObject(postObject: FirebaseDataProtocol?,
+        callBack: @escaping (Error?, FIRDatabaseReference, FirebaseDataProtocol?) -> ()) {
         
-        databaseRef.child(getTableName()).child(key).setValue(value)
+        guard postObject != nil else {
+            return
+        }
+        
+        var validObject = postObject!
+        let ref = databaseRef.child(getTableName()).childByAutoId()
+        validObject.key = ref.key
+        ref.setValue(validObject.getPostData())
+        
+        ref.setValue(validObject.getPostData()) { (error, reference) in
+            callBack(error, reference, postObject)
+        }
+        
+    }
+    
+    private func updateObject(postObject: FirebaseDataProtocol?,
+        callBack: @escaping (Error?, FIRDatabaseReference, FirebaseDataProtocol?) -> ()) {
+        
+        guard postObject != nil else {
+            return
+        }
+        let ref = databaseRef.child(getTableName()).child(postObject!.key)
+        ref.updateChildValues(postObject!.getPostData()) { (error, reference) in
+            callBack(error, reference, postObject)
+        }
     }
     
 }
+
 
 //MARK: Extension - Work with firebase observe
 
@@ -100,7 +137,8 @@ extension FirebaseHelper {
         
     }
     
-    internal func saveImageToFirebase(imageName: String, image: UIImage, callBack: @escaping (_ success: Bool, _ photoURL: URL?) -> ()) {
+    internal func saveImageToFirebase(imageName: String, image: UIImage,
+                                      callBack: @escaping (_ success: Bool, _ photoURL: URL?) -> ()) {
         
         let imageRef = storageRef.child(getImageFolderName()).child(imageName)
         if let userImage = UIImagePNGRepresentation(image) {
