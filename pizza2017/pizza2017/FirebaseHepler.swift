@@ -11,7 +11,6 @@ import Firebase
 
 class FirebaseHelper {
     
-    
     //MARK: Firebase references
     
     let databaseRef = FIRDatabase.database().reference()

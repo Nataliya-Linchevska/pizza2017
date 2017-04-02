@@ -11,7 +11,7 @@ import Foundation
 struct FirebaseTables {
     
     //MARK: Courier
-    
+        
     struct Courier {
         
         static let TableName = "courier"
