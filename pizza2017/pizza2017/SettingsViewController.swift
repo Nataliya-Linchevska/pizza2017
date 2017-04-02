@@ -23,10 +23,17 @@ class SettingsViewController: UIViewController {
     //MARK: Virtual functions
     
     override func viewDidLoad() {
+       super.viewDidLoad()
         
        firebaseHelper.initFirebaseObserve { (settings) in
             self.reloadView(taskSettings: settings)
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        firebaseHelper.deinitObserve()
     }
     
     //MARK: General functions

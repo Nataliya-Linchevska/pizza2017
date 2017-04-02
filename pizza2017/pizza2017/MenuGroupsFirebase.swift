@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class MenuGroupsFirebase: FirebaseHelper {    
+class MenuGroupsFirebase: FirebaseHelper {
     
     //MARK: Properties
     
@@ -33,13 +33,19 @@ class MenuGroupsFirebase: FirebaseHelper {
         return FirebaseHelper.FirebaseChild.MenuGroups
         
     }
+    
+    override func getImageFolderName() -> String {
+        
+        return FirebaseHelper.FirebaseImageFolder.MenuGroups
+        
+    }
         
     func reloadMenuGroups(callback: @escaping ()->()) {
         
         menuGroups.removeAll()
         
-        reloadFirebaseData{ (snapshot) -> () in            
-            self.menuGroups.append(contentsOf: self.getMenuGroups(snapshot))
+        reloadData{ (snapshot) -> () in
+            self.updateMenuGroups(snapshot)
             callback()
         }
         
@@ -49,8 +55,8 @@ class MenuGroupsFirebase: FirebaseHelper {
         
         menuGroups.removeAll()
         
-        super.initFirebaseObserve { (snapshot) -> () in
-            self.menuGroups.append(contentsOf: self.getMenuGroups(snapshot))
+        super.initObserve { (snapshot) -> () in
+            self.updateMenuGroups(snapshot)
             callback()
         }
 
@@ -68,9 +74,9 @@ class MenuGroupsFirebase: FirebaseHelper {
         
     }
     
-    private func getMenuGroups(_ snapshot: FIRDataSnapshot) -> [MenuGroupsModel] {
+    private func updateMenuGroups(_ snapshot: FIRDataSnapshot) {
         
-        var result = [MenuGroupsModel]()
+        menuGroups.removeAll()
         
         for items in snapshot.children {
             let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
@@ -78,10 +84,10 @@ class MenuGroupsFirebase: FirebaseHelper {
             let name = tasksInFirebase[FirebaseFields.Name] as! String
             let photoName = tasksInFirebase[FirebaseFields.PhotoName] as! String
             let photoUrl = tasksInFirebase[FirebaseFields.PhotoUrl] as! String
-            result.append(MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl))
+            menuGroups.append(MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl))
         }
         
-        return result
+        
         
     }
 }

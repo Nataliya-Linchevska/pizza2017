@@ -11,74 +11,136 @@ import Firebase
 
 class FirebaseHelper {
     
-    //MARK: Child tables
     
-    struct FirebaseChild {
-        
-        static let Settings = "settings"
-        static let MenuGroups = "menu_groups"
-        static let Dishes = "dishes"
-        
-    }
+    //MARK: Firebase references
     
-    //MARK: Firebase reference
-    
-    let ref = FIRDatabase.database().reference()
+    let databaseRef = FIRDatabase.database().reference()
+    let storageRef = FIRStorage.storage().reference()
     
     //MARK: Properties
     
-    private var databaseHandle: FIRDatabaseHandle?
+    internal var databaseHandle: FIRDatabaseHandle?
+    
     
     //MARK: Functions
     
     func getChildName() -> String {
-        
         return ""
-        
     }
     
-    internal func reloadFirebaseData(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+    func getImageFolderName() -> String {
+        return ""
+    }
+    
+    internal func reloadData(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         
-        ref.child(getChildName()).observeSingleEvent(of: .value, with: { (snapshot) in
+        databaseRef.child(getChildName()).observeSingleEvent(of: .value, with: { (snapshot) in
             callback(snapshot)
         }) { (error) in
-            print(error.localizedDescription)
+            Loger.instance.writeToLog(error.localizedDescription)
         }
     }
     
+}
+
+//MARK: Extension - Work with firebase observe
+
+extension FirebaseHelper {
+    
+    //MARK: Functions
+    
+    internal func initObserve(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+        
+        databaseHandle = databaseRef.child(getChildName()).observe(FIRDataEventType.value, with: { (snapshot) in
+            callback(snapshot)
+        }) { (error) in
+            Loger.instance.writeToLog(error.localizedDescription)
+        }
+        
+    }
+    
+    internal func deinitObserve() {
+        
+        if let validHandle = databaseHandle {
+            databaseRef.child(getChildName()).removeObserver(withHandle: validHandle)
+        } else {
+            databaseRef.child(getChildName()).removeAllObservers()
+        }
+        
+    }
+    
+}
+
+//MARK: Extension - Work with firebase images
+
+extension FirebaseHelper {
+    
     internal func getImageFromStorage(nameOfImage: String, callBack: @escaping (_ image: UIImage) -> ()) {
         
-        let storage = FIRStorage.storage().reference()
-        let tempImageRef = storage.child(nameOfImage)
+        let tempImageRef = storageRef.child(getImageFolderName()).child(nameOfImage)
         
-        tempImageRef.data(withMaxSize: 1*500*300) { (data, error) in
+        tempImageRef.data(withMaxSize: 1*500*500) { (data, error) in
             if error == nil {
                 callBack(UIImage(data: data!)!)
             } else {
-                print(error?.localizedDescription ?? "unhandled error")
+                Loger.instance.writeToLog(error?.localizedDescription ?? "unhandled error")
             }
         }
         
     }
     
-    internal func initFirebaseObserve(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
+    internal func saveImageToStorage(imageName: String, localPath: String,
+                                     callBack: @escaping (_ success: Bool, _ photoURL: URL?) -> ()) {
         
-        databaseHandle = ref.child(getChildName()).observe(FIRDataEventType.value, with: { (snapshot) in
-            callback(snapshot)
-        }) { (error) in
-            print(error.localizedDescription)
+        let localFile = URL(string: localPath)!
+        let childRef = storageRef.child(getImageFolderName()).child(imageName)
+        let uploadTask = childRef.putFile(localFile, metadata: nil) { metadata, error in
+            if let error = error {
+                Loger.instance.writeToLog("Error while uploading file: \(localPath)")
+                callBack(false, nil)
+            } else {
+                callBack(true, metadata!.downloadURL())
+            }
         }
         
     }
     
-    internal func deinitFirebaseObserve() {
+    internal func removeImageFromStorage(imageName: String) {
         
-        if let validHandle = databaseHandle {
-            ref.child(getChildName()).removeObserver(withHandle: validHandle)
-        } else {
-            ref.child(getChildName()).removeAllObservers()
+        storageRef.child(getImageFolderName()).child(imageName).delete { (error) in
+            if error != nil {
+                Loger.instance.writeToLog((error?.localizedDescription) ?? "Error while deleting file \(imageName)")
+            }
         }
         
+    }
+    
+}
+
+//MARK: Extension - Child tables
+
+extension FirebaseHelper {
+    
+    struct FirebaseChild {
+        
+        static let Courier = "courier"
+        static let Deliveries = "deliveries"
+        static let Dishes = "dishes"
+        static let MenuGroups = "menu_groups"
+        static let News = "news"
+        static let ReservedTables = "reserved_tables"
+        static let Settings = "settings"
+        static let Tables = "tables"
+        static let Topics = "topics"
+        static let Users = "users"
+        
+    }
+    
+    struct FirebaseImageFolder {
+        
+        static let MenuGroups = "menu_group_images"
+        static let Dishes = "dishes_images"
+        static let News = "news_images"
         
     }
     
