@@ -52,8 +52,14 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
         firebaseHelper.getImageFromStorage(nameOfImage: String(dishesGroup.photoName), callBack: { image in
             cell.ivImage.image = image
         })
-
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.5) { 
+            cell.alpha = 1.0
+        }
     }
     
     //MARK: Actions
