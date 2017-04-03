@@ -19,13 +19,15 @@ class MenuEditViewController: UIViewController {
     private var firebaseHelper = MenuGroupsFirebase()
     
     var isDefaultImage = true
-    
+        
     //MARK: Outlets
     
     @IBOutlet weak var tfGroupName: UITextField!
     @IBOutlet weak var lbGroupName: UILabel!
     @IBOutlet weak var ivGroupImage: UIImageView!
     @IBOutlet weak var buttonOK: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     //MARK: Virtual functions
     
@@ -76,15 +78,7 @@ class MenuEditViewController: UIViewController {
         lbGroupName.text = tfGroupName.text
         buttonOK.isEnabled = !(tfGroupName.text?.isEmpty)! && !isDefaultImage
         
-    }
-    
-    func showAllertMessage(message: String) {
-        
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-    }
+    } 
     
     
     //MARK: Actions
@@ -97,6 +91,7 @@ class MenuEditViewController: UIViewController {
     
     @IBAction func buttonOKClick() {
        
+        activityIndicator.startAnimating()
         if isNewModel {
             menuGroup = MenuGroupsModel()
         }
@@ -105,25 +100,31 @@ class MenuEditViewController: UIViewController {
         let photoName = groupName.getPhotoName()
         firebaseHelper.saveImageToFirebase(imageName: photoName,
                                            image: self.ivGroupImage.image!) { (success, URL) in
-            if success {
+            if success && URL != nil {
                 
                 //if image changed
                 //delete old image if exist
                
                 self.menuGroup!.name = groupName
                 self.menuGroup!.photoName = photoName
-                self.menuGroup!.photoUrl = (URL?.path)!
+                self.menuGroup!.photoUrl = "\(URL!)"                
                 self.firebaseHelper.saveObject(postObject: self.menuGroup as? FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
                     
                     guard error == nil else {
-                        self.showAllertMessage(message: "Loading image to server: ERROR")
+                        self.activityIndicator.stopAnimating()
+                        Utilities.showAllertMessage("Loading image to server: ERROR", self)
                         return
                     }
+                    self.activityIndicator.stopAnimating()
                     self.dismiss(animated: true, completion: nil)
                 })
                 return
+            } else {
+                self.activityIndicator.stopAnimating()
+                Utilities.showAllertMessage("Error while saving the data", self)
+                
+
             }
-            
         }        
         
     }

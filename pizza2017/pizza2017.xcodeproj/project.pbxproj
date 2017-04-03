@@ -10,6 +10,7 @@
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
+		B578C5B51E92311D0052E404 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578C5B41E92311D0052E404 /* Utilities.swift */; };
 		B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D567F1E815DDC00263CE5 /* UserHelper.swift */; };
 		B57DC4FC1E8AE6B600CC429D /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57DC4FB1E8AE6B600CC429D /* ExtensionString.swift */; };
 		B57DC4FE1E8AFD2300CC429D /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57DC4FD1E8AFD2300CC429D /* ExtensionDate.swift */; };
@@ -45,6 +46,7 @@
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
+		B578C5B41E92311D0052E404 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B57D567F1E815DDC00263CE5 /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		B57DC4FB1E8AE6B600CC429D /* ExtensionString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		B57DC4FD1E8AFD2300CC429D /* ExtensionDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */,
 				B529814A1E8B115D00673275 /* Loger.swift */,
 				B591F9171E8D84530019EF7A /* FirebaseTables.swift */,
+				B578C5B41E92311D0052E404 /* Utilities.swift */,
 			);
 			name = Heplers;
 			sourceTree = "<group>";
@@ -226,11 +229,11 @@
 		CEA6BB531E5EC37B00057BA4 /* MenuGroups */ = {
 			isa = PBXGroup;
 			children = (
-				CE9119D01E5DAFDB00674520 /* MenuViewController.swift */,
 				CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */,
-				CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */,
-				CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */,
+				CE9119D01E5DAFDB00674520 /* MenuViewController.swift */,
 				B5673E371E879FA100CC1999 /* MenuEditViewController.swift */,
+				CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */,
+				CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */,
 			);
 			name = MenuGroups;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				B59A2DA01E8F8B5D00831A06 /* FirebaseDataProtocol.swift in Sources */,
 				CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */,
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
+				B578C5B51E92311D0052E404 /* Utilities.swift in Sources */,
 				B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */,
 				CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */,
 				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,

@@ -15,24 +15,34 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var topNavigationItem: UINavigationItem!
     @IBOutlet weak var CollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var firebaseHelper = MenuGroupsFirebase()
-        
+    var firebaseHelper = MenuGroupsFirebase()        
     
     //MARK: Virtual functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firebaseHelper.initFirebaseObserve {
+        /*firebaseHelper.initFirebaseObserve {
             self.CollectionView.reloadData()
-        }
+        }*/
         
         CollectionView.delegate = self
         CollectionView.dataSource = self
         
         if !UserHelper.instance.isAdminLogged {
             topNavigationItem.rightBarButtonItem = nil
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        activityIndicator.startAnimating()
+        firebaseHelper.initFirebaseObserve {
+            self.CollectionView.reloadData()
+            self.activityIndicator.stopAnimating()
         }
         
     }
@@ -67,11 +77,7 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuGroupCell", for: indexPath) as! MenuGroupsCollectionViewCell
         
         let menuGroup = firebaseHelper.getMenuGroup(indexPath.item)
-        cell.lblTitle.text = menuGroup.name
-        
-        firebaseHelper.getImageFromStorage(nameOfImage: menuGroup.photoName, callBack: { image in
-            cell.ivImage.image = image
-        })
+        cell.fillUp(menuGroup.name, menuGroup.photoName, UserHelper.instance.isAdminLogged)
         
         return cell
     }

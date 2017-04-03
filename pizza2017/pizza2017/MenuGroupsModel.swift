@@ -25,7 +25,7 @@ class MenuGroupsModel: FirebaseDataProtocol {
         self.key = key
         self.name = name
         self.photoName = photoName
-        self.photoUrl = photoName
+        self.photoUrl = photoUrl
     }
     
     //MARK: Functions
@@ -37,7 +37,7 @@ class MenuGroupsModel: FirebaseDataProtocol {
             FirebaseTables.MenuGroups.Child.Key : key,
             FirebaseTables.MenuGroups.Child.Name : name,
             FirebaseTables.MenuGroups.Child.PhotoName : photoName,
-            FirebaseTables.MenuGroups.Child.PhotoUrl : photoName,
+            FirebaseTables.MenuGroups.Child.PhotoUrl : photoUrl,
         
         ]
         

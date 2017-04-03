@@ -76,7 +76,5 @@ class MenuGroupsFirebase: FirebaseHelper {
             menuGroups.append(MenuGroupsModel(key: key, name: name, photoName: photoName, photoUrl: photoUrl))
         }
         
-        
-        
     }
 }

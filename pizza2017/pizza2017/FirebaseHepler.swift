@@ -66,12 +66,10 @@ extension FirebaseHelper {
         
         var validObject = postObject!
         let ref = databaseRef.child(getTableName()).childByAutoId()
-        validObject.key = ref.key
-        ref.setValue(validObject.getPostData())
-        
-        ref.setValue(validObject.getPostData()) { (error, reference) in
+        validObject.key = ref.key        
+        ref.setValue(validObject.getPostData(), withCompletionBlock: { (error, reference) in
             callBack(error, reference, postObject)
-        }
+        })
         
     }
     
@@ -82,9 +80,9 @@ extension FirebaseHelper {
             return
         }
         let ref = databaseRef.child(getTableName()).child(postObject!.key)
-        ref.updateChildValues(postObject!.getPostData()) { (error, reference) in
+        ref.updateChildValues(postObject!.getPostData(), withCompletionBlock: { (error, reference) in
             callBack(error, reference, postObject)
-        }
+        })
     }
     
 }
@@ -140,7 +138,7 @@ extension FirebaseHelper {
                                       callBack: @escaping (_ success: Bool, _ photoURL: URL?) -> ()) {
         
         let imageRef = storageRef.child(getImageFolderName()).child(imageName)
-        if let userImage = UIImagePNGRepresentation(image) {
+        if let userImage = image.compressImage(compressionQuality: 1) {
             imageRef.put(userImage, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
                     Loger.instance.writeToLog("Error while uploading file: \(imageName)")
