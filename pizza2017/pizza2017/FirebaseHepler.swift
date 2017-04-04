@@ -57,6 +57,29 @@ extension FirebaseHelper {
         
     }
     
+    func removeObjectByKey(_ key: String) {
+        
+        databaseRef.child(getTableName()).child(key).removeValue()
+        
+    }
+    
+    func removeObjectBySubKey(subKeyName: String, subKeyValue: String) {
+        
+        databaseRef.child(getTableName()).queryOrdered(byChild: subKeyName)
+            .queryEqual(toValue: subKeyValue)
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+            
+                for firebaseChildrens in snapshot.children {
+                    
+                    let childDict = (firebaseChildrens as! FIRDataSnapshot).value as! NSDictionary
+                    let key = childDict["key"] as! String
+                    self.removeObjectByKey(key)
+                }            
+        })
+    }
+    
+    //MARK: Private Functions
+    
     private func saveNewObject(postObject: FirebaseDataProtocol?,
         callBack: @escaping (Error?, FIRDatabaseReference, FirebaseDataProtocol?) -> ()) {
         

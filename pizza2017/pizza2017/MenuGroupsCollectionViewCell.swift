@@ -13,6 +13,8 @@ class MenuGroupsCollectionViewCell: UICollectionViewCell {
     //MARK: Properties
     
     var firebaseHelper = MenuGroupsFirebase()
+    var editableDelegate: EditableViewProtocol?
+    private var groupIndex = 0
     
     //MARK: Outlets
     
@@ -23,10 +25,11 @@ class MenuGroupsCollectionViewCell: UICollectionViewCell {
     
     //MARK: General Functions
     
-    func fillUp(_ groupName: String, _ photoName: String, _ isAdminLogged: Bool) {
+    func fillUp(_ itemIndex: Int, _ groupName: String, _ photoName: String, _ isAdminLogged: Bool) {
         
         activityIndicator.startAnimating()
         
+        groupIndex = itemIndex
         lblTitle.text = groupName
         
         firebaseHelper.getImageFromStorage(nameOfImage: photoName, callBack: { image in
@@ -40,22 +43,22 @@ class MenuGroupsCollectionViewCell: UICollectionViewCell {
         
     }
     
-    
     //MARK: Actions
     
     @IBAction func buttonRemovePressed(_ sender: UIButton) {
         
-        print("Removed")
+        if editableDelegate != nil {
+            editableDelegate!.onDeleteData(groupIndex)
+        }
         
     }
-    
     
     @IBAction func buttonEditPressed(_ sender: UIButton) {
         
-        print("Edit")
+        if editableDelegate != nil {
+            editableDelegate!.onEditData(groupIndex)
+        }
         
-    }
-    
-    
+    }   
     
 }

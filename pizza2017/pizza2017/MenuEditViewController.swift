@@ -59,12 +59,15 @@ class MenuEditViewController: UIViewController {
     }
     
     private func fillUp() {
-        
-        buttonOK.isEnabled = false
-        
-        if isNewModel { return }
+       
+        if isNewModel {
+            
+            buttonOK.isEnabled = false
+            return
+        }
 
         firebaseHelper.getImageFromStorage(nameOfImage: menuGroup!.photoName, callBack: { image in
+            
             self.ivGroupImage.image = image
             self.isDefaultImage = false
         })
@@ -112,7 +115,7 @@ class MenuEditViewController: UIViewController {
                     
                     guard error == nil else {
                         self.activityIndicator.stopAnimating()
-                        Utilities.showAllertMessage("Loading image to server: ERROR", self)
+                        Utilities.showAllertMessage("Allert", "Loading image to server: ERROR", self)
                         return
                     }
                     self.activityIndicator.stopAnimating()
@@ -121,7 +124,7 @@ class MenuEditViewController: UIViewController {
                 return
             } else {
                 self.activityIndicator.stopAnimating()
-                Utilities.showAllertMessage("Error while saving the data", self)
+                Utilities.showAllertMessage("Allert", "Error while saving the data", self)
                 
 
             }

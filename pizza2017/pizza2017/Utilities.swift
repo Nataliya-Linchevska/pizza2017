@@ -20,14 +20,30 @@ class Utilities {
         }
     }
     
-    static func showAllertMessage(_ message: String, _ viewController: UIViewController) {
+    static func showAllertMessage(_ title: String, _ message: String, _ viewController: UIViewController) {
         
         /*doSomethingAsync {*/
             
-            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             viewController.present(alert, animated: true, completion: nil)
             
+        /*}*/
+    }
+    
+    static func showQuestionMessage(_ title: String, _ message: String,
+                                    _ viewController: UIViewController, successCallBack: @escaping () -> ()) {
+        
+        /*doSomethingAsync {*/
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.actionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action:  UIAlertAction!) in
+            successCallBack()
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        viewController.present(alert, animated: true, completion: nil)
+        
         /*}*/
     }
     

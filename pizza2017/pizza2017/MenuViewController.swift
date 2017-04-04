@@ -57,11 +57,19 @@ class MenuViewController: UIViewController {
   
     @IBAction func addMenuGroupClick(_ sender: UIBarButtonItem) {
         
-        let controller = storyboard?.instantiateViewController(withIdentifier: "MenuEditViewController") as! MenuEditViewController
-        self.present(controller, animated: true)
+        showEditMenuGroupView(nil)
         
     }
     
+    //MARK: Functions
+    
+    func showEditMenuGroupView(_ group: MenuGroupsModel?) {
+        
+        let controller = storyboard?.instantiateViewController(withIdentifier: "MenuEditViewController") as! MenuEditViewController
+        controller.setModel(group)
+        self.present(controller, animated: true)
+        
+    }
 
 }
 
@@ -77,7 +85,8 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuGroupCell", for: indexPath) as! MenuGroupsCollectionViewCell
         
         let menuGroup = firebaseHelper.getMenuGroup(indexPath.item)
-        cell.fillUp(menuGroup.name, menuGroup.photoName, UserHelper.instance.isAdminLogged)
+        cell.editableDelegate = self
+        cell.fillUp(indexPath.item, menuGroup.name, menuGroup.photoName, UserHelper.instance.isAdminLogged)
         
         return cell
     }
@@ -91,6 +100,27 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+}
 
+extension MenuViewController: EditableViewProtocol {
+    
+    func onEditData(_ itemIndex: Int) {
+        
+        let group = self.firebaseHelper.getMenuGroup(itemIndex)
+        showEditMenuGroupView(group)
+        
+    }
+    
+    func onDeleteData(_ itemIndex: Int) {
+        
+        Utilities.showQuestionMessage("", "Do you really want to remove this group?", self) {
+            let group = self.firebaseHelper.getMenuGroup(itemIndex)
+            self.firebaseHelper.removeObjectByKey(group.key)
+            DishesGroupFirebase().removeObjectBySubKey(subKeyName: FirebaseTables.Dishes.Child.KeyGroup,
+                                                       subKeyValue: group.key)
+        }
+        
+    }
     
 }
