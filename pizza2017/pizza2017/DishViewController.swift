@@ -88,6 +88,14 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func btnAddDishToList(_ sender: UIButton) {
         
+        guard var selectedIndex = collectionView.indexPath(for:
+            collectionView.visibleCells.first!) else {
+                return
+        }
+        let dishesGroup = firebaseHelper.getDishesGroup(selectedIndex.row)
+        let dish = DishModel(name: dishesGroup.name, description: dishesGroup.description, price: dishesGroup.price, photoUrl: dishesGroup.photoUrl, photoName: dishesGroup.photoName, keyGroup: dishesGroup.keyGroup, key: dishesGroup.key)
+        
+        BacketHelper.backetDishes.append(dish)
         
         let alert = UIAlertController(title: "", message: "Блюдо добавлено в корзину", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

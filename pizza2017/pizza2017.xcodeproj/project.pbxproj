@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */; };
+		7D73EE841E95274E00BD3ABB /* BacketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE831E95274E00BD3ABB /* BacketViewController.swift */; };
+		7D73EE861E95277A00BD3ABB /* BacketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */; };
+		7D73EE881E952F1A00BD3ABB /* BacketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE871E952F1A00BD3ABB /* BacketHelper.swift */; };
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig"; sourceTree = "<group>"; };
 		7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishCollectionViewCell.swift; sourceTree = "<group>"; };
+		7D73EE831E95274E00BD3ABB /* BacketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketViewController.swift; sourceTree = "<group>"; };
+		7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketTableViewCell.swift; sourceTree = "<group>"; };
+		7D73EE871E952F1A00BD3ABB /* BacketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketHelper.swift; sourceTree = "<group>"; };
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D73EE821E9526DF00BD3ABB /* BacketGroup */ = {
+			isa = PBXGroup;
+			children = (
+				7D73EE831E95274E00BD3ABB /* BacketViewController.swift */,
+				7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */,
+			);
+			name = BacketGroup;
+			sourceTree = "<group>";
+		};
 		81109DFD4AF07693B43250E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +134,7 @@
 				B529814A1E8B115D00673275 /* Loger.swift */,
 				B591F9171E8D84530019EF7A /* FirebaseTables.swift */,
 				B578C5B41E92311D0052E404 /* Utilities.swift */,
+				7D73EE871E952F1A00BD3ABB /* BacketHelper.swift */,
 			);
 			name = Heplers;
 			sourceTree = "<group>";
@@ -183,6 +199,7 @@
 		CE7642B01E5D922900B0E47F /* pizza2017 */ = {
 			isa = PBXGroup;
 			children = (
+				7D73EE821E9526DF00BD3ABB /* BacketGroup */,
 				B59A2D9E1E8F8B1100831A06 /* Protocols */,
 				B57DC4FA1E8AE67400CC429D /* Extensions */,
 				B566FF411E86BC7B003D7A0C /* Heplers */,
@@ -375,11 +392,13 @@
 			files = (
 				CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */,
 				B57E570D1E90FCFB000781E6 /* ExtensionImage.swift in Sources */,
+				7D73EE881E952F1A00BD3ABB /* BacketHelper.swift in Sources */,
 				B529814B1E8B115E00673275 /* Loger.swift in Sources */,
 				B57DC4FE1E8AFD2300CC429D /* ExtensionDate.swift in Sources */,
 				B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */,
 				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
 				CE2DB9A21E6966E0009073BE /* DishesGroupFirebase.swift in Sources */,
+				7D73EE861E95277A00BD3ABB /* BacketTableViewCell.swift in Sources */,
 				CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */,
 				CEB527D31E60643300A1586C /* MenuGroupsFirebase.swift in Sources */,
 				B57DC4FC1E8AE6B600CC429D /* ExtensionString.swift in Sources */,
@@ -394,6 +413,7 @@
 				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,
 				B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */,
 				CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */,
+				7D73EE841E95274E00BD3ABB /* BacketViewController.swift in Sources */,
 				CE2DB9A91E697DCA009073BE /* DishViewController.swift in Sources */,
 				CE2DB9A01E696426009073BE /* DishesGroupCollectionViewCell.swift in Sources */,
 				CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */,

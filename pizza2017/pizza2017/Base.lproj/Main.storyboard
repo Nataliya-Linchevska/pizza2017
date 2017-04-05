@@ -552,7 +552,7 @@
             </objects>
             <point key="canvasLocation" x="3500" y="136.28185907046478"/>
         </scene>
-        <!--Dish View Controller-->
+        <!--Title-->
         <scene sceneID="5hs-V8-naE">
             <objects>
                 <viewController storyboardIdentifier="Dish" id="IXG-uW-Ues" customClass="DishViewController" customModule="pizza2017" customModuleProvider="target" sceneMemberID="viewController">
@@ -659,6 +659,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="6Fp-N2-KPt">
+                        <barButtonItem key="rightBarButtonItem" title="Корзина" id="VMr-m0-zYs">
+                            <connections>
+                                <segue destination="Pl5-Nm-hRt" kind="show" id="Rve-jh-dCh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="d9c-5y-naE" id="VPZ-y4-uor"/>
@@ -666,7 +673,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lnT-n9-do2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4340" y="135.38230884557723"/>
+            <point key="canvasLocation" x="4180" y="136"/>
+        </scene>
+        <!--Backet View Controller-->
+        <scene sceneID="T2o-W7-ezu">
+            <objects>
+                <viewController id="Pl5-Nm-hRt" customClass="BacketViewController" customModule="pizza2017" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yyw-jr-9cI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Sid-4r-f9b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i0X-9e-Bb3">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J8b-2o-g87">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="BacketCell" rowHeight="90" id="Mce-dz-rOL" customClass="BacketTableViewCell" customModule="pizza2017" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mce-dz-rOL" id="GW2-L4-MyD">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahQ-lC-6Z7">
+                                                    <rect key="frame" x="15" y="7" width="98" height="75"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-ur-jEB">
+                                                    <rect key="frame" x="121" y="7" width="246" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2b-Iu-oJt">
+                                                    <rect key="frame" x="121" y="48" width="246" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgDishImage" destination="ahQ-lC-6Z7" id="Pqj-JM-5Bx"/>
+                                            <outlet property="lblPrice" destination="s2b-Iu-oJt" id="a5z-XE-htX"/>
+                                            <outlet property="lblTitle" destination="dFf-ur-jEB" id="ZqE-ya-TKT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="J8b-2o-g87" id="It0-vL-NJx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QGN-ey-opd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4863.1999999999998" y="134.48275862068968"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="A5O-sn-3hl">
