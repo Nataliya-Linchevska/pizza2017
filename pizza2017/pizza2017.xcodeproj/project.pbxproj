@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */; };
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig"; sourceTree = "<group>"; };
+		7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishCollectionViewCell.swift; sourceTree = "<group>"; };
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
 				CE2DB9A61E697D05009073BE /* DishModel.swift */,
+				7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */,
 			);
 			name = Dish;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */,
 				CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,
+				7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */,
 				CE2DB99E1E68B3AA009073BE /* DishesGroupModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
