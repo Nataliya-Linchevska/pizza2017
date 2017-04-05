@@ -19,13 +19,6 @@ class SettingsFirebase: FirebaseHelper {
         
     }
     
-    func reloadSettings(callback: @escaping (_ settings: SettingsModel)->()){
-        
-        reloadData{ (snapshot) in
-            callback(self.getSettings(snapshot))
-        }
-    }
-    
     func initFirebaseObserve(callback: @escaping (_ settings: SettingsModel)->()){
         
         super.initObserve { (snapshot) in

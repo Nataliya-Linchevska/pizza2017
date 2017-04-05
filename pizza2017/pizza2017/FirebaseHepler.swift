@@ -31,21 +31,14 @@ class FirebaseHelper {
         return ""
     }
     
-    func reloadData(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
-        
-        databaseRef.child(getTableName()).observeSingleEvent(of: .value, with: { (snapshot) in
-            callback(snapshot)
-        }) { (error) in
-            Loger.instance.writeToLog(error.localizedDescription)
-        }
-    }
-    
 }
 
 //MARK: Extension - Saving/Updating the data
 
 extension FirebaseHelper {
 
+    //MARK: Saving
+    
     func saveObject(postObject: FirebaseDataProtocol?,
          callBack: @escaping (Error?, FIRDatabaseReference, FirebaseDataProtocol?) -> ()) {
         
@@ -54,13 +47,18 @@ extension FirebaseHelper {
         } else {
             updateObject(postObject: postObject, callBack: callBack)
         }
-        
     }
+    
+    //MARK: Removing
     
     func removeObjectByKey(_ key: String) {
         
-        databaseRef.child(getTableName()).child(key).removeValue()
-        
+        databaseRef.child(getTableName()).child(key).removeValue { (error, reference) in
+            
+            if let err = error {
+                Loger.instance.writeToLog(err.localizedDescription)
+            }
+        }        
     }
     
     func removeObjectBySubKey(subKeyName: String, subKeyValue: String) {
@@ -68,14 +66,15 @@ extension FirebaseHelper {
         databaseRef.child(getTableName()).queryOrdered(byChild: subKeyName)
             .queryEqual(toValue: subKeyValue)
             .observeSingleEvent(of: .value, with: { (snapshot) in
-            
                 for firebaseChildrens in snapshot.children {
                     
                     let childDict = (firebaseChildrens as! FIRDataSnapshot).value as! NSDictionary
                     let key = childDict["key"] as! String
                     self.removeObjectByKey(key)
-                }            
-        })
+                }
+            }) { (error) in
+                Loger.instance.writeToLog(error.localizedDescription)
+        }
     }
     
     //MARK: Private Functions
@@ -93,7 +92,6 @@ extension FirebaseHelper {
         ref.setValue(validObject.getPostData(), withCompletionBlock: { (error, reference) in
             callBack(error, reference, postObject)
         })
-        
     }
     
     private func updateObject(postObject: FirebaseDataProtocol?,
@@ -115,7 +113,7 @@ extension FirebaseHelper {
 
 extension FirebaseHelper {
     
-    //MARK: Functions
+    //MARK: Lisnteners
     
     internal func initObserve(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         
@@ -124,7 +122,17 @@ extension FirebaseHelper {
         }) { (error) in
             Loger.instance.writeToLog(error.localizedDescription)
         }
+    }
+    
+    internal func initObserveBySubKey(subKeyName: String, subKeyValue: String, callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         
+        databaseHandle = databaseRef.child(getTableName()).queryOrdered(byChild: subKeyName)
+            .queryEqual(toValue: subKeyValue)
+            .observe(.value, with: { (snapshot) in
+                callback(snapshot)
+            }) { (error) in
+                Loger.instance.writeToLog(error.localizedDescription)
+        }
     }
     
     internal func deinitObserve() {
@@ -134,7 +142,6 @@ extension FirebaseHelper {
         } else {
             databaseRef.child(getTableName()).removeAllObservers()
         }
-        
     }
     
 }
@@ -154,7 +161,6 @@ extension FirebaseHelper {
                 Loger.instance.writeToLog(error?.localizedDescription ?? "unhandled error")
             }
         }
-        
     }
     
     internal func saveImageToFirebase(imageName: String, image: UIImage,
@@ -171,7 +177,6 @@ extension FirebaseHelper {
                 callBack(true, metadata?.downloadURL())
             })
         }
-        
     }
     
     internal func removeImageFromStorage(imageName: String) {
@@ -180,8 +185,7 @@ extension FirebaseHelper {
             if error != nil {
                 Loger.instance.writeToLog((error?.localizedDescription) ?? "Error while deleting file \(imageName)")
             }
-        }
-        
+        }        
     }
     
 }

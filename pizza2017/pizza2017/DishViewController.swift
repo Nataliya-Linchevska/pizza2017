@@ -21,9 +21,17 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseHelper.initFirebaseObserve(dishKey: keyForDish) {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {    
+        super.viewWillAppear(animated)
+        
+        //activityIndicator.startAnimating()
+        firebaseHelper.initDishesObserve(keyForDish, callback: {
             self.collectionView.reloadData()
-        }
+            //self.activityIndicator.stopAnimating()
+        })
     }
     
     override func viewDidDisappear(_ animated: Bool) {

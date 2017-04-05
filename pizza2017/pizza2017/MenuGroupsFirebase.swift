@@ -15,7 +15,7 @@ class MenuGroupsFirebase: FirebaseHelper {
     
     private var menuGroups = [MenuGroupsModel]()
     
-    //MARK: Functions
+    //MARK: Firebase Functions
     
     override func getTableName() -> String {
         
@@ -28,19 +28,8 @@ class MenuGroupsFirebase: FirebaseHelper {
         return FirebaseTables.MenuGroups.ImageFolder
         
     }
-        
-    func reloadMenuGroups(callback: @escaping ()->()) {
-        
-        menuGroups.removeAll()
-        
-        reloadData{ (snapshot) -> () in
-            self.updateMenuGroups(snapshot)
-            callback()
-        }
-        
-    }
     
-    func initFirebaseObserve(callback: @escaping ()->()) {
+    func initMenuGroupsObserve(callback: @escaping ()->()) {
         
         menuGroups.removeAll()
         
@@ -50,6 +39,14 @@ class MenuGroupsFirebase: FirebaseHelper {
         }
 
     }
+    
+    func removeGroupByKey(_ groupKey: String) {
+        
+        removeObjectByKey(groupKey)
+        DishesGroupFirebase().removeDishesByGroupKey(groupKey)
+    }
+    
+    //MARK: Firebase Functions
     
     func getMenuGroups() -> [MenuGroupsModel] {
         

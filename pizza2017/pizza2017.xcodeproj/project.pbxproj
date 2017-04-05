@@ -147,10 +147,10 @@
 		CE2DB99A1E68B297009073BE /* DishesGroup */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */,
 				CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */,
-				CE2DB9A11E6966E0009073BE /* DishesGroupFirebase.swift */,
+				CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */,
 				CE2DB99F1E696426009073BE /* DishesGroupCollectionViewCell.swift */,
+				CE2DB9A11E6966E0009073BE /* DishesGroupFirebase.swift */,
 			);
 			name = DishesGroup;
 			sourceTree = "<group>";
@@ -158,8 +158,8 @@
 		CE2DB9A51E697CDE009073BE /* Dish */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
 				CE2DB9A61E697D05009073BE /* DishModel.swift */,
+				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
 				7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */,
 			);
 			name = Dish;
@@ -225,8 +225,8 @@
 		CEA6BB521E5EC2BF00057BA4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */,
 				CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */,
+				CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */,
 				CE9119D81E5DB07500674520 /* SettingsFirebase.swift */,
 			);
 			name = Settings;

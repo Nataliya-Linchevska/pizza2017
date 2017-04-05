@@ -15,7 +15,7 @@ class DishesGroupFirebase: FirebaseHelper {
     
     private var dishesGroups = [DishesGroupModel]()
     
-    //MARK: Functions
+    //MARK: Firebase Functions
     
     override func getTableName() -> String {
         
@@ -28,29 +28,24 @@ class DishesGroupFirebase: FirebaseHelper {
         return FirebaseTables.Dishes.ImageFolder
         
     }
-
     
-    func reloadDishesGroup(dishKey: String, callback: @escaping ()->()) {
+    func initDishesObserve(_ menuGroupKey: String, callback: @escaping ()->()) {
         
         dishesGroups.removeAll()
-        
-        reloadData { (snapshot) -> () in
-            self.updateDishesGroups(snapshot, dishKey)
-            callback()            
-        }
-        
-    }
-    
-    func initFirebaseObserve(dishKey: String, callback: @escaping ()->()) {
-        
-        dishesGroups.removeAll()
-        
-        super.initObserve { (snapshot) -> () in
-            self.updateDishesGroups(snapshot, dishKey)
+        initObserveBySubKey(subKeyName: FirebaseTables.Dishes.Child.KeyGroup, subKeyValue: menuGroupKey) { (snapshot) in
+            self.updateDishesGroups(snapshot, menuGroupKey)
             callback()
         }
         
     }
+    
+    func removeDishesByGroupKey(_ groupKey: String) {
+        
+        removeObjectBySubKey(subKeyName: FirebaseTables.Dishes.Child.KeyGroup, subKeyValue: groupKey)
+        
+    }
+    
+    //MARK: Dishes Functions
     
     func getDishesGroups() -> [DishesGroupModel] {
         
@@ -70,23 +65,22 @@ class DishesGroupFirebase: FirebaseHelper {
         
         for items in snapshot.children {
             
-            let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
-            let keyGroup = tasksInFirebase[FirebaseTables.Dishes.Child.KeyGroup] as! String
-            if keyGroup != dishKey {
-                continue
-            }
+            let validDishDictionary = (items as! FIRDataSnapshot).value as! NSDictionary
+            let keyGroup = validDishDictionary[FirebaseTables.Dishes.Child.KeyGroup] as! String
+            let name = validDishDictionary[FirebaseTables.Dishes.Child.Name] as! String
+            let description = validDishDictionary[FirebaseTables.Dishes.Child.Description] as! String
+            let price = validDishDictionary[FirebaseTables.Dishes.Child.Price] as! Float
+            let photoUrl = validDishDictionary[FirebaseTables.Dishes.Child.PhotoUrl] as! String
+            let photoName = validDishDictionary[FirebaseTables.Dishes.Child.PhotoName] as! String
+            let key = validDishDictionary[FirebaseTables.Dishes.Child.Key] as! String
             
-            let name = tasksInFirebase[FirebaseTables.Dishes.Child.Name] as! String
-            let description = tasksInFirebase[FirebaseTables.Dishes.Child.Description] as! String
-            let price = tasksInFirebase[FirebaseTables.Dishes.Child.Price] as! Float
-            let photoUrl = tasksInFirebase[FirebaseTables.Dishes.Child.PhotoUrl] as! String
-            let photoName = tasksInFirebase[FirebaseTables.Dishes.Child.PhotoName] as! String
-            let key = tasksInFirebase[FirebaseTables.Dishes.Child.Key] as! String
+            let dish = DishesGroupModel(name: name, description: description,
+                                        price: price, photoUrl: photoUrl,
+                                        photoName: photoName, keyGroup: keyGroup, key: key)
             
-            dishesGroups.append(DishesGroupModel(name: name, description: description,
-                                           price: price, photoUrl: photoUrl,
-                                           photoName: photoName, keyGroup: keyGroup, key: key))
+            dishesGroups.append(dish)
         }
-        
     }
+    
+    
 }

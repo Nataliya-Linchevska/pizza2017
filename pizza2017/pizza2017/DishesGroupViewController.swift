@@ -23,12 +23,18 @@ class DishesGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firebaseHelper.initFirebaseObserve(dishKey: keyForDish) { 
-            self.collectionView.reloadData()
-        }
-        
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //activityIndicator.startAnimating()
+        firebaseHelper.initDishesObserve(keyForDish) { 
+            self.collectionView.reloadData()
+            //self.activityIndicator.stopAnimating()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

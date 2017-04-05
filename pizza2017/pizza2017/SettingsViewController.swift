@@ -24,9 +24,15 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-       firebaseHelper.initFirebaseObserve { (settings) in
+        //activityIndicator.startAnimating()
+        firebaseHelper.initFirebaseObserve { (settings) in
             self.reloadView(taskSettings: settings)
+            //self.activityIndicator.stopAnimating()
         }
     }
     

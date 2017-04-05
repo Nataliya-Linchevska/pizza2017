@@ -24,27 +24,24 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*firebaseHelper.initFirebaseObserve {
-            self.CollectionView.reloadData()
-        }*/
-        
+        CollectionView.clearsContextBeforeDrawing = true
         CollectionView.delegate = self
         CollectionView.dataSource = self
         
         if !UserHelper.instance.isAdminLogged {
             topNavigationItem.rightBarButtonItem = nil
-        }
-        
+        }        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        // self.CollectionView.cl
         activityIndicator.startAnimating()
-        firebaseHelper.initFirebaseObserve {
+        firebaseHelper.initMenuGroupsObserve {            
             self.CollectionView.reloadData()
             self.activityIndicator.stopAnimating()
         }
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -58,7 +55,6 @@ class MenuViewController: UIViewController {
     @IBAction func addMenuGroupClick(_ sender: UIBarButtonItem) {
         
         showEditMenuGroupView(nil)
-        
     }
     
     //MARK: Functions
@@ -68,7 +64,6 @@ class MenuViewController: UIViewController {
         let controller = storyboard?.instantiateViewController(withIdentifier: "MenuEditViewController") as! MenuEditViewController
         controller.setModel(group)
         self.present(controller, animated: true)
-        
     }
 
 }
@@ -100,7 +95,6 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
 
 extension MenuViewController: EditableViewProtocol {
@@ -109,18 +103,13 @@ extension MenuViewController: EditableViewProtocol {
         
         let group = self.firebaseHelper.getMenuGroup(itemIndex)
         showEditMenuGroupView(group)
-        
     }
     
     func onDeleteData(_ itemIndex: Int) {
         
         Utilities.showQuestionMessage("", "Do you really want to remove this group?", self) {
             let group = self.firebaseHelper.getMenuGroup(itemIndex)
-            self.firebaseHelper.removeObjectByKey(group.key)
-            DishesGroupFirebase().removeObjectBySubKey(subKeyName: FirebaseTables.Dishes.Child.KeyGroup,
-                                                       subKeyValue: group.key)
+            self.firebaseHelper.removeGroupByKey(group.key)
         }
-        
-    }
-    
+    }    
 }
