@@ -87,6 +87,12 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func btnAddDishToList(_ sender: UIButton) {
+        
+        
+        let alert = UIAlertController(title: "", message: "Блюдо добавлено в корзину", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
