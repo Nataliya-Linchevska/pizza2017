@@ -668,6 +668,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="btnRight" destination="VMr-m0-zYs" id="bsb-g3-6di"/>
                         <outlet property="collectionView" destination="d9c-5y-naE" id="VPZ-y4-uor"/>
                     </connections>
                 </viewController>

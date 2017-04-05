@@ -11,6 +11,7 @@ import UIKit
 class DishViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     //MARK: Properties
+    @IBOutlet weak var btnRight: UIBarButtonItem!
     
     @IBOutlet weak var collectionView: UICollectionView!
     var firebaseHelper = DishesGroupFirebase()
@@ -28,6 +29,16 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        var sum = 0.0
+        _ = BacketHelper.backetDishes.map({ (m) in
+            sum += Double(m.price)
+        })
+        
+        btnRight.title = "Козина(\(sum))"
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -100,6 +111,13 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let dish = DishModel(name: dishesGroup.name, description: dishesGroup.description, price: dishesGroup.price, photoUrl: dishesGroup.photoUrl, photoName: dishesGroup.photoName, keyGroup: dishesGroup.keyGroup, key: dishesGroup.key)
         
         BacketHelper.backetDishes.append(dish)
+        
+        var sum = 0.0
+        _ = BacketHelper.backetDishes.map({ (m) in
+            sum += Double(m.price)
+        })
+        
+        btnRight.title = "Козина(\(sum))"
         
         let alert = UIAlertController(title: "", message: "Блюдо добавлено в корзину", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
