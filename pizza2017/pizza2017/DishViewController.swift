@@ -16,6 +16,7 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     var firebaseHelper = DishesGroupFirebase()
 
     var keyForDish: String = ""
+    var selectedIndex: IndexPath?
     
     //MARK: Virtual functions - ?????
     
@@ -23,7 +24,10 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         firebaseHelper.initFirebaseObserve(dishKey: keyForDish) {
             self.collectionView.reloadData()
+            self.collectionView.scrollToItem(at: self.selectedIndex!, at: .left, animated: false)
         }
+        
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

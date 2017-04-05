@@ -66,8 +66,8 @@ extension DishesGroupViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "Dish") as! DishViewController
         controller.keyForDish = keyForDish
-//        let dishesGroup = firebaseHelper.getDishesGroup(indexPath.item)
-//        controller.dishModel = DishModel(name: dishesGroup.name, description: dishesGroup.description, price: dishesGroup.price, photoUrl: dishesGroup.photoUrl, photoName: dishesGroup.photoName, keyGroup: dishesGroup.keyGroup, key: dishesGroup.key)
+        controller.selectedIndex = indexPath
+
         navigationController?.pushViewController(controller, animated: true)
     }
 
