@@ -18,7 +18,7 @@ class FirebaseHelper {
     
     //MARK: Properties
     
-    internal var databaseObserversRef = [FIRDatabaseReference : FIRDatabaseHandle?]()
+    internal var databaseObserversRef = [FIRDatabaseReference : FIRDatabaseHandle]()
     
     //MARK: Functions
     
@@ -117,35 +117,31 @@ extension FirebaseHelper {
     internal func initObserve(callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         
         let obsRef = databaseRef.child(getTableName())
-        let databaseHandle = obsRef.observe(FIRDataEventType.value, with: { (snapshot) in
+        databaseObserversRef[obsRef] = obsRef.observe(FIRDataEventType.value, with: { (snapshot) in
             callback(snapshot)
         }) { (error) in
             Loger.instance.writeToLog(error.localizedDescription)
         }
-        databaseObserversRef[obsRef] = databaseHandle
     }
     
     internal func initObserveBySubKey(subKeyName: String, subKeyValue: String, callback: @escaping (_ snapshot: FIRDataSnapshot)->()) {
         
         let obsRefSub = databaseRef.child(getTableName())
-        let databaseHandle = obsRefSub.queryOrdered(byChild: subKeyName)
+        databaseObserversRef[obsRefSub] = (obsRefSub.queryOrdered(byChild: subKeyName)
             .queryEqual(toValue: subKeyValue).observe(.value, with: { (snapshot) in
                 callback(snapshot)
             }) { (error) in
                 Loger.instance.writeToLog(error.localizedDescription)
-        }
-        databaseObserversRef[obsRefSub] = databaseHandle
+            })
     }
     
     internal func deinitObserve() {
         
-        for dbRef in databaseObserversRef {
+        let refTemp = databaseObserversRef
+        for dbRef in refTemp {
             
-            if let validHandle = dbRef.value {
-                dbRef.key.child(getTableName()).removeObserver(withHandle: validHandle)
-            } else {
-                dbRef.key.child(getTableName()).removeAllObservers()
-            }
+            dbRef.key.removeObserver(withHandle: dbRef.value)
+            databaseObserversRef.removeValue(forKey: dbRef.key)
         }
     }
     
