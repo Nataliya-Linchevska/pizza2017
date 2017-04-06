@@ -9,11 +9,11 @@
 import Foundation
 import Firebase
 
-class DishesGroupFirebase: FirebaseHelper {
+class DishFirebase: FirebaseHelper {
     
     //MARK: Properties
     
-    private var dishesGroups = [DishesGroupModel]()
+    private var dishes = [DishModel]()
     
     //MARK: Firebase Functions
     
@@ -31,7 +31,7 @@ class DishesGroupFirebase: FirebaseHelper {
     
     func initDishesObserve(_ menuGroupKey: String, callback: @escaping ()->()) {
         
-        dishesGroups.removeAll()
+        dishes.removeAll()
         initObserveBySubKey(subKeyName: FirebaseTables.Dishes.Child.KeyGroup, subKeyValue: menuGroupKey) { (snapshot) in
             self.updateDishesGroups(snapshot, menuGroupKey)
             callback()
@@ -47,21 +47,21 @@ class DishesGroupFirebase: FirebaseHelper {
     
     //MARK: Dishes Functions
     
-    func getDishesGroups() -> [DishesGroupModel] {
+    func getDishes() -> [DishModel] {
         
-        return dishesGroups
+        return dishes
         
     }
     
-    func getDishesGroup(_ index: Int) -> DishesGroupModel {
+    func getDish(_ index: Int) -> DishModel {
         
-        return dishesGroups[index]
+        return dishes[index]
         
     }
     
     private func updateDishesGroups(_ snapshot: FIRDataSnapshot, _ dishKey: String) {
         
-        dishesGroups.removeAll()
+        dishes.removeAll()
         
         for items in snapshot.children {
             
@@ -74,11 +74,11 @@ class DishesGroupFirebase: FirebaseHelper {
             let photoName = validDishDictionary[FirebaseTables.Dishes.Child.PhotoName] as! String
             let key = validDishDictionary[FirebaseTables.Dishes.Child.Key] as! String
             
-            let dish = DishesGroupModel(name: name, description: description,
+            let dish = DishModel(name: name, description: description,
                                         price: price, photoUrl: photoUrl,
                                         photoName: photoName, keyGroup: keyGroup, key: key)
             
-            dishesGroups.append(dish)
+            dishes.append(dish)
         }
     }
     

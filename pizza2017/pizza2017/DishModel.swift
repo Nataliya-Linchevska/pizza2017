@@ -8,14 +8,21 @@
 
 import Foundation
 
-class DishModel {
-    var name: String
-    var description: String
-    var price: Float
-    var photoUrl: String
-    var photoName: String
-    var keyGroup: String
-    var key: String
+class DishModel: FirebaseDataProtocol {
+        
+    //Properties
+    
+    var name: String = ""
+    var description: String = ""
+    var price: Float = 0
+    var photoUrl: String = ""
+    var photoName: String = ""
+    var keyGroup: String = ""
+    var key: String = ""
+    
+    //MARK: Init
+    
+    init() { }
     
     init(name: String, description: String, price: Float, photoUrl: String, photoName: String, keyGroup: String, key: String) {
         self.name = name
@@ -26,4 +33,23 @@ class DishModel {
         self.keyGroup = keyGroup
         self.key = key
     }
+    
+    //MARK: Functions
+    
+    func getPostData() -> [String : Any] {
+        
+        return [
+            
+            FirebaseTables.Dishes.Child.Key : key,
+            FirebaseTables.Dishes.Child.KeyGroup : keyGroup,
+            FirebaseTables.Dishes.Child.Name : name,
+            FirebaseTables.Dishes.Child.Description : description,
+            FirebaseTables.Dishes.Child.Price : "\(price)",
+            FirebaseTables.Dishes.Child.PhotoName : photoName,
+            FirebaseTables.Dishes.Child.PhotoUrl : photoUrl,
+            
+        ]
+        
+    }
+
 }

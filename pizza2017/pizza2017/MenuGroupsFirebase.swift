@@ -43,7 +43,7 @@ class MenuGroupsFirebase: FirebaseHelper {
     func removeGroupByKey(_ groupKey: String) {
         
         removeObjectByKey(groupKey)
-        DishesGroupFirebase().removeDishesByGroupKey(groupKey)
+        DishFirebase().removeDishesByGroupKey(groupKey)
     }
     
     //MARK: Firebase Functions

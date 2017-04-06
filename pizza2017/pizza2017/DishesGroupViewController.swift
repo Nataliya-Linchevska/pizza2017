@@ -16,7 +16,7 @@ class DishesGroupViewController: UIViewController {
     
     var keyForDish: String = ""
     
-    var firebaseHelper = DishesGroupFirebase()
+    var firebaseHelper = DishFirebase()
 
     //MARK: Virtual Functions
     
@@ -50,13 +50,13 @@ extension DishesGroupViewController: UICollectionViewDelegate, UICollectionViewD
     //MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return firebaseHelper.getDishesGroups().count
+        return firebaseHelper.getDishes().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dishGroupCell", for: indexPath) as! DishesGroupCollectionViewCell
         
-        let dishesGroup = firebaseHelper.getDishesGroup(indexPath.item)
+        let dishesGroup = firebaseHelper.getDish(indexPath.item)
         cell.lblTitle.text = dishesGroup.name
         cell.lblPrice.text = dishesGroup.price.description
         

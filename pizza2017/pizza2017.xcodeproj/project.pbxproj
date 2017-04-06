@@ -19,11 +19,11 @@
 		B58C36751E9413E400B1A4E7 /* EditableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C36741E9413E400B1A4E7 /* EditableViewProtocol.swift */; };
 		B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = B591F9171E8D84530019EF7A /* FirebaseTables.swift */; };
 		B59A2DA01E8F8B5D00831A06 /* FirebaseDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59A2D9F1E8F8B5D00831A06 /* FirebaseDataProtocol.swift */; };
+		B59C265E1E966875006A651B /* MenuGroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C265D1E966875006A651B /* MenuGroupsModel.swift */; };
 		CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */; };
 		CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */; };
-		CE2DB99E1E68B3AA009073BE /* DishesGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */; };
 		CE2DB9A01E696426009073BE /* DishesGroupCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB99F1E696426009073BE /* DishesGroupCollectionViewCell.swift */; };
-		CE2DB9A21E6966E0009073BE /* DishesGroupFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A11E6966E0009073BE /* DishesGroupFirebase.swift */; };
+		CE2DB9A21E6966E0009073BE /* DishFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A11E6966E0009073BE /* DishFirebase.swift */; };
 		CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A61E697D05009073BE /* DishModel.swift */; };
 		CE2DB9A91E697DCA009073BE /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2DB9A81E697DCA009073BE /* DishViewController.swift */; };
 		CE7642B21E5D922900B0E47F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7642B11E5D922900B0E47F /* AppDelegate.swift */; };
@@ -38,7 +38,6 @@
 		CEA6BB491E5DBDB900057BA4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEA6BB481E5DBDB900057BA4 /* GoogleService-Info.plist */; };
 		CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */; };
 		CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */; };
-		CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */; };
 		CEB527D31E60643300A1586C /* MenuGroupsFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */; };
 		E9BF009F90AAD1D0AD445997 /* Pods_pizza2017.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */; };
 /* End PBXBuildFile section */
@@ -57,12 +56,12 @@
 		B58C36741E9413E400B1A4E7 /* EditableViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableViewProtocol.swift; sourceTree = "<group>"; };
 		B591F9171E8D84530019EF7A /* FirebaseTables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseTables.swift; sourceTree = "<group>"; };
 		B59A2D9F1E8F8B5D00831A06 /* FirebaseDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataProtocol.swift; sourceTree = "<group>"; };
+		B59C265D1E966875006A651B /* MenuGroupsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsModel.swift; sourceTree = "<group>"; };
 		BA3E4A9F46A0299C9956BC75 /* Pods-pizza2017.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.debug.xcconfig"; sourceTree = "<group>"; };
 		CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupViewController.swift; sourceTree = "<group>"; };
-		CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupModel.swift; sourceTree = "<group>"; };
 		CE2DB99F1E696426009073BE /* DishesGroupCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupCollectionViewCell.swift; sourceTree = "<group>"; };
-		CE2DB9A11E6966E0009073BE /* DishesGroupFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesGroupFirebase.swift; sourceTree = "<group>"; };
+		CE2DB9A11E6966E0009073BE /* DishFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishFirebase.swift; sourceTree = "<group>"; };
 		CE2DB9A61E697D05009073BE /* DishModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishModel.swift; sourceTree = "<group>"; };
 		CE2DB9A81E697DCA009073BE /* DishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		CE7642AE1E5D922900B0E47F /* pizza2017.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pizza2017.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +78,6 @@
 		CEA6BB481E5DBDB900057BA4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEA6BB4A1E5DCDE900057BA4 /* SettingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		CEA6BB4E1E5DCE6300057BA4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsModel.swift; sourceTree = "<group>"; };
 		CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuGroupsFirebase.swift; sourceTree = "<group>"; };
 		EE8D66C04B938A5465B64A21 /* Pods_pizza2017.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pizza2017.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,10 +145,8 @@
 		CE2DB99A1E68B297009073BE /* DishesGroup */ = {
 			isa = PBXGroup;
 			children = (
-				CE2DB99D1E68B3AA009073BE /* DishesGroupModel.swift */,
 				CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */,
 				CE2DB99F1E696426009073BE /* DishesGroupCollectionViewCell.swift */,
-				CE2DB9A11E6966E0009073BE /* DishesGroupFirebase.swift */,
 			);
 			name = DishesGroup;
 			sourceTree = "<group>";
@@ -161,6 +157,7 @@
 				CE2DB9A61E697D05009073BE /* DishModel.swift */,
 				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
 				7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */,
+				CE2DB9A11E6966E0009073BE /* DishFirebase.swift */,
 			);
 			name = Dish;
 			sourceTree = "<group>";
@@ -235,11 +232,11 @@
 		CEA6BB531E5EC37B00057BA4 /* MenuGroups */ = {
 			isa = PBXGroup;
 			children = (
-				CEB527D01E6062CA00A1586C /* MenuGroupsModel.swift */,
 				CE9119D01E5DAFDB00674520 /* MenuViewController.swift */,
 				B5673E371E879FA100CC1999 /* MenuEditViewController.swift */,
 				CE256F3A1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift */,
 				CEB527D21E60643300A1586C /* MenuGroupsFirebase.swift */,
+				B59C265D1E966875006A651B /* MenuGroupsModel.swift */,
 			);
 			name = MenuGroups;
 			sourceTree = "<group>";
@@ -379,10 +376,11 @@
 				CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */,
 				B57E570D1E90FCFB000781E6 /* ExtensionImage.swift in Sources */,
 				B529814B1E8B115E00673275 /* Loger.swift in Sources */,
+				B59C265E1E966875006A651B /* MenuGroupsModel.swift in Sources */,
 				B57DC4FE1E8AFD2300CC429D /* ExtensionDate.swift in Sources */,
 				B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */,
 				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
-				CE2DB9A21E6966E0009073BE /* DishesGroupFirebase.swift in Sources */,
+				CE2DB9A21E6966E0009073BE /* DishFirebase.swift in Sources */,
 				CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */,
 				CEB527D31E60643300A1586C /* MenuGroupsFirebase.swift in Sources */,
 				B57DC4FC1E8AE6B600CC429D /* ExtensionString.swift in Sources */,
@@ -394,7 +392,6 @@
 				B578C5B51E92311D0052E404 /* Utilities.swift in Sources */,
 				B58C36751E9413E400B1A4E7 /* EditableViewProtocol.swift in Sources */,
 				B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */,
-				CEB527D11E6062CA00A1586C /* MenuGroupsModel.swift in Sources */,
 				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,
 				B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */,
 				CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */,
@@ -404,7 +401,6 @@
 				CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,
 				7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */,
-				CE2DB99E1E68B3AA009073BE /* DishesGroupModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

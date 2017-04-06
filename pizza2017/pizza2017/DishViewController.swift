@@ -13,7 +13,7 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //MARK: Properties
     
     @IBOutlet weak var collectionView: UICollectionView!
-    var firebaseHelper = DishesGroupFirebase()
+    var firebaseHelper = DishFirebase()
 
     var keyForDish: String = ""
     
@@ -46,13 +46,13 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return firebaseHelper.getDishesGroups().count
+        return firebaseHelper.getDishes().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DishCell", for: indexPath) as! DishCollectionViewCell
         
-        let dishesGroup = firebaseHelper.getDishesGroup(indexPath.item)
+        let dishesGroup = firebaseHelper.getDish(indexPath.item)
         cell.lblPrice.text = "\(dishesGroup.price)"
         cell.tvDescription.text = dishesGroup.description
         cell.lblTitle.text = dishesGroup.name
@@ -78,7 +78,7 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         selectedIndex.row += 1
-        if selectedIndex.row>=firebaseHelper.getDishesGroups().count {return}
+        if selectedIndex.row>=firebaseHelper.getDishes().count {return}
         collectionView.scrollToItem(at: selectedIndex, at: .left, animated: true)
     }
     

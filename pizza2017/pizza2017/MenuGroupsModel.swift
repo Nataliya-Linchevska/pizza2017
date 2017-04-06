@@ -2,14 +2,13 @@
 //  MenuGroupsModel.swift
 //  pizza2017
 //
-//  Created by user on 24.02.17.
+//  Created by konstantin on 4/6/17.
 //  Copyright © 2017 GeekHub. All rights reserved.
 //
-
 import Foundation
 
 class MenuGroupsModel: FirebaseDataProtocol {
-        
+    
     //MARK: Properties
     
     var key: String = ""
@@ -38,7 +37,7 @@ class MenuGroupsModel: FirebaseDataProtocol {
             FirebaseTables.MenuGroups.Child.Name : name,
             FirebaseTables.MenuGroups.Child.PhotoName : photoName,
             FirebaseTables.MenuGroups.Child.PhotoUrl : photoUrl,
-        
+            
         ]
         
     }
