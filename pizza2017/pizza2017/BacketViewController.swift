@@ -8,11 +8,20 @@
 
 import UIKit
 
+
+enum BacketStyle: Int {
+    case Backet
+    case OrderList
+}
+
+
 class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView?
     var dishesFirebaseHelper = DishFirebase()
     var deliveryHelper = DeliveryFirebase()
+    
+    var backetStyle = BacketStyle.Backet
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,22 +31,6 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 60
     }
@@ -51,7 +44,8 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let segmentController = UISegmentedControl(items: ["Корзина", "Список заказов"])
         segmentController.frame = CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30)
-        segmentController.selectedSegmentIndex = 0
+        segmentController.selectedSegmentIndex = backetStyle.rawValue
+        segmentController.addTarget(self, action: #selector(self.segmentChanged(sender:)), for: .valueChanged)
         headerView.addSubview(segmentController)
         
         return headerView
@@ -59,7 +53,7 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
-        footerView.backgroundColor = UIColor.red
+
         let button = UIButton(frame: CGRect(x: 10, y: 10, width: 150, height: 40))
         button.backgroundColor = UIColor.green
         button.setTitle("ОФОРМИТЬ", for: .normal)
@@ -84,7 +78,7 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BacketHelper.backetDishes.count
+        return backetStyle == .Backet ? BacketHelper.backetDishes.count : [].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -142,6 +136,12 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func segmentChanged(sender: UISegmentedControl) {
+        backetStyle = BacketStyle(rawValue: sender.selectedSegmentIndex)!
+        tableView?.reloadData()
+        
     }
 
 }
