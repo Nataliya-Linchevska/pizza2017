@@ -11,7 +11,8 @@ import UIKit
 class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView?
-    var firebaseHelper = DishesGroupFirebase()
+    var dishesFirebaseHelper = DishesGroupFirebase()
+    var deliveryHelper = DeliveryFirebase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,21 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        
+        let segmentController = UISegmentedControl(items: ["Корзина", "Список заказов"])
+        segmentController.frame = CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30)
+        segmentController.selectedSegmentIndex = 0
+        headerView.addSubview(segmentController)
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -76,7 +92,7 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         cell.lblTitle?.text = BacketHelper.backetDishes[indexPath.row].name
         cell.lblPrice?.text = BacketHelper.backetDishes[indexPath.row].price.description
-        firebaseHelper.getImageFromStorage(nameOfImage: BacketHelper.backetDishes[indexPath.row].photoName, callBack: { image in
+        dishesFirebaseHelper.getImageFromStorage(nameOfImage: BacketHelper.backetDishes[indexPath.row].photoName, callBack: { image in
             cell.imgDishImage?.image = image
         })
 
@@ -99,6 +115,27 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func createOrder() {
+        
+        var sum = 0.0
+        var keysDishes = [String]()
+        var numbersDishes = [String]()
+        _ = BacketHelper.backetDishes.map({ (m) in
+            sum += Double(m.price)
+            keysDishes.append(m.key)
+            numbersDishes.append("1")
+        })
+        
+        let delivery = DeliveryModel(name: "dfdfgfdg", addressClient: "", commentClient: "", keysDishes: keysDishes, latitude: 100.description, longitude: 100.description, nameClient: "sadf", numbersDishes: numbersDishes, paid: "false", phoneClient: "", totalSum: sum.description, userEmail: "", userId: "")
+        
+        self.deliveryHelper.saveObject(postObject: delivery as FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
+            
+            guard error == nil else {
+                Utilities.showAllertMessage("Loading image to server: ERROR", self)
+                return
+            }
+        })
+
+        
         BacketHelper.backetDishes.removeAll()
         tableView?.reloadData()
         let alert = UIAlertController(title: "", message: "Заказ отправлен", preferredStyle: .alert)

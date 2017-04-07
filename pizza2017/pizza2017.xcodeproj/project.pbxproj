@@ -11,6 +11,8 @@
 		7D73EE841E95274E00BD3ABB /* BacketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE831E95274E00BD3ABB /* BacketViewController.swift */; };
 		7D73EE861E95277A00BD3ABB /* BacketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */; };
 		7D73EE881E952F1A00BD3ABB /* BacketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE871E952F1A00BD3ABB /* BacketHelper.swift */; };
+		7D73EE8A1E95844000BD3ABB /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE891E95844000BD3ABB /* DeliveryModel.swift */; };
+		7D73EE8C1E958D9000BD3ABB /* DeliveryFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE8B1E958D9000BD3ABB /* DeliveryFirebase.swift */; };
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
@@ -51,6 +53,8 @@
 		7D73EE831E95274E00BD3ABB /* BacketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketViewController.swift; sourceTree = "<group>"; };
 		7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketTableViewCell.swift; sourceTree = "<group>"; };
 		7D73EE871E952F1A00BD3ABB /* BacketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketHelper.swift; sourceTree = "<group>"; };
+		7D73EE891E95844000BD3ABB /* DeliveryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
+		7D73EE8B1E958D9000BD3ABB /* DeliveryFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryFirebase.swift; sourceTree = "<group>"; };
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 			children = (
 				7D73EE831E95274E00BD3ABB /* BacketViewController.swift */,
 				7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */,
+				7D73EE891E95844000BD3ABB /* DeliveryModel.swift */,
+				7D73EE8B1E958D9000BD3ABB /* DeliveryFirebase.swift */,
 			);
 			name = BacketGroup;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				CE9119D91E5DB07500674520 /* SettingsFirebase.swift in Sources */,
 				B57E570D1E90FCFB000781E6 /* ExtensionImage.swift in Sources */,
 				7D73EE881E952F1A00BD3ABB /* BacketHelper.swift in Sources */,
+				7D73EE8A1E95844000BD3ABB /* DeliveryModel.swift in Sources */,
 				B529814B1E8B115E00673275 /* Loger.swift in Sources */,
 				B57DC4FE1E8AFD2300CC429D /* ExtensionDate.swift in Sources */,
 				B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */,
@@ -421,6 +428,7 @@
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,
 				7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */,
 				CE2DB99E1E68B3AA009073BE /* DishesGroupModel.swift in Sources */,
+				7D73EE8C1E958D9000BD3ABB /* DeliveryFirebase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
