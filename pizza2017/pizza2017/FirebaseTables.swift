@@ -28,6 +28,21 @@ struct FirebaseTables {
         static let TableName = "deliveries"
         
         struct Child {
+            static let KeyGroup = "keyGroup"
+            static let Name = "name"
+            static let AddressClient = "addressClient"
+            static let Key = "key"
+            static let CommentClient = "commentClient"
+            static let KeysDishes = "keysDishes"
+            static let Latitude = "latitude"
+            static let Longitude = "longitude"
+            static let NameClient = "nameClient"
+            static let NumbersDishes = "numbersDishes"
+            static let Paid = "paid"
+            static let PhoneClient = "phoneClient"
+            static let TotalSum = "totalSum"
+            static let UserEmail = "userEmail"
+            static let UserId = "userId"
             
         }
     }
