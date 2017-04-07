@@ -23,16 +23,26 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var backetStyle = BacketStyle.Backet
     
+    var deliveries = [DeliveryModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView?.delegate = self
         tableView?.dataSource = self
+        
+        //activityIndicator.startAnimating()
+        deliveryHelper.initFirebaseObserve(dishKey: "", callback: {
+            
+            self.deliveries = self.deliveryHelper.getDeliveries()
+            self.tableView?.reloadData()
+            
+        })
 
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 60
+        return backetStyle == .Backet ? 60 : 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -52,6 +62,8 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if backetStyle != .Backet {return nil}
+        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
 
         let button = UIButton(frame: CGRect(x: 10, y: 10, width: 150, height: 40))
@@ -78,19 +90,29 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return backetStyle == .Backet ? BacketHelper.backetDishes.count : [].count
+        return backetStyle == .Backet ? BacketHelper.backetDishes.count : deliveries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BacketCell", for: indexPath) as! BacketTableViewCell
         
-        cell.lblTitle?.text = BacketHelper.backetDishes[indexPath.row].name
-        cell.lblPrice?.text = BacketHelper.backetDishes[indexPath.row].price.description
-        dishesFirebaseHelper.getImageFromStorage(nameOfImage: BacketHelper.backetDishes[indexPath.row].photoName, callBack: { image in
-            cell.imgDishImage?.image = image
-        })
+        if (backetStyle == .Backet) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BacketCell", for: indexPath) as! BacketTableViewCell
+            
+            cell.lblTitle?.text = BacketHelper.backetDishes[indexPath.row].name
+            cell.lblPrice?.text = BacketHelper.backetDishes[indexPath.row].price.description
+            dishesFirebaseHelper.getImageFromStorage(nameOfImage: BacketHelper.backetDishes[indexPath.row].photoName, callBack: { image in
+                cell.imgDishImage?.image = image
+            })
+            
+            return cell
+        } else {
+             let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryCell", for: indexPath) as! DeliveryTableViewCell
+            cell.lblPrice?.text = deliveries[indexPath.row].totalSum
+            cell.lblTitle?.text = deliveries[indexPath.row].name
+            return cell
+        }
 
-        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

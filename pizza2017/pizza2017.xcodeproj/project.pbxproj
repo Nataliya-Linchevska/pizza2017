@@ -14,6 +14,7 @@
 		7D73EE8A1E95844000BD3ABB /* DeliveryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE891E95844000BD3ABB /* DeliveryModel.swift */; };
 		7D73EE8C1E958D9000BD3ABB /* DeliveryFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE8B1E958D9000BD3ABB /* DeliveryFirebase.swift */; };
 		7DA9D1811E97A8A5002A5CA9 /* DishFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9D1801E97A8A5002A5CA9 /* DishFirebase.swift */; };
+		7DA9D1831E9807E5002A5CA9 /* DeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9D1821E9807E5002A5CA9 /* DeliveryTableViewCell.swift */; };
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
@@ -56,6 +57,7 @@
 		7D73EE891E95844000BD3ABB /* DeliveryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryModel.swift; sourceTree = "<group>"; };
 		7D73EE8B1E958D9000BD3ABB /* DeliveryFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryFirebase.swift; sourceTree = "<group>"; };
 		7DA9D1801E97A8A5002A5CA9 /* DishFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishFirebase.swift; sourceTree = "<group>"; };
+		7DA9D1821E9807E5002A5CA9 /* DeliveryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */,
 				7D73EE891E95844000BD3ABB /* DeliveryModel.swift */,
 				7D73EE8B1E958D9000BD3ABB /* DeliveryFirebase.swift */,
+				7DA9D1821E9807E5002A5CA9 /* DeliveryTableViewCell.swift */,
 			);
 			name = BacketGroup;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
 				B578C5B51E92311D0052E404 /* Utilities.swift in Sources */,
 				B58C36751E9413E400B1A4E7 /* EditableViewProtocol.swift in Sources */,
+				7DA9D1831E9807E5002A5CA9 /* DeliveryTableViewCell.swift in Sources */,
 				B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */,
 				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,
 				B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */,

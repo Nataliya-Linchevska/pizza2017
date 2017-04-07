@@ -14,7 +14,7 @@ class DeliveryFirebase: FirebaseHelper {
     
     //MARK: Properties
     
-//    private var dishesGroups = [DishesGroupModel]()
+    private var deliveries = [DeliveryModel]()
     
     //MARK: Functions
     
@@ -25,63 +25,57 @@ class DeliveryFirebase: FirebaseHelper {
     }
     
     
-//    func reloadDishesGroup(dishKey: String, callback: @escaping ()->()) {
-//        
-//        dishesGroups.removeAll()
-//        
-//        reloadData { (snapshot) -> () in
-//            self.updateDishesGroups(snapshot, dishKey)
-//            callback()
-//        }
-//        
-//    }
+    func initFirebaseObserve(dishKey: String, callback: @escaping ()->()) {
+        
+        deliveries.removeAll()
+        
+        super.initObserve { (snapshot) -> () in
+            self.updateDeliveries(snapshot, dishKey)
+            callback()
+        }
+        
+    }
     
-//    func initFirebaseObserve(dishKey: String, callback: @escaping ()->()) {
-//        
-//        dishesGroups.removeAll()
-//        
-//        super.initObserve { (snapshot) -> () in
-//            self.updateDishesGroups(snapshot, dishKey)
-//            callback()
-//        }
-//        
-//    }
+    func getDeliveries() -> [DeliveryModel] {
+        
+        return deliveries
+        
+    }
     
-//    func getDishesGroups() -> [DishesGroupModel] {
-//        
-//        return dishesGroups
-//        
-//    }
-//    
-//    func getDishesGroup(_ index: Int) -> DishesGroupModel {
-//        
-//        return dishesGroups[index]
-//        
-//    }
-//    
-//    private func updateDishesGroups(_ snapshot: FIRDataSnapshot, _ dishKey: String) {
-//        
-//        dishesGroups.removeAll()
-//        
-//        for items in snapshot.children {
-//            
-//            let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
-//            let keyGroup = tasksInFirebase[FirebaseTables.Dishes.Child.KeyGroup] as! String
+    func getDeliverie(_ index: Int) -> DeliveryModel {
+        
+        return deliveries[index]
+        
+    }
+    
+    private func updateDeliveries(_ snapshot: FIRDataSnapshot, _ dishKey: String) {
+        
+        deliveries.removeAll()
+        
+        for items in snapshot.children {
+            
+            let tasksInFirebase = (items as! FIRDataSnapshot).value as! NSDictionary
+//            let keyGroup = tasksInFirebase[FirebaseTables.Deliveries.Child.KeyGroup] as! String
 //            if keyGroup != dishKey {
 //                continue
 //            }
-//            
-//            let name = tasksInFirebase[FirebaseTables.Dishes.Child.Name] as! String
-//            let description = tasksInFirebase[FirebaseTables.Dishes.Child.Description] as! String
-//            let price = tasksInFirebase[FirebaseTables.Dishes.Child.Price] as! Float
-//            let photoUrl = tasksInFirebase[FirebaseTables.Dishes.Child.PhotoUrl] as! String
-//            let photoName = tasksInFirebase[FirebaseTables.Dishes.Child.PhotoName] as! String
-//            let key = tasksInFirebase[FirebaseTables.Dishes.Child.Key] as! String
-//            
-//            dishesGroups.append(DishesGroupModel(name: name, description: description,
-//                                                 price: price, photoUrl: photoUrl,
-//                                                 photoName: photoName, keyGroup: keyGroup, key: key))
-//        }
-//        
-//    }
+            
+            let name = tasksInFirebase[FirebaseTables.Deliveries.Child.Name] as? String
+            let addressClient = tasksInFirebase[FirebaseTables.Deliveries.Child.AddressClient] as? String
+            let commentClient = tasksInFirebase[FirebaseTables.Deliveries.Child.CommentClient] as? String
+            let keysDishes = tasksInFirebase[FirebaseTables.Deliveries.Child.KeysDishes] as? [String]
+            let latitude = tasksInFirebase[FirebaseTables.Deliveries.Child.Latitude] as? String
+            let longitude = tasksInFirebase[FirebaseTables.Deliveries.Child.Longitude] as? String
+            let nameClient = tasksInFirebase[FirebaseTables.Deliveries.Child.NameClient] as? String
+            let numbersDishes = tasksInFirebase[FirebaseTables.Deliveries.Child.NumbersDishes] as? [String]
+            let paid = tasksInFirebase[FirebaseTables.Deliveries.Child.Paid] as? String
+            let phoneClient = tasksInFirebase[FirebaseTables.Deliveries.Child.PhoneClient] as? String
+            let totalSum = tasksInFirebase[FirebaseTables.Deliveries.Child.TotalSum] as? String
+            let userEmail = tasksInFirebase[FirebaseTables.Deliveries.Child.UserEmail] as? String
+            let userId = tasksInFirebase[FirebaseTables.Deliveries.Child.UserId] as? String
+            
+            deliveries.append(DeliveryModel(name: name ?? "", addressClient: addressClient ?? "", commentClient: commentClient ?? "", keysDishes: keysDishes ?? [""], latitude: latitude ?? "", longitude: longitude ?? "", nameClient: nameClient ?? "", numbersDishes: numbersDishes ?? [""], paid: paid ?? "", phoneClient: phoneClient ?? "", totalSum: totalSum ?? "", userEmail: userEmail ?? "", userId: userId ?? ""))
+        }
+        
+    }
 }
