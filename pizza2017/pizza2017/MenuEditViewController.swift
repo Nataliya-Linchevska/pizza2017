@@ -47,7 +47,6 @@ class MenuEditViewController: UIViewController {
         
     }
     
-    
     //MARK: General function
     
     func setModel(_ inputMenuGroup: MenuGroupsModel?) {

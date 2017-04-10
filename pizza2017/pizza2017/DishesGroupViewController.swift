@@ -25,6 +25,11 @@ class DishesGroupViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let barButton = UIBarButtonItem(image: Utilities.getDefaultMenuImage(),
+                                        landscapeImagePhone: nil, style: .done,
+                                        target: self, action: #selector(menuButtonClicked))
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +46,40 @@ class DishesGroupViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         firebaseHelper.deinitObserve()
+    }   
+    
+    //MARK: Functions
+    
+    func menuButtonClicked(){
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Edit group", style: UIAlertActionStyle.default, handler: { (action:  UIAlertAction!) in
+            self.onEditGroup()
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Remove group", style: UIAlertActionStyle.default, handler: { (action:  UIAlertAction!) in
+            self.onRemoveGroup()
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
     }
+    
+    func onEditGroup() {
+        
+        /*let group = firebaseHelper.getMenuGroup(itemIndex)
+        showEditMenuGroupView(group)*/
+        print("edit")
+    }
+    
+    func onRemoveGroup() {
+        
+        /*Utilities.showQuestionMessage("", "Do you really want to remove this group?", self) {
+            let group = firebaseHelper.getMenuGroup(itemIndex)
+            self.firebaseHelper.removeGroupByKey(group.key)
+        }*/
+        print("remove")
+    }
+
     
 }
 

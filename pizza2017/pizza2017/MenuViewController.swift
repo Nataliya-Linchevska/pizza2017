@@ -80,8 +80,7 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuGroupCell", for: indexPath) as! MenuGroupsCollectionViewCell
         
         let menuGroup = firebaseHelper.getMenuGroup(indexPath.item)
-        cell.editableDelegate = self
-        cell.fillUp(indexPath.item, menuGroup.name, menuGroup.photoName, UserHelper.instance.isAdminLogged)
+        cell.fillUp(indexPath.item, menuGroup.name, menuGroup.photoName)
         
         return cell
     }
@@ -95,21 +94,4 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         navigationController?.pushViewController(controller, animated: true)
     }
-}
-
-extension MenuViewController: EditableViewProtocol {
-    
-    func onEditData(_ itemIndex: Int) {
-        
-        let group = self.firebaseHelper.getMenuGroup(itemIndex)
-        showEditMenuGroupView(group)
-    }
-    
-    func onDeleteData(_ itemIndex: Int) {
-        
-        Utilities.showQuestionMessage("", "Do you really want to remove this group?", self) {
-            let group = self.firebaseHelper.getMenuGroup(itemIndex)
-            self.firebaseHelper.removeGroupByKey(group.key)
-        }
-    }    
 }
