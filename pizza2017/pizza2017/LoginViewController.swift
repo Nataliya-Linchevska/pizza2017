@@ -17,6 +17,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "Login", sender: self)
+            }
+        } else {
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +53,6 @@ class LoginViewController: UIViewController {
                     
                     //Print into the console if successfully logged in
                     print("You have successfully logged in")
-                    
                     self.performSegue(withIdentifier: "Login", sender: self)
 
                     
