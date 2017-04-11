@@ -18,13 +18,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if FIRAuth.auth()?.currentUser != nil {
-//            DispatchQueue.main.async {
-//                self.performSegue(withIdentifier: "Login", sender: self)
-//            }
-//        } else {
-//            
-//        }
+        if FIRAuth.auth()?.currentUser != nil {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "Login", sender: self)
+            }
+        } else {
+            
+        }
         
     }
 

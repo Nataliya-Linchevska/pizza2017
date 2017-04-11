@@ -10,8 +10,8 @@ import UIKit
 
 
 enum BacketStyle: Int {
-    case Backet
-    case OrderList
+    case backet //0
+    case orderList //1
 }
 
 
@@ -21,7 +21,7 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var dishesFirebaseHelper = DishFirebase()
     var deliveryHelper = DeliveryFirebase()
     
-    var backetStyle = BacketStyle.Backet
+    var backetStyle = BacketStyle.backet
     
     var deliveries = [DeliveryModel]()
     
@@ -42,7 +42,7 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return backetStyle == .Backet ? 60 : 1
+        return backetStyle == .backet ? 60 : 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -62,7 +62,7 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if backetStyle != .Backet {return nil}
+        if backetStyle != .backet {return nil}
         
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
 
@@ -90,12 +90,12 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return backetStyle == .Backet ? BacketHelper.backetDishes.count : deliveries.count
+        return backetStyle == .backet ? BacketHelper.backetDishes.count : deliveries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if (backetStyle == .Backet) {
+        if (backetStyle == .backet) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BacketCell", for: indexPath) as! BacketTableViewCell
             
             cell.lblTitle?.text = BacketHelper.backetDishes[indexPath.row].name
