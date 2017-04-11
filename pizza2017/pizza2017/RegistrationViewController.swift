@@ -15,6 +15,13 @@ class RegistrationViewController: UIViewController {
 
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+    
+    var accountFirebaseHelper = AccountFirebaseHelper()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,7 +60,15 @@ class RegistrationViewController: UIViewController {
                 if error == nil {
                     print("You have successfully signed up")
                     //Goes to the Setup page which lets the user take a photo for their profile picture and also chose a username
+                    UserHelper.instance.userModel = UserModel(name: self.nameTextField.text!, email: self.emailTextField.text!, address: self.addressTextField.text!, phone: self.phoneTextField.text!, key: (FIRAuth.auth()?.currentUser?.uid)!)
                     
+                    self.accountFirebaseHelper.saveObject(postObject: UserHelper.instance.userModel!, callBack: { (error, firebaseRef, callBackObject) in
+                        
+                        guard error == nil else {
+                            Utilities.showAllertMessage("", "Loading image to server: ERROR", self)
+                            return
+                        }
+                    })
                     self.performSegue(withIdentifier: "Registration", sender: self)
                     
                     

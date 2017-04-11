@@ -15,10 +15,19 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let accountFirebaseHelper = AccountFirebaseHelper()
         if FIRAuth.auth()?.currentUser != nil {
+            accountFirebaseHelper.initFirebaseObserve(userKey: (FIRAuth.auth()?.currentUser?.uid)!, callback: {
+                
+                UserHelper.instance.userModel = accountFirebaseHelper.getUser(0)
+                
+            })
+            
+            
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "Login", sender: self)
             }
@@ -33,7 +42,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: AnyObject) {
-        
+        let accountFirebaseHelper = AccountFirebaseHelper()
+
         if self.emailTextField.text == "" || self.passwordTextField.text == "" {
             
             //Alert to tell the user that there was an error because they didn't fill anything in the textfields because they didn't fill anything in
@@ -53,7 +63,15 @@ class LoginViewController: UIViewController {
                     
                     //Print into the console if successfully logged in
                     print("You have successfully logged in")
-                    self.performSegue(withIdentifier: "Login", sender: self)
+                    
+                    
+                    
+                    accountFirebaseHelper.initFirebaseObserve(userKey: (FIRAuth.auth()?.currentUser?.uid)!, callback: {
+                        
+                        UserHelper.instance.userModel = accountFirebaseHelper.getUser(0)
+                        self.performSegue(withIdentifier: "Login", sender: self)
+                        
+                    })
 
                     
                 } else {

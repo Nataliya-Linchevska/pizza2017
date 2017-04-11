@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import Firebase
 
 class UserHelper {
     
     //MARK: Init singleton
     
     static let instance = UserHelper()
-    private init() {}
+    
+    var userModel: UserModel?
+    
+    private init() {
+    }
     
     //MARK: Properties
     

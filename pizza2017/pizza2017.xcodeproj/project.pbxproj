@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D431BB21E9CDF5200F1BD9C /* AccountFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D431BB11E9CDF5200F1BD9C /* AccountFirebaseHelper.swift */; };
+		7D431BB41E9CDFE800F1BD9C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D431BB31E9CDFE800F1BD9C /* UserModel.swift */; };
 		7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */; };
 		7D73EE841E95274E00BD3ABB /* BacketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE831E95274E00BD3ABB /* BacketViewController.swift */; };
 		7D73EE861E95277A00BD3ABB /* BacketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */; };
@@ -52,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		07B207E6F130EEFB57ECF029 /* Pods-pizza2017.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pizza2017.release.xcconfig"; path = "Pods/Target Support Files/Pods-pizza2017/Pods-pizza2017.release.xcconfig"; sourceTree = "<group>"; };
+		7D431BB11E9CDF5200F1BD9C /* AccountFirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountFirebaseHelper.swift; sourceTree = "<group>"; };
+		7D431BB31E9CDFE800F1BD9C /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D73EE831E95274E00BD3ABB /* BacketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketViewController.swift; sourceTree = "<group>"; };
 		7D73EE851E95277A00BD3ABB /* BacketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BacketTableViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				7DA9D1861E9CCB29002A5CA9 /* AccountViewController.swift */,
+				7D431BB11E9CDF5200F1BD9C /* AccountFirebaseHelper.swift */,
+				7D431BB31E9CDFE800F1BD9C /* UserModel.swift */,
 			);
 			name = AccountGroup;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 				B529814B1E8B115E00673275 /* Loger.swift in Sources */,
 				B59C265E1E966875006A651B /* MenuGroupsModel.swift in Sources */,
 				B57DC4FE1E8AFD2300CC429D /* ExtensionDate.swift in Sources */,
+				7D431BB21E9CDF5200F1BD9C /* AccountFirebaseHelper.swift in Sources */,
 				B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */,
 				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
 				7D73EE861E95277A00BD3ABB /* BacketTableViewCell.swift in Sources */,
@@ -447,6 +454,7 @@
 				CE2DB9A01E696426009073BE /* DishesGroupCollectionViewCell.swift in Sources */,
 				CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */,
 				CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */,
+				7D431BB41E9CDFE800F1BD9C /* UserModel.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,
 				7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */,
 				7D73EE8C1E958D9000BD3ABB /* DeliveryFirebase.swift in Sources */,

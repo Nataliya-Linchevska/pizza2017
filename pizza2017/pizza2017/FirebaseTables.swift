@@ -157,6 +157,13 @@ struct FirebaseTables {
         
         struct Child {
             
+            static let Name = "name"
+            static let Email = "email"
+            static let Address = "address"
+            static let Phone = "phone"
+            static let KeyGroup = "keyGroup"
+            static let Key = "key"
+            
         }
     }
 }
