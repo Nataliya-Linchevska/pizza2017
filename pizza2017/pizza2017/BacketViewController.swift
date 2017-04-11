@@ -141,7 +141,7 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
             numbersDishes.append("1")
         })
         
-        let delivery = DeliveryModel(name: "dfdfgfdg", addressClient: "", commentClient: "", keysDishes: keysDishes, latitude: 100.description, longitude: 100.description, nameClient: "sadf", numbersDishes: numbersDishes, paid: "false", phoneClient: "", totalSum: sum.description, userEmail: "", userId: "")
+        let delivery = DeliveryModel(name: (UserHelper.instance.userModel?.name)!, addressClient: (UserHelper.instance.userModel?.address)!, commentClient: "", keysDishes: keysDishes, latitude: 100.description, longitude: 100.description, nameClient: "sadf", numbersDishes: numbersDishes, paid: "false", phoneClient: "", totalSum: sum.description, userEmail: (UserHelper.instance.userModel?.email)!, userId: (UserHelper.instance.userModel?.key)!)
         
         self.deliveryHelper.saveObject(postObject: delivery as FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
             
