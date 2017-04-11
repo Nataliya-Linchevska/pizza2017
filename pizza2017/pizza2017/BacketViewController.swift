@@ -8,38 +8,41 @@
 
 import UIKit
 
+
+enum BacketStyle: Int {
+    case Backet
+    case OrderList
+}
+
+
 class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView?
     var dishesFirebaseHelper = DishFirebase()
     var deliveryHelper = DeliveryFirebase()
     
+    var backetStyle = BacketStyle.Backet
+    
+    var deliveries = [DeliveryModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView?.delegate = self
         tableView?.dataSource = self
+        
+        //activityIndicator.startAnimating()
+        deliveryHelper.initFirebaseObserve(dishKey: "", callback: {
+            
+            self.deliveries = self.deliveryHelper.getDeliveries()
+            self.tableView?.reloadData()
+            
+        })
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 60
+        return backetStyle == .Backet ? 60 : 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -51,15 +54,18 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let segmentController = UISegmentedControl(items: ["Корзина", "Список заказов"])
         segmentController.frame = CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30)
-        segmentController.selectedSegmentIndex = 0
+        segmentController.selectedSegmentIndex = backetStyle.rawValue
+        segmentController.addTarget(self, action: #selector(self.segmentChanged(sender:)), for: .valueChanged)
         headerView.addSubview(segmentController)
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if backetStyle != .Backet {return nil}
+        
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60))
-        footerView.backgroundColor = UIColor.red
+
         let button = UIButton(frame: CGRect(x: 10, y: 10, width: 150, height: 40))
         button.backgroundColor = UIColor.green
         button.setTitle("ОФОРМИТЬ", for: .normal)
@@ -84,19 +90,29 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BacketHelper.backetDishes.count
+        return backetStyle == .Backet ? BacketHelper.backetDishes.count : deliveries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BacketCell", for: indexPath) as! BacketTableViewCell
         
-        cell.lblTitle?.text = BacketHelper.backetDishes[indexPath.row].name
-        cell.lblPrice?.text = BacketHelper.backetDishes[indexPath.row].price.description
-        dishesFirebaseHelper.getImageFromStorage(nameOfImage: BacketHelper.backetDishes[indexPath.row].photoName, callBack: { image in
-            cell.imgDishImage?.image = image
-        })
+        if (backetStyle == .Backet) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BacketCell", for: indexPath) as! BacketTableViewCell
+            
+            cell.lblTitle?.text = BacketHelper.backetDishes[indexPath.row].name
+            cell.lblPrice?.text = BacketHelper.backetDishes[indexPath.row].price.description
+            dishesFirebaseHelper.getImageFromStorage(nameOfImage: BacketHelper.backetDishes[indexPath.row].photoName, callBack: { image in
+                cell.imgDishImage?.image = image
+            })
+            
+            return cell
+        } else {
+             let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryCell", for: indexPath) as! DeliveryTableViewCell
+            cell.lblPrice?.text = deliveries[indexPath.row].totalSum
+            cell.lblTitle?.text = deliveries[indexPath.row].name
+            return cell
+        }
 
-        return cell
+        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -142,6 +158,12 @@ class BacketViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func segmentChanged(sender: UISegmentedControl) {
+        backetStyle = BacketStyle(rawValue: sender.selectedSegmentIndex)!
+        tableView?.reloadData()
+        
     }
 
 }
