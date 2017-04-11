@@ -17,6 +17,7 @@
 		7DA9D1831E9807E5002A5CA9 /* DeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9D1821E9807E5002A5CA9 /* DeliveryTableViewCell.swift */; };
 		7DA9D1851E9B8F39002A5CA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9D1841E9B8F39002A5CA9 /* RegistrationViewController.swift */; };
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
+		B5336A7A1E9CD13B00CB9C14 /* DishEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5336A791E9CD13B00CB9C14 /* DishEditViewController.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
 		B578C5B51E92311D0052E404 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B578C5B41E92311D0052E404 /* Utilities.swift */; };
@@ -61,6 +62,7 @@
 		7DA9D1821E9807E5002A5CA9 /* DeliveryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		7DA9D1841E9B8F39002A5CA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
+		B5336A791E9CD13B00CB9C14 /* DishEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishEditViewController.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
 		B578C5B41E92311D0052E404 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */,
+				B5336A791E9CD13B00CB9C14 /* DishEditViewController.swift */,
 				CE2DB99F1E696426009073BE /* DishesGroupCollectionViewCell.swift */,
 			);
 			name = DishesGroup;
@@ -427,6 +430,7 @@
 				B58C36751E9413E400B1A4E7 /* EditableViewProtocol.swift in Sources */,
 				7DA9D1831E9807E5002A5CA9 /* DeliveryTableViewCell.swift in Sources */,
 				B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */,
+				B5336A7A1E9CD13B00CB9C14 /* DishEditViewController.swift in Sources */,
 				CE2DB99C1E68B38B009073BE /* DishesGroupViewController.swift in Sources */,
 				B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */,
 				CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */,

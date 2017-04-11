@@ -42,11 +42,17 @@ class MenuGroupsFirebase: FirebaseHelper {
     
     func removeGroupByKey(_ groupKey: String) {
         
-        removeObjectByKey(groupKey)
-        DishFirebase().removeDishesByGroupKey(groupKey)
+        if let menuGroup = getMenuGroupByKey(groupKey) {
+            
+            removeObjectByKey(menuGroup.key)
+            removeImageFromStorage(imageName: menuGroup.photoName)
+            DishFirebase().removeDishesByGroupKey(menuGroup.key)
+            
+        }
+        
     }
     
-    //MARK: Firebase Functions
+    //MARK: MenuGroups Functions
     
     func getMenuGroups() -> [MenuGroupsModel] {
         
@@ -57,6 +63,12 @@ class MenuGroupsFirebase: FirebaseHelper {
     func getMenuGroup(_ index: Int) -> MenuGroupsModel {
         
         return menuGroups[index]
+        
+    }
+    
+    func getMenuGroupByKey(_ groupKey: String) -> MenuGroupsModel? {
+        
+        return menuGroups.first(where: { $0.key == groupKey })
         
     }
     

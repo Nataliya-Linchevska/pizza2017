@@ -12,11 +12,13 @@ class DishesGroupViewController: UIViewController {
     
     //MARK: Properties
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    
     var keyForDish: String = ""
     
     var firebaseHelper = DishFirebase()
+    
+    //MARK: Outlets
+    
+    @IBOutlet weak var collectionView: UICollectionView!
 
     //MARK: Virtual Functions
     
@@ -50,18 +52,33 @@ class DishesGroupViewController: UIViewController {
     
     //MARK: Functions
     
-    func menuButtonClicked(){
+    func menuButtonClicked() {
         
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Edit group", style: UIAlertActionStyle.default, handler: { (action:  UIAlertAction!) in
+        let alert = UIAlertController(title: nil, message: "Choose option", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Edit group", style: .default, handler: { (action:  UIAlertAction!) in
             self.onEditGroup()
             alert.dismiss(animated: true, completion: nil)
         }))
-        alert.addAction(UIAlertAction(title: "Remove group", style: UIAlertActionStyle.default, handler: { (action:  UIAlertAction!) in
+        
+        alert.addAction(UIAlertAction(title: "Add new dish", style: .default, handler: { (action:  UIAlertAction!) in
+            self.onAddNewDish()
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Remove group", style: .default, handler: { (action:  UIAlertAction!) in
             self.onRemoveGroup()
             alert.dismiss(animated: true, completion: nil)
         }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:  UIAlertAction!) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
         present(alert, animated: true, completion: nil)
+    }
+    
+    func onAddNewDish() {
+        
     }
     
     func onEditGroup() {
@@ -79,7 +96,6 @@ class DishesGroupViewController: UIViewController {
         }*/
         print("remove")
     }
-
     
 }
 
