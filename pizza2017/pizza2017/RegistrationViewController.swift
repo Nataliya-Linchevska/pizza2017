@@ -19,30 +19,30 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var btnRegister: UIButton!
+    
+    
     var accountFirebaseHelper = AccountFirebaseHelper()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // фон
+        let gradient = CAGradientLayer()
+        gradient.frame = gradientView.bounds
+        gradient.colors = [UIColor(colorLiteralRed: 21/255.0, green: 136/255.0, blue: 18/255.0, alpha: 1).cgColor, UIColor(colorLiteralRed: 254/255.0, green: 244/255.0, blue: 85/255.0, alpha: 1).cgColor]
+        gradientView.layer.addSublayer(gradient)
+        
+        // заокруглення
+        btnRegister.layer.cornerRadius = 22
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     @IBAction func createAccountAction(_ sender: AnyObject) {
         

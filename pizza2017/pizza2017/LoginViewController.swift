@@ -15,7 +15,11 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var gradientView: UIView!
     
+    @IBOutlet weak var btnLogIn: UIButton!
+    @IBOutlet weak var btnRegister: UIButton!
+    @IBOutlet weak var btnGuest: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,19 @@ class LoginViewController: UIViewController {
             
         }
         
+        // фон
+        let gradient = CAGradientLayer()
+        gradient.frame = gradientView.bounds
+        gradient.colors = [UIColor(colorLiteralRed: 21/255.0, green: 136/255.0, blue: 18/255.0, alpha: 1).cgColor, UIColor(colorLiteralRed: 254/255.0, green: 244/255.0, blue: 85/255.0, alpha: 1).cgColor]
+        gradientView.layer.addSublayer(gradient)
+        
+        // заокруглення
+        btnLogIn.layer.cornerRadius = 22
+        btnRegister.layer.cornerRadius = 22
+        btnGuest.layer.cornerRadius = 22
+        
+        
+
     }
 
     override func didReceiveMemoryWarning() {
