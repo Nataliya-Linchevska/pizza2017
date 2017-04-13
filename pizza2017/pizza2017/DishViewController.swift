@@ -24,6 +24,10 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if !UserHelper.instance.isAdminLogged {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {    

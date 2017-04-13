@@ -34,7 +34,7 @@ class MenuEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tfGroupName.delegate = self
+        //tfGroupName.delegate = self
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -52,9 +52,7 @@ class MenuEditViewController: UIViewController {
     func setModel(_ inputMenuGroup: MenuGroupsModel?) {
         
         menuGroup = inputMenuGroup
-        if menuGroup != nil {
-            isNewModel = false
-        }
+        isNewModel = inputMenuGroup == nil
     }
     
     private func fillUp() {

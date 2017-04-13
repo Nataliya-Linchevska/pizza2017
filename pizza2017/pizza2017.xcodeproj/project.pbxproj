@@ -175,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				CE2DB99B1E68B38B009073BE /* DishesGroupViewController.swift */,
-				B5336A791E9CD13B00CB9C14 /* DishEditViewController.swift */,
 				CE2DB99F1E696426009073BE /* DishesGroupCollectionViewCell.swift */,
 			);
 			name = DishesGroup;
@@ -184,10 +183,11 @@
 		CE2DB9A51E697CDE009073BE /* Dish */ = {
 			isa = PBXGroup;
 			children = (
+				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
+				B5336A791E9CD13B00CB9C14 /* DishEditViewController.swift */,
+				7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */,
 				7DA9D1801E97A8A5002A5CA9 /* DishFirebase.swift */,
 				CE2DB9A61E697D05009073BE /* DishModel.swift */,
-				CE2DB9A81E697DCA009073BE /* DishViewController.swift */,
-				7D73EE801E92A4CE00BD3ABB /* DishCollectionViewCell.swift */,
 			);
 			name = Dish;
 			sourceTree = "<group>";

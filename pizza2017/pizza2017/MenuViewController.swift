@@ -13,11 +13,15 @@ class MenuViewController: UIViewController {
     
     //MARK: Properties
     
+    var firebaseHelper = MenuGroupsFirebase()
+    
+    //MARK: Outlets
+    
     @IBOutlet weak var topNavigationItem: UINavigationItem!
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var firebaseHelper = MenuGroupsFirebase()        
+    @IBOutlet weak var activityIndicatorView: UIView!
     
     //MARK: Virtual functions
     
@@ -83,6 +87,11 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         cell.fillUp(indexPath.item, menuGroup.name, menuGroup.photoName)
         
         return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        return 1
     }
     
     //MARK: UICollectionViewDelegate

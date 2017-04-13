@@ -13,9 +13,8 @@ class DishesGroupViewController: UIViewController {
     //MARK: Properties
     
     var keyForDish: String = ""
-    
     var firebaseHelper = DishFirebase()
-    
+        
     //MARK: Outlets
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -79,6 +78,8 @@ class DishesGroupViewController: UIViewController {
     
     func onAddNewDish() {
         
+        showDishEditView(nil)
+        
     }
     
     func onEditGroup() {
@@ -95,6 +96,13 @@ class DishesGroupViewController: UIViewController {
             self.firebaseHelper.removeGroupByKey(group.key)
         }*/
         print("remove")
+    }
+    
+    func showDishEditView(_ dish: DishModel?) {
+        
+        let controller = storyboard?.instantiateViewController(withIdentifier: "DishEditViewController") as! DishEditViewController
+        controller.setModel(dish)
+        self.present(controller, animated: true)
     }
     
 }
