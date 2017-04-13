@@ -50,29 +50,46 @@ extension FirebaseHelper {
     
     //MARK: Removing
     
-    func removeObjectByKey(_ key: String) {
+    func removeObjectByKey(_ key: String, _ callBack: ((Error?) -> Swift.Void)? = nil) {
         
         databaseRef.child(getTableName()).child(key).removeValue { (error, reference) in
             
             if let err = error {
                 Loger.instance.writeToLog(err.localizedDescription)
             }
+            if callBack != nil {
+                callBack!(error)
+            }
         }        
     }
     
-    func removeObjectBySubKey(subKeyName: String, subKeyValue: String) {
+    func removeObjectBySubKey(subKeyName: String, subKeyValue: String, errorCallback: ((Error?) -> Swift.Void)? = nil,
+                              completion: ((FIRDataSnapshot) -> Swift.Void)? = nil) {
         
         databaseRef.child(getTableName()).queryOrdered(byChild: subKeyName)
             .queryEqual(toValue: subKeyValue)
             .observeSingleEvent(of: .value, with: { (snapshot) in
-                for firebaseChildrens in snapshot.children {
-                    
-                    let childDict = (firebaseChildrens as! FIRDataSnapshot).value as! NSDictionary
-                    let key = childDict["key"] as! String
-                    self.removeObjectByKey(key)
+                
+                guard let completion = completion else {
+                    for firebaseChildrens in snapshot.children {
+                        
+                        let childDict = (firebaseChildrens as! FIRDataSnapshot).value as! NSDictionary
+                        let key = childDict["key"] as! String
+                        self.removeObjectByKey(key, { (error) in
+                            if errorCallback != nil {
+                                errorCallback!(error!)
+                            }
+                            
+                        })
+                    }
+                    return
                 }
+                completion(snapshot)
             }) { (error) in
                 Loger.instance.writeToLog(error.localizedDescription)
+                if errorCallback != nil {
+                    errorCallback!(error)
+                }
         }
     }
     
@@ -180,12 +197,13 @@ extension FirebaseHelper {
         }
     }
     
-    internal func removeImageFromStorage(imageName: String) {
+    internal func removeImageFromStorage(imageName: String, callback: @escaping (Error?) -> ()) {
         
         storageRef.child(getImageFolderName()).child(imageName).delete { (error) in
             if error != nil {
                 Loger.instance.writeToLog((error?.localizedDescription) ?? "Error while deleting file \(imageName)")
             }
+            callback(error)
         }        
     }
     

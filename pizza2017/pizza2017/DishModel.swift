@@ -44,7 +44,7 @@ class DishModel: FirebaseDataProtocol {
             FirebaseTables.Dishes.Child.KeyGroup : keyGroup,
             FirebaseTables.Dishes.Child.Name : name,
             FirebaseTables.Dishes.Child.Description : description,
-            FirebaseTables.Dishes.Child.Price : "\(price)",
+            FirebaseTables.Dishes.Child.Price : price,
             FirebaseTables.Dishes.Child.PhotoName : photoName,
             FirebaseTables.Dishes.Child.PhotoUrl : photoUrl,
             

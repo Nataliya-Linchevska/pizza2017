@@ -14,6 +14,8 @@ class DishesGroupViewController: UIViewController {
     
     var keyForDish: String = ""
     var firebaseHelper = DishFirebase()
+    
+    var editableDelegate: EditableViewProtocol?
         
     //MARK: Outlets
     
@@ -53,27 +55,24 @@ class DishesGroupViewController: UIViewController {
     
     func menuButtonClicked() {
         
-        let alert = UIAlertController(title: nil, message: "Choose option", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Edit group", style: .default, handler: { (action:  UIAlertAction!) in
-            self.onEditGroup()
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Add new dish", style: .default, handler: { (action:  UIAlertAction!) in
+        let menu = UIAlertController(title: nil, message: "Choose option", preferredStyle: .actionSheet)
+        menu.addAction(UIAlertAction(title: "Add new dish", style: .default, handler: { (action:  UIAlertAction!) in
             self.onAddNewDish()
-            alert.dismiss(animated: true, completion: nil)
+            menu.dismiss(animated: true, completion: nil)
         }))
-        
-        alert.addAction(UIAlertAction(title: "Remove group", style: .default, handler: { (action:  UIAlertAction!) in
+        menu.addAction(UIAlertAction(title: "Edit group", style: .default, handler: { (action:  UIAlertAction!) in
+            self.onEditGroup()
+            menu.dismiss(animated: true, completion: nil)
+        }))
+        menu.addAction(UIAlertAction(title: "Remove group", style: .default, handler: { (action:  UIAlertAction!) in
             self.onRemoveGroup()
-            alert.dismiss(animated: true, completion: nil)
+            menu.dismiss(animated: true, completion: nil)
+        }))
+        menu.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:  UIAlertAction!) in
+            menu.dismiss(animated: true, completion: nil)
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:  UIAlertAction!) in
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        
-        present(alert, animated: true, completion: nil)
+        present(menu, animated: true, completion: nil)
     }
     
     func onAddNewDish() {
@@ -84,24 +83,30 @@ class DishesGroupViewController: UIViewController {
     
     func onEditGroup() {
         
-        /*let group = firebaseHelper.getMenuGroup(itemIndex)
-        showEditMenuGroupView(group)*/
-        print("edit")
+        if let validDelegate = editableDelegate {
+            validDelegate.onEditData?(keyForDish, completion: nil)
+        }
     }
     
     func onRemoveGroup() {
         
-        /*Utilities.showQuestionMessage("", "Do you really want to remove this group?", self) {
-            let group = firebaseHelper.getMenuGroup(itemIndex)
-            self.firebaseHelper.removeGroupByKey(group.key)
-        }*/
-        print("remove")
+        Utilities.showQuestionMessage("", "Do you really want to remove this group?", self) {
+            if let validDelegate = self.editableDelegate {
+                validDelegate.onDeleteData?(self.keyForDish, completion: { (error) in
+                    if error == nil {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        Utilities.showAllertMessage("Error", error.debugDescription, self)
+                    }
+                })
+            }
+        }
     }
     
     func showDishEditView(_ dish: DishModel?) {
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "DishEditViewController") as! DishEditViewController
-        controller.setModel(dish)
+        controller.setModel(keyForDish, dish)
         self.present(controller, animated: true)
     }
     
@@ -137,7 +142,5 @@ extension DishesGroupViewController: UICollectionViewDelegate, UICollectionViewD
         controller.selectedIndex = indexPath
 
         navigationController?.pushViewController(controller, animated: true)
-    }
-
-    
+    }    
 }

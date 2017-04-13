@@ -16,13 +16,19 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var collectionView: UICollectionView!
     var firebaseHelper = DishFirebase()
 
-    var keyForDish: String = ""
+    var keyForDish: String?
     var selectedIndex: IndexPath?
     
     //MARK: Virtual functions - ?????
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if keyForDish == nil {
+            Utilities.showAllertMessage("Error", "Menu groups key can't be empty!", self)
+            dismiss(animated: false, completion: nil)
+            return
+        }
         
         if !UserHelper.instance.isAdminLogged {
             self.navigationItem.rightBarButtonItem = nil
@@ -33,13 +39,11 @@ class DishViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewWillAppear(_ animated: Bool) {    
         super.viewWillAppear(animated)
         
-        //activityIndicator.startAnimating()
-        firebaseHelper.initDishesObserve(keyForDish, callback: {
+        firebaseHelper.initDishesObserve(keyForDish!, callback: {
             self.collectionView.reloadData()
 
             self.collectionView.scrollToItem(at: self.selectedIndex!, at: .left, animated: false)
         })
-        
         
     }
     

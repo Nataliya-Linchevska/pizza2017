@@ -41,10 +41,12 @@ class MenuViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // self.CollectionView.cl
+        activityIndicatorView.isHidden = false
         activityIndicator.startAnimating()
         firebaseHelper.initMenuGroupsObserve {            
             self.CollectionView.reloadData()
             self.activityIndicator.stopAnimating()
+            self.activityIndicatorView.isHidden = true
         }
     }
     
@@ -100,7 +102,29 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         let controller = storyboard?.instantiateViewController(withIdentifier: "DishesGroup") as! DishesGroupViewController
         // Передаю ключ їжі який відображати в наступному контроллері
         controller.keyForDish = firebaseHelper.getMenuGroup(indexPath.item).key
-        
+        controller.editableDelegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
+}
+
+extension MenuViewController: EditableViewProtocol {
+    
+    func onEditData(_ key: String, completion: ((Error?) -> Void)?) {
+        
+        guard let group = firebaseHelper.getMenuGroupByKey(key) else {
+            return
+        }
+        showEditMenuGroupView(group)
+        
+    }
+    
+    func onDeleteData(_ key: String, completion: ((Error?) -> Void)?) {
+        
+        firebaseHelper.removeGroupByKey(key) { (error) in
+            if completion != nil {
+                completion!(error)
+            }
+        }
+    }
+    
 }

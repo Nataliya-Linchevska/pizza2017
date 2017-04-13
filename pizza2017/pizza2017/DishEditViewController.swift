@@ -15,9 +15,11 @@ class DishEditViewController: UIViewController {
     private var dishModel: DishModel?
     private var isNewModel = true
     private let imagePicker = UIImagePickerController()
+    private var keyOfGroup: String?
     
     internal var menuGroups = [MenuGroupsModel]()
     internal var isDefaultImage = true
+    internal var firebaseHelper = DishFirebase()
     
     //MARK: Outlets
     
@@ -28,11 +30,19 @@ class DishEditViewController: UIViewController {
     @IBOutlet weak var pvDishesGroupFilter: UIPickerView!
     @IBOutlet weak var ivDishImage: UIImageView!
     @IBOutlet weak var buttonOk: UIButton!
+    @IBOutlet weak var buttonDelete: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Virtual Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if keyOfGroup == nil {
+            Utilities.showAllertMessage("Error", "Menu groups key can't be empty!", self)
+            dismiss(animated: false, completion: nil)
+            return
+        }
         
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
@@ -41,9 +51,9 @@ class DishEditViewController: UIViewController {
         ivDishImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleIvDishImageTapRecognizer)))
         ivDishImage.isUserInteractionEnabled = true
         
-        
         pvDishesGroupFilter.isHidden = isNewModel
         tfDishesGroupFilter.isHidden = isNewModel
+        buttonDelete.isHidden = isNewModel
         
         fillUp()
     }
@@ -64,12 +74,55 @@ class DishEditViewController: UIViewController {
     
     @IBAction func onOkClick() {
         
+        //activityIndicator.startAnimating()
+        if isNewModel {
+            dishModel = DishModel()
+        }
+        
+        let dishName = tfDishName.text!
+        let photoName = dishName.getPhotoName()
+        firebaseHelper.saveImageToFirebase(imageName: photoName, image: self.ivDishImage.image!) { (success, URL) in                                            if success && URL != nil {
+            
+            //if image changed
+            //delete old image if exist
+            
+            self.dishModel!.name = dishName
+            self.dishModel!.price = Float(self.tfDishPrice.text!)!
+            self.dishModel!.photoName = photoName
+            self.dishModel!.photoUrl = "\(URL!)"
+            self.dishModel!.description = self.tvDishDescription.text!
+            self.dishModel?.keyGroup = self.keyOfGroup!
+            self.firebaseHelper.saveObject(postObject: self.dishModel as? FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
+                  guard error == nil else {
+                    self.activityIndicator.stopAnimating()
+                    Utilities.showAllertMessage("Allert", "Error while loading image to server", self)
+                    return
+                }
+                self.activityIndicator.stopAnimating()
+                self.dismiss(animated: true, completion: nil)
+            })
+            return
+        } else {
+            self.activityIndicator.stopAnimating()
+            Utilities.showAllertMessage("Allert", "Error while saving the data", self)
+            }
+        }
+    }
+    
+    @IBAction func onDeleteClick(_ sender: UIButton) {
+        
+        if !isNewModel && dishModel != nil && !dishModel!.key.isEmpty {
+            firebaseHelper.removeDish(dishModel!)
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     //MARK: Functions
     
-    func setModel(_ dishModel: DishModel?) {
+    func setModel(_ keyOfGroup: String, _ dishModel: DishModel?) {
         
+        self.keyOfGroup = keyOfGroup
         self.dishModel = dishModel
         isNewModel = dishModel == nil
         
@@ -87,7 +140,7 @@ class DishEditViewController: UIViewController {
         
     }
     
-    func updateOkAndPhotoName() {
+    func updateButtonOkState() {
         
         buttonOk.isEnabled = !((tfDishName.text?.isEmpty)! || (tfDishPrice.text?.isEmpty)! || isDefaultImage)
         
@@ -104,7 +157,7 @@ extension DishEditViewController: UIImagePickerControllerDelegate, UINavigationC
             self.isDefaultImage = false
         }
         
-        updateOkAndPhotoName()
+        updateButtonOkState()
         
         picker.dismiss(animated: true, completion: nil)
     }
@@ -126,7 +179,13 @@ extension DishEditViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        updateOkAndPhotoName()
+        updateButtonOkState()
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        
+        updateButtonOkState()
         
     }
 }

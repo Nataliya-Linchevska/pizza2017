@@ -39,10 +39,31 @@ class DishFirebase: FirebaseHelper {
         
     }
     
-    func removeDishesByGroupKey(_ groupKey: String) {
+    func removeDishesByGroupKey(_ groupKey: String, _ callBack: ((Error?) -> Swift.Void)? = nil) {
         
-        removeObjectBySubKey(subKeyName: FirebaseTables.Dishes.Child.KeyGroup, subKeyValue: groupKey)
+        removeObjectBySubKey(subKeyName: FirebaseTables.Dishes.Child.KeyGroup, subKeyValue: groupKey, errorCallback: nil) { (snapshot) in
+            
+            let dishesForRemove = self.getDishesFromSnapshot(snapshot, groupKey)
+            for dish in dishesForRemove {
+                
+                self.removeDish(dish, callBack)
+                self.removeDish(dish, { (error) in
+                    if error != nil && callBack != nil {
+                        callBack!(error)
+                        return
+                    }
+                })
+            }
+        }
+    }
+    
+    func removeDish(_ dish: DishModel, _ callBack: ((Error?) -> Swift.Void)? = nil) {
         
+        self.removeImageFromStorage(imageName: dish.photoName) { (error) in
+            if error == nil {
+                self.removeObjectByKey(dish.key, callBack)
+            }
+        }
     }
     
     //MARK: Dishes Functions
@@ -62,6 +83,13 @@ class DishFirebase: FirebaseHelper {
     private func updateDishesGroups(_ snapshot: FIRDataSnapshot, _ dishKey: String) {
         
         dishes.removeAll()
+        dishes.append(contentsOf: getDishesFromSnapshot(snapshot, dishKey))
+    
+    }
+    
+    private func getDishesFromSnapshot(_ snapshot: FIRDataSnapshot, _ dishKey: String) -> [DishModel] {
+        
+        var result = [DishModel]()
         
         for items in snapshot.children {
             
@@ -75,12 +103,14 @@ class DishFirebase: FirebaseHelper {
             let key = validDishDictionary[FirebaseTables.Dishes.Child.Key] as! String
             
             let dish = DishModel(name: name, description: description,
-                                        price: price, photoUrl: photoUrl,
-                                        photoName: photoName, keyGroup: keyGroup, key: key)
+                                 price: price, photoUrl: photoUrl,
+                                 photoName: photoName, keyGroup: keyGroup, key: key)
             
-            dishes.append(dish)
+            result.append(dish)
         }
+        
+        return result
+        
     }
-    
     
 }

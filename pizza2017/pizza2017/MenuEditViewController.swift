@@ -112,7 +112,7 @@ class MenuEditViewController: UIViewController {
                     
                     guard error == nil else {
                         self.activityIndicator.stopAnimating()
-                        Utilities.showAllertMessage("Allert", "Loading image to server: ERROR", self)
+                        Utilities.showAllertMessage("Allert", "Error while loading image to server", self)
                         return
                     }
                     self.activityIndicator.stopAnimating()
@@ -122,8 +122,6 @@ class MenuEditViewController: UIViewController {
             } else {
                 self.activityIndicator.stopAnimating()
                 Utilities.showAllertMessage("Allert", "Error while saving the data", self)
-                
-
             }
         }        
         
@@ -172,6 +170,12 @@ extension MenuEditViewController: UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        updateOkAndPhotoName()
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
         
         updateOkAndPhotoName()
         

@@ -8,10 +8,14 @@
 
 import Foundation
 
-protocol EditableViewProtocol {
+@objc protocol EditableViewProtocol {
     
-    func onEditData(_ itemIndex: Int)
+    @objc optional func onEditData(_ itemIndex: Int)
     
-    func onDeleteData(_ itemIndex: Int)
+    @objc optional func onDeleteData(_ itemIndex: Int)
+    
+    @objc optional func onEditData(_ key: String, completion: ((Error?) -> Swift.Void)?)
+   
+    @objc optional func onDeleteData(_ key: String, completion: ((Error?) -> Swift.Void)?)
     
 }
