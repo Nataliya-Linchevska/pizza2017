@@ -123,7 +123,15 @@ struct FirebaseTables {
         static let TableName = "reserved_tables"
         
         struct Child {
-            
+            static let clientName = "clientName"
+            static let commentClient = "commentClient"
+            static let date = "date"
+            static let isCheckedByAdmin = "isCheckedByAdmin"
+            static let isNotificated = "isNotificated"
+            static let key = "key"
+            static let phoneClient = "phoneClient"
+            static let tableKey = "tableKey"
+            static let userId = "userId"
         }
     }
     
@@ -134,6 +142,16 @@ struct FirebaseTables {
         static let TableName = "tables"
         
         struct Child {
+            static let pictureId = "pictureId"
+            static let pictureName = "pictureName"
+            static let portraitMode = "portraitMode"
+            static let rotation = "rotation"
+            static let tableId = "tableId"
+            static let key = "key"
+            static let xCoordinate = "xCoordinate"
+            static let xResolution = "xResolution"
+            static let yCoordinate = "yCoordinate"
+            static let yResolution = "yResolution"
             
         }
     }

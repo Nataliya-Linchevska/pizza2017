@@ -19,6 +19,12 @@
 		7DA9D1831E9807E5002A5CA9 /* DeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9D1821E9807E5002A5CA9 /* DeliveryTableViewCell.swift */; };
 		7DA9D1851E9B8F39002A5CA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9D1841E9B8F39002A5CA9 /* RegistrationViewController.swift */; };
 		7DA9D1871E9CCB29002A5CA9 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA9D1861E9CCB29002A5CA9 /* AccountViewController.swift */; };
+		7DD5CCD31E9E97D9004735D4 /* TablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCD21E9E97D9004735D4 /* TablesViewController.swift */; };
+		7DD5CCD51E9E980B004735D4 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCD41E9E980B004735D4 /* CustomTableView.swift */; };
+		7DD5CCD81E9ECD0E004735D4 /* TablesFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCD71E9ECD0E004735D4 /* TablesFirebaseHelper.swift */; };
+		7DD5CCDA1E9ECD3C004735D4 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCD91E9ECD3C004735D4 /* TableModel.swift */; };
+		7DD5CCDC1E9EDBA0004735D4 /* ReservedTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCDB1E9EDBA0004735D4 /* ReservedTableModel.swift */; };
+		7DD5CCDE1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCDD1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift */; };
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
@@ -66,6 +72,12 @@
 		7DA9D1821E9807E5002A5CA9 /* DeliveryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		7DA9D1841E9B8F39002A5CA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		7DA9D1861E9CCB29002A5CA9 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		7DD5CCD21E9E97D9004735D4 /* TablesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablesViewController.swift; sourceTree = "<group>"; };
+		7DD5CCD41E9E980B004735D4 /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		7DD5CCD71E9ECD0E004735D4 /* TablesFirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablesFirebaseHelper.swift; sourceTree = "<group>"; };
+		7DD5CCD91E9ECD3C004735D4 /* TableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
+		7DD5CCDB1E9EDBA0004735D4 /* ReservedTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservedTableModel.swift; sourceTree = "<group>"; };
+		7DD5CCDD1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservedTablesFirebaseHelper.swift; sourceTree = "<group>"; };
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +146,19 @@
 				7D431BB31E9CDFE800F1BD9C /* UserModel.swift */,
 			);
 			name = AccountGroup;
+			sourceTree = "<group>";
+		};
+		7DD5CCD61E9E9816004735D4 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				7DD5CCD21E9E97D9004735D4 /* TablesViewController.swift */,
+				7DD5CCD41E9E980B004735D4 /* CustomTableView.swift */,
+				7DD5CCD71E9ECD0E004735D4 /* TablesFirebaseHelper.swift */,
+				7DD5CCD91E9ECD3C004735D4 /* TableModel.swift */,
+				7DD5CCDB1E9EDBA0004735D4 /* ReservedTableModel.swift */,
+				7DD5CCDD1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift */,
+			);
+			name = Tables;
 			sourceTree = "<group>";
 		};
 		81109DFD4AF07693B43250E1 /* Frameworks */ = {
@@ -226,6 +251,7 @@
 		CE7642B01E5D922900B0E47F /* pizza2017 */ = {
 			isa = PBXGroup;
 			children = (
+				7DD5CCD61E9E9816004735D4 /* Tables */,
 				7DA9D1881E9CCB33002A5CA9 /* AccountGroup */,
 				7D73EE821E9526DF00BD3ABB /* BacketGroup */,
 				B59A2D9E1E8F8B1100831A06 /* Protocols */,
@@ -432,6 +458,7 @@
 				B591F9181E8D84530019EF7A /* FirebaseTables.swift in Sources */,
 				CEA6BB4F1E5DCE6300057BA4 /* SettingsViewController.swift in Sources */,
 				7D73EE861E95277A00BD3ABB /* BacketTableViewCell.swift in Sources */,
+				7DD5CCDC1E9EDBA0004735D4 /* ReservedTableModel.swift in Sources */,
 				7DA9D1811E97A8A5002A5CA9 /* DishFirebase.swift in Sources */,
 				CE9119CD1E5DAF8E00674520 /* LoginViewController.swift in Sources */,
 				CEB527D31E60643300A1586C /* MenuGroupsFirebase.swift in Sources */,
@@ -441,6 +468,7 @@
 				B59A2DA01E8F8B5D00831A06 /* FirebaseDataProtocol.swift in Sources */,
 				CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */,
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
+				7DD5CCD31E9E97D9004735D4 /* TablesViewController.swift in Sources */,
 				B578C5B51E92311D0052E404 /* Utilities.swift in Sources */,
 				B58C36751E9413E400B1A4E7 /* EditableViewProtocol.swift in Sources */,
 				7DA9D1831E9807E5002A5CA9 /* DeliveryTableViewCell.swift in Sources */,
@@ -449,15 +477,19 @@
 				B57D56801E815DDC00263CE5 /* UserHelper.swift in Sources */,
 				7DA9D1871E9CCB29002A5CA9 /* AccountViewController.swift in Sources */,
 				CE9119DB1E5DB17A00674520 /* MainViewController.swift in Sources */,
+				7DD5CCD51E9E980B004735D4 /* CustomTableView.swift in Sources */,
 				7D73EE841E95274E00BD3ABB /* BacketViewController.swift in Sources */,
 				CE2DB9A91E697DCA009073BE /* DishViewController.swift in Sources */,
 				CE2DB9A01E696426009073BE /* DishesGroupCollectionViewCell.swift in Sources */,
 				CE2DB9A71E697D05009073BE /* DishModel.swift in Sources */,
 				CE9119D31E5DAFF900674520 /* NewsViewController.swift in Sources */,
 				7D431BB41E9CDFE800F1BD9C /* UserModel.swift in Sources */,
+				7DD5CCDA1E9ECD3C004735D4 /* TableModel.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,
 				7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */,
+				7DD5CCDE1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift in Sources */,
 				7D73EE8C1E958D9000BD3ABB /* DeliveryFirebase.swift in Sources */,
+				7DD5CCD81E9ECD0E004735D4 /* TablesFirebaseHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

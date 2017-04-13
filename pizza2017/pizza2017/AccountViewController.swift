@@ -31,8 +31,6 @@ class AccountViewController: UIViewController {
         lblName.text = UserHelper.instance.userModel?.name
         lblAddress.text = UserHelper.instance.userModel?.address
         lblPhone.text = UserHelper.instance.userModel?.phone
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
