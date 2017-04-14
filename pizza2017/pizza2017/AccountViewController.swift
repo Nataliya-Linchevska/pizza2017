@@ -21,6 +21,9 @@ class AccountViewController: UIViewController {
     
     @IBOutlet weak var lblPhone: UITextField!
     
+    @IBOutlet weak var gradientView: UIView!
+    
+    
     var accountFirebaseHelper = AccountFirebaseHelper()
     
     
@@ -31,6 +34,11 @@ class AccountViewController: UIViewController {
         lblName.text = UserHelper.instance.userModel?.name
         lblAddress.text = UserHelper.instance.userModel?.address
         lblPhone.text = UserHelper.instance.userModel?.phone
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = gradientView.bounds
+        gradient.colors = [UIColor(colorLiteralRed: 21/255.0, green: 136/255.0, blue: 18/255.0, alpha: 0.3).cgColor, UIColor(colorLiteralRed: 254/255.0, green: 244/255.0, blue: 85/255.0, alpha: 0.3).cgColor]
+        gradientView.layer.addSublayer(gradient)
     }
 
     override func didReceiveMemoryWarning() {
