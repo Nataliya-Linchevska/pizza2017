@@ -93,6 +93,12 @@ struct FirebaseTables {
         static let ImageFolder = "news_images"
         
         struct Child {
+            static let Title = "title"
+            static let Description = "description"
+            static let PhotoUrl = "photoUrl"
+            static let PhotoName = "photoName"
+            static let Key = "key"
+            static let TimeStamp = "timeStamp"
             
         }
         
@@ -111,6 +117,8 @@ struct FirebaseTables {
             static let Latitude = "latitude"
             static let Longitude = "longitude"
             static let Phone = "phone"
+            static let AdminEmail = "admin_email"
+            
             
         }
         

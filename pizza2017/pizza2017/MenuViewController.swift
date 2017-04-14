@@ -30,18 +30,16 @@ class MenuViewController: UIViewController {
         
         if !UserHelper.instance.isAdminLogged {
             topNavigationItem.rightBarButtonItem = nil
-        }        
+        }
+        activityIndicator.startAnimating()
+        firebaseHelper.initMenuGroupsObserve {
+            self.CollectionView.reloadData()
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // self.CollectionView.cl
-        activityIndicator.startAnimating()
-        firebaseHelper.initMenuGroupsObserve {            
-            self.CollectionView.reloadData()
-            self.activityIndicator.stopAnimating()
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -8,15 +8,31 @@
 
 import UIKit
 
+protocol TableSelectDelegate {
+    func tableSelected(tableId: String)
+}
+
 @IBDesignable
 class CustomTableView: UIView {
     
     var backgroundImageView = UIImageView()
     var selectedImageView = UIImageView()
+    var reservedImageView = UIImageView()
+    
+    var tableId: String?
+    
+    var delegate: TableSelectDelegate?
+    var lblTableNumber: UILabel?
     
     @IBInspectable var isSelected : Bool = false {
         didSet {
             selectedImageView.isHidden = !isSelected
+        }
+    }
+    
+    @IBInspectable var isReserved : Bool = false {
+        didSet {
+            reservedImageView.isHidden = !isReserved
         }
     }
     
@@ -26,7 +42,12 @@ class CustomTableView: UIView {
             backgroundImageView.frame.size = self.frame.size
             backgroundImageView.image = backgroundImage
             backgroundImageView.contentMode = .scaleAspectFit
+            
+            lblTableNumber = UILabel(frame: backgroundImageView.frame)
+            lblTableNumber?.textAlignment = .center
+            
             self.addSubview(backgroundImageView)
+            self.addSubview(lblTableNumber!)
         }
     }
     
@@ -40,6 +61,15 @@ class CustomTableView: UIView {
         }
     }
     
+    @IBInspectable var reservedImage: UIImage? {
+        didSet{
+            reservedImageView.frame = backgroundImageView.frame
+            reservedImageView.image = reservedImage
+            reservedImageView.contentMode = .scaleAspectFit
+            self.addSubview(reservedImageView)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -48,6 +78,8 @@ class CustomTableView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapOnView))
         addGestureRecognizer(tap)
     }
@@ -57,7 +89,10 @@ class CustomTableView: UIView {
     }
     
     func tapOnView() {
+        if(isReserved) {return}
+        
         isSelected = !isSelected
+        delegate?.tableSelected(tableId: tableId!)
     }
 
     /*

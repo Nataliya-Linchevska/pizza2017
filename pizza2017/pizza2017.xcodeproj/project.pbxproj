@@ -25,6 +25,9 @@
 		7DD5CCDA1E9ECD3C004735D4 /* TableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCD91E9ECD3C004735D4 /* TableModel.swift */; };
 		7DD5CCDC1E9EDBA0004735D4 /* ReservedTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCDB1E9EDBA0004735D4 /* ReservedTableModel.swift */; };
 		7DD5CCDE1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCDD1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift */; };
+		7DD5CCE01EA0CD9F004735D4 /* NewsFirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCDF1EA0CD9F004735D4 /* NewsFirebaseHelper.swift */; };
+		7DD5CCE21EA0CDDE004735D4 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCE11EA0CDDE004735D4 /* NewsModel.swift */; };
+		7DD5CCE41EA0D30E004735D4 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD5CCE31EA0D30E004735D4 /* NewsTableViewCell.swift */; };
 		B529814B1E8B115E00673275 /* Loger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529814A1E8B115D00673275 /* Loger.swift */; };
 		B566FF431E86BCD0003D7A0C /* FirebaseHepler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */; };
 		B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5673E371E879FA100CC1999 /* MenuEditViewController.swift */; };
@@ -78,6 +81,9 @@
 		7DD5CCD91E9ECD3C004735D4 /* TableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableModel.swift; sourceTree = "<group>"; };
 		7DD5CCDB1E9EDBA0004735D4 /* ReservedTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservedTableModel.swift; sourceTree = "<group>"; };
 		7DD5CCDD1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservedTablesFirebaseHelper.swift; sourceTree = "<group>"; };
+		7DD5CCDF1EA0CD9F004735D4 /* NewsFirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFirebaseHelper.swift; sourceTree = "<group>"; };
+		7DD5CCE11EA0CDDE004735D4 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		7DD5CCE31EA0D30E004735D4 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		B529814A1E8B115D00673275 /* Loger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loger.swift; sourceTree = "<group>"; };
 		B566FF421E86BCD0003D7A0C /* FirebaseHepler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHepler.swift; sourceTree = "<group>"; };
 		B5673E371E879FA100CC1999 /* MenuEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuEditViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +323,9 @@
 			isa = PBXGroup;
 			children = (
 				CE9119D21E5DAFF900674520 /* NewsViewController.swift */,
+				7DD5CCDF1EA0CD9F004735D4 /* NewsFirebaseHelper.swift */,
+				7DD5CCE11EA0CDDE004735D4 /* NewsModel.swift */,
+				7DD5CCE31EA0D30E004735D4 /* NewsTableViewCell.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -468,8 +477,10 @@
 				B59A2DA01E8F8B5D00831A06 /* FirebaseDataProtocol.swift in Sources */,
 				CE256F3B1E656E5700E75E9D /* MenuGroupsCollectionViewCell.swift in Sources */,
 				CEA6BB4B1E5DCDE900057BA4 /* SettingsModel.swift in Sources */,
+				7DD5CCE41EA0D30E004735D4 /* NewsTableViewCell.swift in Sources */,
 				7DD5CCD31E9E97D9004735D4 /* TablesViewController.swift in Sources */,
 				B578C5B51E92311D0052E404 /* Utilities.swift in Sources */,
+				7DD5CCE21EA0CDDE004735D4 /* NewsModel.swift in Sources */,
 				B58C36751E9413E400B1A4E7 /* EditableViewProtocol.swift in Sources */,
 				7DA9D1831E9807E5002A5CA9 /* DeliveryTableViewCell.swift in Sources */,
 				B5673E381E879FA100CC1999 /* MenuEditViewController.swift in Sources */,
@@ -487,6 +498,7 @@
 				7DD5CCDA1E9ECD3C004735D4 /* TableModel.swift in Sources */,
 				CE9119D11E5DAFDB00674520 /* MenuViewController.swift in Sources */,
 				7D73EE811E92A4CE00BD3ABB /* DishCollectionViewCell.swift in Sources */,
+				7DD5CCE01EA0CD9F004735D4 /* NewsFirebaseHelper.swift in Sources */,
 				7DD5CCDE1E9EDE29004735D4 /* ReservedTablesFirebaseHelper.swift in Sources */,
 				7D73EE8C1E958D9000BD3ABB /* DeliveryFirebase.swift in Sources */,
 				7DD5CCD81E9ECD0E004735D4 /* TablesFirebaseHelper.swift in Sources */,
