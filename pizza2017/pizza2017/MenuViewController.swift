@@ -34,6 +34,7 @@ class MenuViewController: UIViewController {
             topNavigationItem.rightBarButtonItem = nil
         }
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

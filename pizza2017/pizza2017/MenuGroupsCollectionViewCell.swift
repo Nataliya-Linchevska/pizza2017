@@ -17,6 +17,8 @@ class MenuGroupsCollectionViewCell: UICollectionViewCell {
     
     //MARK: Outlets
     
+    
+    @IBOutlet weak var backgroundGroupCellView: UIView!
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
 //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -29,6 +31,13 @@ class MenuGroupsCollectionViewCell: UICollectionViewCell {
         
         groupIndex = itemIndex
         lblTitle.text = groupName
+        
+        backgroundGroupCellView.layer.cornerRadius = 10
+        ivImage.layer.cornerRadius = 10
+        ivImage.clipsToBounds = true
+
+        
+//        backgroundGroupCellView.frame.size.width = UIScreen.main.bounds.width/2 - 10
         
     }
     
