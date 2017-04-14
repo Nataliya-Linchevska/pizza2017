@@ -68,7 +68,7 @@ class DishEditViewController: UIViewController {
     
     @IBAction func onCancelClick() {
         
-        dismiss(animated: true, completion: nil)
+        closeView()
         
     }
     
@@ -79,34 +79,45 @@ class DishEditViewController: UIViewController {
             dishModel = DishModel()
         }
         
-        let dishName = tfDishName.text!
-        let photoName = dishName.getPhotoName()
-        firebaseHelper.saveImageToFirebase(imageName: photoName, image: self.ivDishImage.image!) { (success, URL) in                                            if success && URL != nil {
-            
-            //if image changed
-            //delete old image if exist
-            
-            self.dishModel!.name = dishName
-            self.dishModel!.price = Float(self.tfDishPrice.text!)!
-            self.dishModel!.photoName = photoName
-            self.dishModel!.photoUrl = "\(URL!)"
-            self.dishModel!.description = self.tvDishDescription.text!
-            self.dishModel?.keyGroup = self.keyOfGroup!
-            self.firebaseHelper.saveObject(postObject: self.dishModel as? FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
-                  guard error == nil else {
-                    self.activityIndicator.stopAnimating()
-                    Utilities.showAllertMessage("Allert", "Error while loading image to server", self)
+        let photoName = tfDishName.text!.getPhotoName()
+        if !isDefaultImage || dishModel!.photoName.isEmpty {
+            firebaseHelper.saveImageToFirebase(imageName: photoName, image: self.ivDishImage.image!) { (success, URL) in
+                if success && URL != nil {
+                    if !self.dishModel!.photoName.isEmpty && self.dishModel!.photoName != photoName {
+                        self.firebaseHelper.removeImageFromStorage(imageName: self.dishModel!.photoName, callback: nil)
+                    }
+                    self.dishModel!.photoName = photoName
+                    self.dishModel!.photoUrl = "\(URL!)"
+                    self.saveDishAndClose(self.dishModel!)
                     return
+                } else {
+                    self.activityIndicator.stopAnimating()
+                    Utilities.showAllertMessage("Allert", "Error while saving the data", self)
                 }
-                self.activityIndicator.stopAnimating()
-                self.dismiss(animated: true, completion: nil)
-            })
-            return
-        } else {
-            self.activityIndicator.stopAnimating()
-            Utilities.showAllertMessage("Allert", "Error while saving the data", self)
             }
+        } else {
+            saveDishAndClose(dishModel!)
         }
+        
+    }
+    
+    private func saveDishAndClose(_ dish: DishModel) {
+        
+        dishModel!.name = tfDishName.text!
+        dishModel!.price = Float(tfDishPrice.text!)!
+        dishModel!.description = tvDishDescription.text!
+        dishModel?.keyGroup = keyOfGroup!
+        firebaseHelper.saveObject(postObject: self.dishModel as? FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
+            guard error == nil else {
+                self.activityIndicator.stopAnimating()
+                Utilities.showAllertMessage("Allert", "Error while loading image to server", self)
+                return
+            }
+            self.activityIndicator.stopAnimating()
+            self.closeView()
+        })
+
+        
     }
     
     @IBAction func onDeleteClick(_ sender: UIButton) {
@@ -118,7 +129,7 @@ class DishEditViewController: UIViewController {
         
     }
     
-    //MARK: Functions
+    //MARK: General Functions
     
     func setModel(_ keyOfGroup: String, _ dishModel: DishModel?) {
         
@@ -137,13 +148,26 @@ class DishEditViewController: UIViewController {
         tfDishName.text = validModel.name
         tfDishPrice.text = "\(validModel.price)"
         tvDishDescription.text = validModel.description
+        firebaseHelper.getImageFromStorage(nameOfImage: validModel.photoName, callBack: { image in
+            
+            self.ivDishImage.image = image
+            self.isDefaultImage = true
+        })
         
     }
     
     func updateButtonOkState() {
         
-        buttonOk.isEnabled = !((tfDishName.text?.isEmpty)! || (tfDishPrice.text?.isEmpty)! || isDefaultImage)
+        buttonOk.isEnabled =  !(tfDishName.text?.isEmpty)!
+            && !(tfDishPrice.text?.isEmpty)! && (!isDefaultImage || !isNewModel)
         
+    }
+    
+    private func closeView() {
+        
+        if self.navigationController?.popViewController(animated: true) == nil {
+            Loger.instance.writeToLog("View controller not found!")
+        }
     }
     
 }

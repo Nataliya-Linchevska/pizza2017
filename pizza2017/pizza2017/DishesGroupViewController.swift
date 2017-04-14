@@ -84,22 +84,14 @@ class DishesGroupViewController: UIViewController {
     func onEditGroup() {
         
         if let validDelegate = editableDelegate {
-            validDelegate.onEditData?(keyForDish, completion: nil)
+            validDelegate.onEditData?(keyForDish, self)
         }
     }
     
     func onRemoveGroup() {
         
-        Utilities.showQuestionMessage("", "Do you really want to remove this group?", self) {
-            if let validDelegate = self.editableDelegate {
-                validDelegate.onDeleteData?(self.keyForDish, completion: { (error) in
-                    if error == nil {
-                        self.dismiss(animated: true, completion: nil)
-                    } else {
-                        Utilities.showAllertMessage("Error", error.debugDescription, self)
-                    }
-                })
-            }
+        if let validDelegate = self.editableDelegate {
+            validDelegate.onDeleteData?(self.keyForDish, self)
         }
     }
     
@@ -107,7 +99,7 @@ class DishesGroupViewController: UIViewController {
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "DishEditViewController") as! DishEditViewController
         controller.setModel(keyForDish, dish)
-        self.present(controller, animated: true)
+        navigationController?.pushViewController(controller, animated: true)
     }
     
 }

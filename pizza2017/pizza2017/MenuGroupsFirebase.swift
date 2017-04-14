@@ -40,7 +40,7 @@ class MenuGroupsFirebase: FirebaseHelper {
 
     }
     
-    func removeGroupByKey(_ groupKey: String, _ callBack: ((Error?) -> Swift.Void)? = nil) {
+    func removeGroupByKey(_ groupKey: String, _ groupCallBack: ((Error?) -> Swift.Void)? = nil) {
         
         if let menuGroup = getMenuGroupByKey(groupKey) {
             
@@ -48,15 +48,14 @@ class MenuGroupsFirebase: FirebaseHelper {
                 if error == nil {
                     self.removeObjectByKey(menuGroup.key, { (error) in
                         if error == nil {
-                            DishFirebase().removeDishesByGroupKey(menuGroup.key, callBack)
+                            DishFirebase().removeDishesByGroupKey(menuGroup.key, groupCallBack)
                         }
                     })
-                } else if callBack != nil {
-                    callBack!(error)
+                } else if groupCallBack != nil {
+                    groupCallBack!(error)
                 }
             })
-        }
-        
+        }        
     }
     
     //MARK: MenuGroups Functions

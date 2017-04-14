@@ -45,15 +45,15 @@ class DishFirebase: FirebaseHelper {
             
             let dishesForRemove = self.getDishesFromSnapshot(snapshot, groupKey)
             for dish in dishesForRemove {
-                
-                self.removeDish(dish, callBack)
+               
                 self.removeDish(dish, { (error) in
-                    if error != nil && callBack != nil {
-                        callBack!(error)
+                    if error != nil {
+                        callBack?(error)
                         return
                     }
                 })
             }
+            callBack?(nil)
         }
     }
     
@@ -62,6 +62,8 @@ class DishFirebase: FirebaseHelper {
         self.removeImageFromStorage(imageName: dish.photoName) { (error) in
             if error == nil {
                 self.removeObjectByKey(dish.key, callBack)
+            } else {
+                callBack?(error)
             }
         }
     }

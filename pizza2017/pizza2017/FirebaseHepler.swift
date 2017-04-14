@@ -57,9 +57,7 @@ extension FirebaseHelper {
             if let err = error {
                 Loger.instance.writeToLog(err.localizedDescription)
             }
-            if callBack != nil {
-                callBack!(error)
-            }
+            callBack?(error)
         }        
     }
     
@@ -197,13 +195,13 @@ extension FirebaseHelper {
         }
     }
     
-    internal func removeImageFromStorage(imageName: String, callback: @escaping (Error?) -> ()) {
+    internal func removeImageFromStorage(imageName: String, callback: ((Error?) -> ())? = nil) {
         
         storageRef.child(getImageFolderName()).child(imageName).delete { (error) in
             if error != nil {
                 Loger.instance.writeToLog((error?.localizedDescription) ?? "Error while deleting file \(imageName)")
             }
-            callback(error)
+            callback?(error)
         }        
     }
     

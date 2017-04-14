@@ -69,7 +69,7 @@ class MenuViewController: UIViewController {
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "MenuEditViewController") as! MenuEditViewController
         controller.setModel(group)
-        self.present(controller, animated: true)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 
 }
@@ -109,7 +109,7 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
 
 extension MenuViewController: EditableViewProtocol {
     
-    func onEditData(_ key: String, completion: ((Error?) -> Void)?) {
+    func onEditData(_ key: String, _ viewController: UIViewController?) {
         
         guard let group = firebaseHelper.getMenuGroupByKey(key) else {
             return
@@ -118,11 +118,24 @@ extension MenuViewController: EditableViewProtocol {
         
     }
     
-    func onDeleteData(_ key: String, completion: ((Error?) -> Void)?) {
+    func onDeleteData(_ key: String, _ viewController: UIViewController?) {
         
-        firebaseHelper.removeGroupByKey(key) { (error) in
-            if completion != nil {
-                completion!(error)
+        guard let validViewController = viewController else {
+            return
+        }
+        Utilities.showQuestionMessage("", "Do you really want to remove this group?", validViewController) {
+            
+            self.firebaseHelper.removeGroupByKey(key) { (error) in
+                if let validError = error {
+                    Utilities.showAllertMessage("Error", validError.localizedDescription, validViewController)
+                } else {
+                    
+                    guard validViewController.navigationController?.popViewController(animated: true) != nil else {
+                        Loger.instance.writeToLog("View controller not found!")
+                        return
+                    }
+                    
+                }
             }
         }
     }

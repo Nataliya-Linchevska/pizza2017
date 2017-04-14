@@ -66,7 +66,7 @@ class MenuEditViewController: UIViewController {
         firebaseHelper.getImageFromStorage(nameOfImage: menuGroup!.photoName, callBack: { image in
             
             self.ivGroupImage.image = image
-            self.isDefaultImage = false
+            self.isDefaultImage = true
         })
         
         tfGroupName.text = menuGroup!.name
@@ -76,10 +76,30 @@ class MenuEditViewController: UIViewController {
     func updateOkAndPhotoName() {
         
         lbGroupName.text = tfGroupName.text
-        buttonOK.isEnabled = !(tfGroupName.text?.isEmpty)! && !isDefaultImage
+        buttonOK.isEnabled = !(tfGroupName.text?.isEmpty)! && (!isDefaultImage || !isNewModel)
         
-    } 
+    }
     
+    private func saveMenuGroupAndClose(_ menuGroup: MenuGroupsModel) {
+        
+        menuGroup.name = tfGroupName.text!
+        firebaseHelper.saveObject(postObject: self.menuGroup as? FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
+            guard error == nil else {
+                self.activityIndicator.stopAnimating()
+                Utilities.showAllertMessage("Allert", "Error while loading image to server", self)
+                return
+            }
+            self.activityIndicator.stopAnimating()
+            self.closeView()
+        })
+    }
+    
+    private func closeView() {
+        
+        if self.navigationController?.popViewController(animated: true) == nil {
+            Loger.instance.writeToLog("View controller not found!")
+        }
+    }
     
     //MARK: Actions
     
@@ -96,41 +116,32 @@ class MenuEditViewController: UIViewController {
             menuGroup = MenuGroupsModel()
         }
         
-        let groupName = tfGroupName.text!
-        let photoName = groupName.getPhotoName()
-        firebaseHelper.saveImageToFirebase(imageName: photoName,
-                                           image: self.ivGroupImage.image!) { (success, URL) in
-            if success && URL != nil {
-                
-                //if image changed
-                //delete old image if exist
-               
-                self.menuGroup!.name = groupName
-                self.menuGroup!.photoName = photoName
-                self.menuGroup!.photoUrl = "\(URL!)"                
-                self.firebaseHelper.saveObject(postObject: self.menuGroup as? FirebaseDataProtocol, callBack: { (error, firebaseRef, callBackObject) in
-                    
-                    guard error == nil else {
-                        self.activityIndicator.stopAnimating()
-                        Utilities.showAllertMessage("Allert", "Error while loading image to server", self)
-                        return
+        let newPhotoName = tfGroupName.text!.getPhotoName()
+        
+        if !isDefaultImage || menuGroup!.photoName.isEmpty {
+            firebaseHelper.saveImageToFirebase(imageName: newPhotoName, image: self.ivGroupImage.image!) { (success, URL) in
+                if success && URL != nil {
+                    if !self.menuGroup!.photoName.isEmpty && self.menuGroup!.photoName != newPhotoName {
+                        self.firebaseHelper.removeImageFromStorage(imageName: self.menuGroup!.photoName, callback: nil)
                     }
+                    self.menuGroup!.photoName = newPhotoName
+                    self.menuGroup!.photoUrl = "\(URL!)"
+                    self.saveMenuGroupAndClose(self.menuGroup!)
+                    return
+                } else {
                     self.activityIndicator.stopAnimating()
-                    self.dismiss(animated: true, completion: nil)
-                })
-                return
-            } else {
-                self.activityIndicator.stopAnimating()
-                Utilities.showAllertMessage("Allert", "Error while saving the data", self)
+                    Utilities.showAllertMessage("Allert", "Error while saving the data", self)
+                }
             }
-        }        
+        } else {
+            saveMenuGroupAndClose(menuGroup!)
+        }
         
     }
     
     @IBAction func buttonCancelClick() {
         
-        dismiss(animated: true, completion: nil)
-        
+        closeView()        
     }
     
     @IBAction func groupNameChanged(_ sender: UITextField) {

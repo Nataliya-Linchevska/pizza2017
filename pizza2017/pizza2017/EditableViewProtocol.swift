@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc protocol EditableViewProtocol {
     
@@ -14,8 +15,8 @@ import Foundation
     
     @objc optional func onDeleteData(_ itemIndex: Int)
     
-    @objc optional func onEditData(_ key: String, completion: ((Error?) -> Swift.Void)?)
+    @objc optional func onEditData(_ key: String, _ viewController: UIViewController?)
    
-    @objc optional func onDeleteData(_ key: String, completion: ((Error?) -> Swift.Void)?)
+    @objc optional func onDeleteData(_ key: String, _ viewController: UIViewController?)
     
 }
