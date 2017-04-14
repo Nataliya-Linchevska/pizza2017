@@ -33,16 +33,16 @@ class MenuViewController: UIViewController {
         if !UserHelper.instance.isAdminLogged {
             topNavigationItem.rightBarButtonItem = nil
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         activityIndicator.startAnimating()
         firebaseHelper.initMenuGroupsObserve {
             self.CollectionView.reloadData()
             self.activityIndicator.stopAnimating()
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -82,7 +82,13 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         let menuGroup = firebaseHelper.getMenuGroup(indexPath.item)
         cell.fillUp(indexPath.item, menuGroup.name, menuGroup.photoName)
-        
+        cell.ivImage.image = nil
+        if cell.ivImage.image == nil {
+            firebaseHelper.getImageFromStorage(nameOfImage: menuGroup.photoName, callBack: { image in
+                cell.ivImage.image = image
+                self.activityIndicator.stopAnimating()
+            })
+        }
         return cell
     }
     

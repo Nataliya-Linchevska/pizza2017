@@ -29,12 +29,7 @@ class MenuGroupsCollectionViewCell: UICollectionViewCell {
         
         groupIndex = itemIndex
         lblTitle.text = groupName
-        if ivImage.image == nil {
-            firebaseHelper.getImageFromStorage(nameOfImage: photoName, callBack: { image in
-                self.ivImage.image = image
-                self.activityIndicator.stopAnimating()
-            })
-        }
+        
     }
     
 }

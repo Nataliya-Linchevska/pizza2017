@@ -62,8 +62,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginAction(_ sender: AnyObject) {
         
-        self.performSegue(withIdentifier: "Login", sender: self)
-        return
+//        self.performSegue(withIdentifier: "Login", sender: self)
+//        return
         
         let accountFirebaseHelper = AccountFirebaseHelper()
         let settingsFireBase = SettingsFirebase()
