@@ -8,12 +8,20 @@
 
 import UIKit
 
-class NewsViewController: UIViewController {
+class NewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let newsFirebaseHelper = NewsFirebaseHelper()
+    var news = [NewsModel]()
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        newsFirebaseHelper.initFirebaseObserve(key: "") { 
+            self.news = self.newsFirebaseHelper.getNews()
+            print(self.news)
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +30,39 @@ class NewsViewController: UIViewController {
     }
     
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return news.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "News", for: indexPath) as! NewsTableViewCell
+        
+        let new = news[indexPath.row]
+        
+        cell.lblTitle.text = new.title
+        
+        cell.tvNews.text = new.description
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(new.timeStamp/1000))
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm" //Specify your format that you want
+        cell.lblDate.text = dateFormatter.string(from: date)
+        if cell.newsImage.image == nil {
+            newsFirebaseHelper.getImageFromStorage(nameOfImage: String(new.photoName), callBack: { image in
+                cell.newsImage.image = image
+            })
+        }
+        
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 

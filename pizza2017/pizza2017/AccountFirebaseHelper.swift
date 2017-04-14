@@ -1,13 +1,5 @@
-//
-//  AccountFirebaseHelper.swift
-//  pizza2017
-//
-//  Created by Sergiy Sobol on 11.04.17.
-//  Copyright © 2017 GeekHub. All rights reserved.
-//
 
 
-import Foundation
 import Foundation
 import Firebase
 

@@ -20,21 +20,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnLogIn: UIButton!
     @IBOutlet weak var btnRegister: UIButton!
     @IBOutlet weak var btnGuest: UIButton!
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let accountFirebaseHelper = AccountFirebaseHelper()
+        let settingsFireBase = SettingsFirebase()
         if FIRAuth.auth()?.currentUser != nil {
             accountFirebaseHelper.initFirebaseObserve(userKey: (FIRAuth.auth()?.currentUser?.uid)!, callback: {
-                
                 UserHelper.instance.userModel = accountFirebaseHelper.getUser(0)
-                
+                settingsFireBase.initFirebaseObserve { (settings) in
+                        UserHelper.instance.isAdminLogged = settings.adminEmail == UserHelper.instance.userModel?.email
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "Login", sender: self)
+                    }
+                }
             })
-            
-            
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "Login", sender: self)
-            }
+   
         } else {
             
         }
@@ -64,7 +66,7 @@ class LoginViewController: UIViewController {
         return
         
         let accountFirebaseHelper = AccountFirebaseHelper()
-
+        let settingsFireBase = SettingsFirebase()
         if self.emailTextField.text == "" || self.passwordTextField.text == "" {
             
             //Alert to tell the user that there was an error because they didn't fill anything in the textfields because they didn't fill anything in
@@ -90,8 +92,13 @@ class LoginViewController: UIViewController {
                     accountFirebaseHelper.initFirebaseObserve(userKey: (FIRAuth.auth()?.currentUser?.uid)!, callback: {
                         
                         UserHelper.instance.userModel = accountFirebaseHelper.getUser(0)
-                        self.performSegue(withIdentifier: "Login", sender: self)
-                        
+                        settingsFireBase.initFirebaseObserve { (settings) in
+                            UserHelper.instance.isAdminLogged = settings.adminEmail == UserHelper.instance.userModel?.email
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "Login", sender: self)
+                            }
+                        }
+                                                
                     })
 
                     

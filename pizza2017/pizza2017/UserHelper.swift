@@ -22,6 +22,6 @@ class UserHelper {
     
     //MARK: Properties
     
-    let isAdminLogged = true
+    var isAdminLogged = true
     
 }

@@ -34,9 +34,10 @@ class SettingsFirebase: FirebaseHelper {
         let latitude = tasksInFirebase[FirebaseTables.Settings.Child.Latitude] as! Float
         let longitude = tasksInFirebase[FirebaseTables.Settings.Child.Longitude] as! Float
         let phone = tasksInFirebase[FirebaseTables.Settings.Child.Phone] as! String
+        let adminEmail = tasksInFirebase[FirebaseTables.Settings.Child.AdminEmail] as! String
         
         return SettingsModel(address: address, email: email,
-                             latitude: latitude, longitude: longitude, phone: phone)
+                             latitude: latitude, longitude: longitude, phone: phone, adminEmail: adminEmail)
     }
 }
 

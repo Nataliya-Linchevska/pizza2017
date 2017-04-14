@@ -134,9 +134,11 @@ extension DishesGroupViewController: UICollectionViewDelegate, UICollectionViewD
         cell.lblTitle.text = dishesGroup.name
         cell.lblPrice.text = dishesGroup.price.description
         
-        firebaseHelper.getImageFromStorage(nameOfImage: dishesGroup.photoName, callBack: { image in
-            cell.ivImage.image = image
-        })
+        if cell.ivImage.image == nil {
+            firebaseHelper.getImageFromStorage(nameOfImage: dishesGroup.photoName, callBack: { image in
+                cell.ivImage.image = image
+            })
+        }
         
         return cell
     }

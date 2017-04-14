@@ -104,6 +104,7 @@ class DishViewController: UIViewController {
         }))
         
         present(menu, animated: true, completion: nil)
+
     }
     
     private func onAddNewDish() {
@@ -216,9 +217,11 @@ extension DishViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.tvDescription.text = dishesGroup.description
         cell.lblTitle.text = dishesGroup.name
         
-        firebaseHelper.getImageFromStorage(nameOfImage: String(dishesGroup.photoName), callBack: { image in
-            cell.ivImage.image = image
-        })
+        if cell.ivImage.image == nil {
+            firebaseHelper.getImageFromStorage(nameOfImage: String(dishesGroup.photoName), callBack: { image in
+                cell.ivImage.image = image
+            })
+        }
         return cell
     }
     
