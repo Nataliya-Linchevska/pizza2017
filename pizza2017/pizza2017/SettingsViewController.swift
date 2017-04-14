@@ -1,10 +1,3 @@
-//
-//  SettingsViewController.swift
-//  pizza2017
-//
-//  Created by user on 22.02.17.
-//  Copyright © 2017 GeekHub. All rights reserved.
-//
 
 import UIKit
 import MapKit

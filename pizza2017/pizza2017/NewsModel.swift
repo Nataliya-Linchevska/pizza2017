@@ -1,10 +1,4 @@
-//
-//  NewsModel.swift
-//  pizza2017
-//
-//  Created by Sergiy Sobol on 14.04.17.
-//  Copyright © 2017 GeekHub. All rights reserved.
-//
+
 
 import Foundation
 

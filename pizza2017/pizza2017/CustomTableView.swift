@@ -1,10 +1,3 @@
-//
-//  CustomTableView.swift
-//  pizza2017
-//
-//  Created by Sergiy Sobol on 12.04.17.
-//  Copyright © 2017 GeekHub. All rights reserved.
-//
 
 import UIKit
 
