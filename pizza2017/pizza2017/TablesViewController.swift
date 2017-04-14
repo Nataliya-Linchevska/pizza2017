@@ -82,7 +82,6 @@ class TablesViewController: UIViewController, TableSelectDelegate  {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func registerForKeyboardNotifications() {
@@ -146,8 +145,6 @@ class TablesViewController: UIViewController, TableSelectDelegate  {
                 return
             }
         })
-        
-        
         
         let alert = UIAlertController(title: "", message: "Заказ отправлен", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
