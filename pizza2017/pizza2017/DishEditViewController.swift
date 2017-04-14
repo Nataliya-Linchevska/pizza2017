@@ -40,7 +40,7 @@ class DishEditViewController: UIViewController {
         
         if keyOfGroup == nil {
             Utilities.showAllertMessage("Error", "Menu groups key can't be empty!", self)
-            dismiss(animated: false, completion: nil)
+            closeView()
             return
         }
         
@@ -124,7 +124,7 @@ class DishEditViewController: UIViewController {
         
         if !isNewModel && dishModel != nil && !dishModel!.key.isEmpty {
             firebaseHelper.removeDish(dishModel!)
-            dismiss(animated: true, completion: nil)
+            closeView()
         }
         
     }

@@ -12,7 +12,7 @@ class DishesGroupViewController: UIViewController {
     
     //MARK: Properties
     
-    var keyForDish: String = ""
+    var keyForDish: String?
     var firebaseHelper = DishFirebase()
     
     var editableDelegate: EditableViewProtocol?
@@ -26,20 +26,28 @@ class DishesGroupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if keyForDish == nil {
+            Utilities.showAllertMessage("Error", "Menu groups key can't be empty!", self)
+            closeView()
+            return
+        }
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        let barButton = UIBarButtonItem(image: Utilities.getDefaultMenuImage(),
-                                        landscapeImagePhone: nil, style: .done,
-                                        target: self, action: #selector(menuButtonClicked))
-        self.navigationItem.rightBarButtonItem = barButton
+        if UserHelper.instance.isAdminLogged {
+            let barButton = UIBarButtonItem(image: Utilities.getDefaultMenuImage(),
+                                            landscapeImagePhone: nil, style: .done,
+                                            target: self, action: #selector(menuButtonClicked))
+            self.navigationItem.rightBarButtonItem = barButton
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //activityIndicator.startAnimating()
-        firebaseHelper.initDishesObserve(keyForDish) { 
+        firebaseHelper.initDishesObserve(keyForDish!) {
             self.collectionView.reloadData()
             //self.activityIndicator.stopAnimating()
         }
@@ -84,22 +92,29 @@ class DishesGroupViewController: UIViewController {
     func onEditGroup() {
         
         if let validDelegate = editableDelegate {
-            validDelegate.onEditData?(keyForDish, self)
+            validDelegate.onEditData?(keyForDish!, self)
         }
     }
     
     func onRemoveGroup() {
         
         if let validDelegate = self.editableDelegate {
-            validDelegate.onDeleteData?(self.keyForDish, self)
+            validDelegate.onDeleteData?(self.keyForDish!, self)
         }
     }
     
     func showDishEditView(_ dish: DishModel?) {
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "DishEditViewController") as! DishEditViewController
-        controller.setModel(keyForDish, dish)
+        controller.setModel(keyForDish!, dish)
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    private func closeView() {
+        
+        if self.navigationController?.popViewController(animated: true) == nil {
+            Loger.instance.writeToLog("View controller not found!")
+        }
     }
     
 }
