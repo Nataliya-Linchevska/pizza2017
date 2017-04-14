@@ -19,13 +19,13 @@ class MenuGroupsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: General Functions
     
     func fillUp(_ itemIndex: Int, _ groupName: String, _ photoName: String) {
         
-        activityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
         
         groupIndex = itemIndex
         lblTitle.text = groupName
