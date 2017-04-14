@@ -15,6 +15,7 @@ class DishViewController: UIViewController {
     var keyForDish: String?
     var selectedIndex: IndexPath?
     
+    @IBOutlet weak var btnAdd: UIButton!
     //MARK: Outlets
     
     @IBOutlet weak var btnRight: UIBarButtonItem!
@@ -37,6 +38,12 @@ class DishViewController: UIViewController {
                                             landscapeImagePhone: nil, style: .done,
                                             target: self, action: #selector(menuButtonClicked))
             self.navigationItem.rightBarButtonItem = barButton
+            btnAdd.isEnabled = false
+        }
+        
+        if UserHelper.instance.userModel == nil {
+            self.navigationItem.rightBarButtonItem = nil
+            btnAdd.isEnabled = false
         }
         
     }

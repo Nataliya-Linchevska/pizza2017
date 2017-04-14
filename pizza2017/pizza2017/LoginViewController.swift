@@ -115,4 +115,11 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func anonimAction(_ sender: AnyObject) {
+        UserHelper.instance.isAdminLogged = false
+        UserHelper.instance.userModel = nil
+        self.performSegue(withIdentifier: "Login", sender: self)
+    }
+
 }
