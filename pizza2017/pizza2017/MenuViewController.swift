@@ -21,8 +21,6 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var activityIndicatorView: UIView!
-    
     //MARK: Virtual functions
     
     override func viewDidLoad() {
@@ -39,16 +37,12 @@ class MenuViewController: UIViewController {
         firebaseHelper.initMenuGroupsObserve {
             self.CollectionView.reloadData()
             self.activityIndicator.stopAnimating()
-            self.activityIndicatorView.isHidden = true
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        // self.CollectionView.cl
-        activityIndicatorView.isHidden = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
