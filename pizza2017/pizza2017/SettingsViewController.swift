@@ -10,6 +10,9 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var gradientView: UIView!
+    @IBOutlet weak var shadowMapView: UIView!
+    
     
     private var firebaseHelper = SettingsFirebase()
     
@@ -26,6 +29,21 @@ class SettingsViewController: UIViewController {
         firebaseHelper.initFirebaseObserve { (settings) in
             self.reloadView(taskSettings: settings)
             //self.activityIndicator.stopAnimating()
+            
+            // фон
+            let gradient = CAGradientLayer()
+            gradient.frame = self.gradientView.bounds
+            gradient.colors = [UIColor(colorLiteralRed: 21/255.0, green: 136/255.0, blue: 18/255.0, alpha: 1).cgColor, UIColor(colorLiteralRed: 254/255.0, green: 244/255.0, blue: 85/255.0, alpha: 1).cgColor]
+            self.gradientView.layer.addSublayer(gradient)
+            
+            // заокруглення
+            self.shadowMapView.layer.shadowOpacity = 0.8
+            self.shadowMapView.layer.shadowOffset = CGSize(width: 10.0, height: 10.0)
+            self.shadowMapView.layer.cornerRadius = 22
+            self.map.layer.cornerRadius = 22
+
+
+            
         }
     }
     
