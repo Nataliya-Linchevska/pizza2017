@@ -41,6 +41,11 @@ class DishViewController: UIViewController {
             self.navigationItem.rightBarButtonItem = barButton
         }
         
+        let gradient = CAGradientLayer()
+        gradient.frame = backgroundView.bounds
+        gradient.colors = [UIColor(colorLiteralRed: 21/255.0, green: 136/255.0, blue: 18/255.0, alpha: 1).cgColor, UIColor(colorLiteralRed: 254/255.0, green: 244/255.0, blue: 85/255.0, alpha: 1).cgColor]
+        backgroundView.layer.addSublayer(gradient)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {    
