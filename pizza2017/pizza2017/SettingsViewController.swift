@@ -41,9 +41,6 @@ class SettingsViewController: UIViewController {
             self.shadowMapView.layer.shadowOffset = CGSize(width: 10.0, height: 10.0)
             self.shadowMapView.layer.cornerRadius = 22
             self.map.layer.cornerRadius = 22
-
-
-            
         }
     }
     
