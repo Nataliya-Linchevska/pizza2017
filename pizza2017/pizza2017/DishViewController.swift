@@ -20,6 +20,8 @@ class DishViewController: UIViewController {
     
     @IBOutlet weak var btnRight: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backgroundView: UIView!
+    
     
     //MARK: Virtual functions
     
@@ -45,6 +47,11 @@ class DishViewController: UIViewController {
             self.navigationItem.rightBarButtonItem = nil
             btnAdd.isEnabled = false
         }
+        
+        let gradient = CAGradientLayer()
+        gradient.frame = backgroundView.bounds
+        gradient.colors = [UIColor(colorLiteralRed: 21/255.0, green: 136/255.0, blue: 18/255.0, alpha: 1).cgColor, UIColor(colorLiteralRed: 254/255.0, green: 244/255.0, blue: 85/255.0, alpha: 1).cgColor]
+        backgroundView.layer.addSublayer(gradient)
         
     }
     

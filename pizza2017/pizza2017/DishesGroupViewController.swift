@@ -140,6 +140,11 @@ extension DishesGroupViewController: UICollectionViewDelegate, UICollectionViewD
             })
         }
         
+        
+        cell.ivImage.layer.cornerRadius = 10
+        cell.ivImage.clipsToBounds = true
+        cell.backgroundViewCell.layer.cornerRadius = 10
+        
         return cell
     }
     

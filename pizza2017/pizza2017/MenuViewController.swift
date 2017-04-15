@@ -19,7 +19,7 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var topNavigationItem: UINavigationItem!
     @IBOutlet weak var CollectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Virtual functions
     
@@ -34,14 +34,15 @@ class MenuViewController: UIViewController {
             topNavigationItem.rightBarButtonItem = nil
         }
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        activityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
         firebaseHelper.initMenuGroupsObserve {
             self.CollectionView.reloadData()
-            self.activityIndicator.stopAnimating()
+//            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -86,7 +87,7 @@ extension MenuViewController : UICollectionViewDelegate, UICollectionViewDataSou
         if cell.ivImage.image == nil {
             firebaseHelper.getImageFromStorage(nameOfImage: menuGroup.photoName, callBack: { image in
                 cell.ivImage.image = image
-                self.activityIndicator.stopAnimating()
+//                self.activityIndicator.stopAnimating()
             })
         }
         return cell
