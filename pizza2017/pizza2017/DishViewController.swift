@@ -19,6 +19,8 @@ class DishViewController: UIViewController {
     
     @IBOutlet weak var btnRight: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backgroundView: UIView!
+    
     
     //MARK: Virtual functions
     

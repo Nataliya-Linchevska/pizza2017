@@ -12,4 +12,7 @@ class DishesGroupCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ivImage: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
+    @IBOutlet weak var backgroundViewCell: UIView!
+    
+    
 }
