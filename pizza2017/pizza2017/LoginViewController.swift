@@ -52,7 +52,8 @@ class LoginViewController: UIViewController {
         btnRegister.layer.cornerRadius = 22
         btnGuest.layer.cornerRadius = 22
         
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bgTap(_:)))
+        view.addGestureRecognizer(tap)
 
     }
 
@@ -120,6 +121,11 @@ class LoginViewController: UIViewController {
         UserHelper.instance.isAdminLogged = false
         UserHelper.instance.userModel = nil
         self.performSegue(withIdentifier: "Login", sender: self)
+    }
+    
+    func bgTap(_ sender: UITapGestureRecognizer) {
+        passwordTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
     }
 
 }
