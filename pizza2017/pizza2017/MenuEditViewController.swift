@@ -23,7 +23,6 @@ class MenuEditViewController: UIViewController {
     //MARK: Outlets
     
     @IBOutlet weak var tfGroupName: UITextField!
-    @IBOutlet weak var lbGroupName: UILabel!
     @IBOutlet weak var ivGroupImage: UIImageView!
     @IBOutlet weak var buttonOK: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -75,7 +74,6 @@ class MenuEditViewController: UIViewController {
     
     func updateOkAndPhotoName() {
         
-        lbGroupName.text = tfGroupName.text
         buttonOK.isEnabled = !(tfGroupName.text?.isEmpty)! && (!isDefaultImage || !isNewModel)
         
     }
