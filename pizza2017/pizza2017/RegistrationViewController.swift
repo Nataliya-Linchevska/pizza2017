@@ -31,6 +31,9 @@ class RegistrationViewController: UIViewController {
         
         // заокруглення
         btnRegister.layer.cornerRadius = 22
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.bgTap(_:)))
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,5 +84,15 @@ class RegistrationViewController: UIViewController {
     @IBAction func back() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func bgTap(_ sender: UITapGestureRecognizer) {
+        passwordTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        nameTextField.resignFirstResponder()
+        addressTextField.resignFirstResponder()
+        phoneTextField.resignFirstResponder()
+
+    }
+
 
 }
