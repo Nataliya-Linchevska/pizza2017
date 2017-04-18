@@ -36,6 +36,10 @@ class TablesViewController: UIViewController, TableSelectDelegate  {
         
         tfDate.inputView = datePicker
         
+        if UserHelper.instance.userModel == nil || UserHelper.instance.isAdminLogged {
+            btnCreateOrder.isUserInteractionEnabled = false
+        }
+        
         registerForKeyboardNotifications()
         tablesFirebaseHelper.initFirebaseObserve(key: "", callback: {
             
